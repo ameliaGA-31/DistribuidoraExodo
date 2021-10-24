@@ -53,11 +53,11 @@ function valor(value){
 }
 
 //inicializacion de carrucel desde materialize
- /*document.addEventListener('DOMContentLoaded', function() {
+ document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.carousel');
     var instances = M.Carousel.init(elems, options);
   });
-  */
+ 
 
   // Or with jQuery
 
@@ -65,18 +65,10 @@ function valor(value){
     $('.carousel').carousel();
   });
 
-  //input frutas
-   
-// let frutas=['manzana','mango','tuna','platano','pera','limón'];
 let input=document.getElementById('searchInput');
-//console.log("input",input.indexOf(frutas));
 let lista=document.getElementById('list');
-
-//let dataList=getProductList(dataValue);
 input.addEventListener('keyup',()=> typing(dataValue))
- /*uno es que tenga valor input.values== '';
-  otro es que se encuentre en result y que result .length !=0
-  */
+
 function typing(dataMyList){
 	let productsArr=getProductList(dataMyList);
   let productsList='';
