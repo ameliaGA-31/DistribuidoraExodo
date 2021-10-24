@@ -36,14 +36,6 @@ function transformData(data){
 }
 
 
-/*let price="*$3.20 *$ 3.20 *$ 4.00 *$5.00";
-let cambioPrice=price.split('*');
-let nuevoArreglo=cambioPrice.filter(element=>{
-  return element != "";
-})
-let eliminaEspacios=cambioPrice.map(element=> element.trim());
-console.log(cambioPrice,eliminaEspacios,nuevoArreglo);*/
-
 function valor(value){
 	if(value.indexOf('*') !== -1){
 		return value.split('*').filter(element => element != "").map(val => val.trim());
