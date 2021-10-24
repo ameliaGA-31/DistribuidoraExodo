@@ -3,7 +3,7 @@ const spreadsheetsId='1WfxVETEfl-fmU4QGfOG1wk-93ClARjK5wkgUbAg3BXg';
 const range='Data!A1:F5';
 const apiKey='AIzaSyBb1-sH8j-c6qSKNT4UK7CqP65w7v-ugq8';
 const urlOriginal=`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetsId}/values/${range}?key=${apiKey}`;
-
+let dataValue;
 window.onload=initialize(urlOriginal);
 
 function initialize(url){
@@ -11,11 +11,12 @@ function initialize(url){
 	.then(response => response.json())
 	.then(data =>{
 		console.log("data",data);
-		transformData(data);
+		dataValue=transformData(data);
 	})
 	.catch(error=> console.log("error:*",error))
 	
 }
+
 function transformData(data){
 	//console.log(data);
 	let arrays=[];
@@ -30,7 +31,7 @@ function transformData(data){
 			arrays.push(objetoPersonal);
 		}
 	}
-	console.log("arraysConvertidos",arrays)
+	//console.log("arraysConvertidos",arrays)
 	return arrays;
 }
 
@@ -52,10 +53,11 @@ function valor(value){
 }
 
 //inicializacion de carrucel desde materialize
- document.addEventListener('DOMContentLoaded', function() {
+ /*document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.carousel');
     var instances = M.Carousel.init(elems, options);
   });
+  */
 
   // Or with jQuery
 
@@ -65,30 +67,35 @@ function valor(value){
 
   //input frutas
    
- let frutas=['manzana','mango','tuna','platano','pera','limón'];
-let input=document.getElementById('search');
+// let frutas=['manzana','mango','tuna','platano','pera','limón'];
+let input=document.getElementById('searchInput');
 //console.log("input",input.indexOf(frutas));
 let lista=document.getElementById('list');
 
-
-input.addEventListener('keyup',ev => typing(ev))
+//let dataList=getProductList(dataValue);
+input.addEventListener('keyup',()=> typing(dataValue))
  /*uno es que tenga valor input.values== '';
   otro es que se encuentre en result y que result .length !=0
   */
-function typing(ev){
-  let listaFrutas='';
+function typing(dataMyList){
+	let productsArr=getProductList(dataMyList);
+  let productsList='';
   if(input.value == '' ){
     //se oculta la lista
     lista.setAttribute('class','hide')
   } else{
     //se muestra lista
     lista.removeAttribute('class','hide');
-      let result = frutas.filter((elemento,indice,array)=>  elemento.indexOf(input.value.toLowerCase()) != -1);
-    listaFrutas= result.map((fruta) =>`<li>${fruta}</li>`).join("");
+      let result = productsArr.filter((elemento,indice,array)=>  elemento.indexOf(input.value.toLowerCase()) != -1);
+    productsList= result.map((product) =>`<li class="item">${product.charAt(0).toUpperCase()+ product.slice(1)}</li>`).join("");
     
-    lista.innerHTML =(listaFrutas.length != 0) ? listaFrutas:"No se encontro coincidencias";
-    console.log("result",result,listaFrutas);
-    return listaFrutas;
-  
+    lista.innerHTML =(productsList.length != 0) ? productsList:"No se encontro coincidencias";
+    return productsList;
   }
+}
+function getProductList(valuesArr){
+
+	let names=valuesArr.map(objeto => objeto.name.toLowerCase())
+	console.log("propiedades",names);
+	return names;
 }
