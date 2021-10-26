@@ -5,22 +5,134 @@
   --max-width-input:20rem;
 }
 /*iniciando con estilos personales*/
+#heder{
+  position: fixed;
+  z-index: 99;
+}
+.iconFooter{
+
+}
+#enlaces{
+  font-size: 1.5em;
+  margin-right: 10px;
+}
+#card-image{
+      width: 50%;
+    margin: 10px;
+}
+#imgMap{
+  height: 300px;
+    width: 500px;
+    margin: 0px auto;
+}
+#card-stacked{
+      width: 50%;
+    font-size: 1.2em;
+    align-items: center;
+    color: brown;
+}
+#map{
+  color: brown;
+}
+#listDom{
+  list-style: circle;
+      margin-top: 15px;
+      color: black;
+}
+#imgCarou{
+  width: 250px;
+  height: 250px;
+}
+#contMayor{
+  display: flex;
+  flex-direction: column;
+}
+#carousel{
+  top: 200px;
+    position: absolute;
+}
+#headerCard{
+      margin: 2px;
+    text-align: center;
+    font-size: 2em;
+}
+#cards{
+      position: absolute;
+    top: 600px;
+    width: 100%;
+}
+#footer{
+  position: absolute;
+    top: 1000px;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+#footer span{
+      /* width: 40%; */
+    text-align: right;
+    margin: 0px 10px;
+}
+.is-preload{
+  display: flex;
+  flex-direction: column;
+}
+.contHeader{
+   display: flex;
+    /* flex-direction: column; */
+    /* flex-wrap: wrap; */
+    margin: 10px 10px 0px;
+    align-items: center;
+}
+.logo{
+      width: 80%;
+}
+
 .login{
-  width: 30%;
+  width: 12%;
+    border-radius: 1.5em;
+}
+.icons{
+       width: 20%;
+    display: flex;
+    align-items: flex-start;
+}
+.iconEmail{
+  font-size: 1em;
+  margin-right: 10px;
+}
+#nav{
+  width: 100%;
+    height: auto;
+}
+.contNav{
+  color: black;
+      width: 100%;
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+.main{
+  width: 55%;
+  font-size: 1.2em;
+  color: brown;
 }
 .buscador{
-  border: 1px solid rgb(255 255 255 / 70%);
+      border: 1px solid rgb(255 255 255 / 70%);
     box-sizing: border-box;
     display: flex;
     flex-wrap: nowrap;
-    min-width: 320px;
-    max-width: 1000px;
+    /* min-width: 320px; */
+    /* max-width: 1000px; */
     height: 50px;
     width: 70%;
     padding: 5px 16px;
     border-radius: 20px;
     margin: 10px;
     background: #E1E1E1;
+    width: 43%;
+    flex-direction: row;
     
 }
 .buscador input{
@@ -45,38 +157,34 @@
      
 }
 .contInput{
-  position:relative;
-  box-sizing:border-box;
+    box-sizing: border-box;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+
 }
 .textBusc{
   width: 150px;
     font-weight: 700;
 }
-#searchIcon{
-  width: 40px;
+#iconSearch{
+       width: 35px;
     height: 40px;
-    background: transparent;
-    border: 1px solid transparent;
-    font-size: 1em;
-    cursor: pointer;
-    align-self: center;
-}
-.contNav{
-  color: black;
-}
-/*estilos input frutas*/
-
-#searchInput, #list, .contInput{
- max-width:var(--max-width-input);
-  width:100%;
+    background: white;
+    border: 0px solid white;
+    padding: 0.3em;
+    border-radius: 1em 0px 0px 1em;
 }
 #list{
-  border:1px solid purple;
-  position:absolute;
-  background:white;
-  box-sizing:border-box;
-  padding:0px;
-  margin:0px;
+      position: absolute;
+    background: white;
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 30px 0px 0px 30px;
+    width: 94%;
+    z-index: 99;
 }
 #list.hide{
   display:none;
@@ -85,7 +193,53 @@
   display: block;
   padding: 5px;
   float: none;
+  width: 100%;
   /*text-transform: capitalize;*/
+}
+
+/*#searchIcon{
+  width: 40px;
+    height: 41px;
+    background: transparent;
+    
+    font-size: 1em;
+    cursor: pointer;
+    
+    position: absolute;
+    padding: 0px;
+    box-shadow: 1px transparent;
+    box-sizing: border-box;
+    background: white;
+    border-radius: 1em 0px 0px 1em;
+} */
+#searchInput{
+  width: 100%;
+    /* position: absolute; */
+    /* right: 0px; */
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    background: white;
+    border-radius: 0px 1em 1em 0px;
+    height: 40px;
+        
+}
+
+#abecedario{
+  width: 100%;
+    display: flex;
+    height: 50px;
+    justify-content: center;
+        color: aliceblue;
+}
+.abc{
+     width: 35px;
+    font-size: 1.2em;
+    border: 1px solid;
+    display: inline-block;
+    height: 40px;
+    contain: content;
 }
 
 
@@ -197,12 +351,11 @@ a {
   -webkit-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
   -ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
-  border-bottom: dotted 1px;
   color: #f56a6a;
   text-decoration: none; }
   a:hover {
     border-bottom-color: #f56a6a;
-    color: #f56a6a !important; }
+    color: black; }
     a:hover strong {
       color: inherit; }
 
@@ -1142,8 +1295,8 @@ textarea {
   input[type="url"]:focus,
   select:focus,
   textarea:focus {
-    border-color: #f56a6a;
-    box-shadow: 0 0 0 1px #f56a6a; }
+    /*border-color: #f56a6a;
+    box-shadow: 0 0 0 1px #f56a6a; }*/
 
 select {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' preserveAspectRatio='none' viewBox='0 0 40 40'%3E%3Cpath d='M9.4,12.3l10.4,10.4l10.4-10.4c0.2-0.2,0.5-0.4,0.9-0.4c0.3,0,0.6,0.1,0.9,0.4l3.3,3.3c0.2,0.2,0.4,0.5,0.4,0.9 c0,0.4-0.1,0.6-0.4,0.9L20.7,31.9c-0.2,0.2-0.5,0.4-0.9,0.4c-0.3,0-0.6-0.1-0.9-0.4L4.3,17.3c-0.2-0.2-0.4-0.5-0.4-0.9 c0-0.4,0.1-0.6,0.4-0.9l3.3-3.3c0.2-0.2,0.5-0.4,0.9-0.4S9.1,12.1,9.4,12.3z' fill='rgba(210, 215, 217, 0.75)' /%3E%3C/svg%3E");
@@ -1231,8 +1384,8 @@ input[type="radio"] {
     content: '\f00c'; }
   input[type="checkbox"]:focus + label:before,
   input[type="radio"]:focus + label:before {
-    border-color: #f56a6a;
-    box-shadow: 0 0 0 1px #f56a6a; }
+    /*border-color: #f56a6a;
+    box-shadow: 0 0 0 1px #f56a6a; }*/
 
 input[type="checkbox"] + label:before {
   border-radius: 0.375em; }
@@ -2157,13 +2310,20 @@ button,
 
 /* Header */
 #header {
-  display: -moz-flex;
+  /*display: -moz-flex;
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
   border-bottom: solid 5px #f56a6a;
-  padding: 6em 0 1em 0;
-  position: relative; }
+  padding: 1.5em;
+  position: relative;
+  flex-direction: column;
+  padding-bottom: 0.5em;*/
+  position: fixed;
+  z-index: 99;
+      background: darkslategrey;
+
+}
   #header > * {
     -moz-flex: 1;
     -webkit-flex: 1;
@@ -2179,7 +2339,7 @@ button,
     text-align: right; }
   @media screen and (max-width: 1680px) {
     #header {
-      padding-top: 5em; } }
+      /*padding-top: 5em; }*/ }
   @media screen and (max-width: 736px) {
     #header {
       padding-top: 6.5em; }
