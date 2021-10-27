@@ -5,6 +5,12 @@
   --max-width-input:20rem;
 }
 /*iniciando con estilos personales*/
+#imgProduct{
+  
+}
+#down{
+  cursor: pointer;
+}
 #heder{
   position: fixed;
   z-index: 99;

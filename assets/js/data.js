@@ -70,16 +70,6 @@ function valor(value){
     $('.modal').modal();
   });
 
-   //var instance = M.Modal.getInstance(elem);
-
-  /* jQuery Method Calls
-    You can still use the old jQuery plugin method calls.
-    But you won't be able to access instance properties.
-
-    $('.modal').modal('methodName');
-    $('.modal').modal('methodName', paramName);
-  */
-      //instance.close();
 
   //continuacion de mi codigo html
 
@@ -108,4 +98,15 @@ function getProductList(valuesArr){
 	let names=valuesArr.map(objeto => objeto.name.toLowerCase())
 	console.log("propiedades",names);
 	return names;
+}
+
+//inicializacion de vento de Icono a las lista por categoria
+let category=document.getElementById("spanCategory");
+let iconDown=document.getElementById("down")
+iconDown.addEventListener('click',()=> mostrarRespuesta(dataValue))
+
+function mostrarRespuesta(categorys){
+	iconDown.classList.toggle("fa-chevron-circle-up");
+	console.log("categorys",categorys); 
+
 }
