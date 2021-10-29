@@ -44,6 +44,66 @@ function valor(value){
 	return value;
 }
 
+  //continuacion de mi codigo html
+
+let input=document.getElementById('searchInput');
+let lista=document.getElementById('list');
+input.addEventListener('keyup',()=> typing(dataValue))
+
+
+function typing(dataMyList){
+	let productsArr=getProductList(dataMyList);
+  let productsList='';
+  if(input.value == '' ){
+    //se oculta la lista
+    lista.setAttribute('class','hide')
+  } else{
+    //se muestra lista
+    lista.removeAttribute('class','hide');
+      let result = productsArr.filter((elemento,indice,array)=>  elemento.indexOf(input.value.toLowerCase()) != -1);
+    productsList= result.map((product,index) =>`<li id="${index}" class="item">${product.charAt(0).toUpperCase()+ product.slice(1)}</li>`).join("");
+    
+    lista.innerHTML =(productsList.length != 0) ? productsList:"No se encontro coincidencias";
+    setEventList();
+    return productsList;
+  }
+}
+
+function setEventList(){
+	let getLi=Array.from(document.getElementsByClassName("item"));
+	getLi.forEach((elemento) => elemento.addEventListener("click",()=>selectItem(elemento),false));
+}
+
+function getProductList(valuesArr){
+
+	let names=valuesArr.map(objeto => objeto.name.toLowerCase())
+	console.log("propiedades",names);
+	return names;
+}
+
+function selectItem(opcion){
+	console.log("selectItem",opcion);
+
+
+
+}
+//inicializacion de vento de Icono a las lista por categoria
+//funcion anonima 
+/*funcion  (){
+	return "";
+}
+//funcion se ejecuta al momento
+()=> ""*/
+
+
+// creando abecedario
+let abecedario="abcdefghijklmnñopqrstuvwxyz";
+abecedario=abecedario.split('');
+console.log(abecedario);
+let ul=document.getElementById("abecedario");
+let nuevoAbc=abecedario.map(elemento =>`<li class="abc">${elemento}</li>`).join("").toUpperCase();
+ul.innerHTML=nuevoAbc;
+
 //inicializacion de carrucel desde materialize
  document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.carousel');
@@ -71,42 +131,3 @@ function valor(value){
   });
 
 
-  //continuacion de mi codigo html
-
-let input=document.getElementById('searchInput');
-let lista=document.getElementById('list');
-input.addEventListener('keyup',()=> typing(dataValue))
-
-function typing(dataMyList){
-	let productsArr=getProductList(dataMyList);
-  let productsList='';
-  if(input.value == '' ){
-    //se oculta la lista
-    lista.setAttribute('class','hide')
-  } else{
-    //se muestra lista
-    lista.removeAttribute('class','hide');
-      let result = productsArr.filter((elemento,indice,array)=>  elemento.indexOf(input.value.toLowerCase()) != -1);
-    productsList= result.map((product) =>`<li class="item">${product.charAt(0).toUpperCase()+ product.slice(1)}</li>`).join("");
-    
-    lista.innerHTML =(productsList.length != 0) ? productsList:"No se encontro coincidencias";
-    return productsList;
-  }
-}
-function getProductList(valuesArr){
-
-	let names=valuesArr.map(objeto => objeto.name.toLowerCase())
-	console.log("propiedades",names);
-	return names;
-}
-
-//inicializacion de vento de Icono a las lista por categoria
-let category=document.getElementById("spanCategory");
-let iconDown=document.getElementById("down")
-iconDown.addEventListener('click',()=> mostrarRespuesta(dataValue))
-
-function mostrarRespuesta(categorys){
-	iconDown.classList.toggle("fa-chevron-circle-up");
-	console.log("categorys",categorys); 
-
-}
