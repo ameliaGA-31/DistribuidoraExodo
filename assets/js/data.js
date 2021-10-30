@@ -83,10 +83,8 @@ function getProductList(valuesArr){
 
 function selectItem(opcion){
 	console.log("selectItem",opcion);
-
-
-
 }
+
 //inicializacion de vento de Icono a las lista por categoria
 //funcion anonima 
 /*funcion  (){
