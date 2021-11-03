@@ -1,6 +1,6 @@
 const spreadsheetsId='1WfxVETEfl-fmU4QGfOG1wk-93ClARjK5wkgUbAg3BXg';
 //const range='Respuestas de formulario 1!A1:F5';
-const range='Data!A1:F100';
+const range='Data!A1:I20';
 const apiKey='AIzaSyBb1-sH8j-c6qSKNT4UK7CqP65w7v-ugq8';
 const urlOriginal=`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetsId}/values/${range}?key=${apiKey}`;
 let dataValue;
@@ -13,6 +13,7 @@ function initialize(url){
 		console.log("data",data);
 		dataValue=transformData(data);
 		getOptionCategory(dataValue);
+		getImages(dataValue);
 	})
 	.catch(error=> console.log("error:*",error))
 	
@@ -32,7 +33,7 @@ function transformData(data){
 			arrays.push(objetoPersonal);
 		}
 	}
-	console.log("arraysConvertidos",arrays)
+	console.log("arrayDeObjetos",arrays)
 	return arrays;
 }
 
@@ -77,6 +78,22 @@ function setEventOptions(categoriesObj){
 function selectOption(event) {
     console.log('seleccionada:::', event.target.value, 'index: ', event.target.selectedIndex);
   }
+//traer imagenes
+function getImages(productInfo) {
+    let visor = document.getElementById('visor');
+    let img=productInfo.map(cadaObj=> cadaObj.imagen.split(' '));
+    document.getElementById('mainImg').innerHTML = `<img class="urls" src="${img[0]}"/>`; 
+    document.getElementById('listImg').innerHTML = img.map(url => `<img class="urls" src="${url}" />`).join('');
+    console.log("imagen",img);
+    //document.getElementById('mainImg').innerHTML =  `<img src="${productInfo.url-img[0]}" />`;
+    //document.getElementById('listImg').innerHTML = productInfo.src.map(url => `<img src="${url}" />`).join('');
+    /*
+    document.getElementById('mainImg').innerHTML =  `<div class="img" id="0"></div>`;
+    document.getElementById('listImg').innerHTML = productInfo.src.map((el, index) => `<div class="img" id="${index}></div>`).join('');
+    let imagesNodes = Array.from(document.getElementsByClassName('img'));
+    imagesNodes.forEach((node, index) => node.setAttribute('background-image', `url(${productInfo.src[index]})`));
+    */
+}
 
 //input de html + eventos 
 let input=document.getElementById('searchInput');
@@ -162,4 +179,8 @@ ul.innerHTML=nuevoAbc;
  $(document).ready(function(){
     $('.modal').modal();
   });
+
+
+
+  
 

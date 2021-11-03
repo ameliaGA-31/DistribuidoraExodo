@@ -5,6 +5,42 @@
   --max-width-input:20rem;
 }
 /*iniciando con estilos personales*/
+.urls{
+  width: 100%;
+  height: 100%;
+}
+.visor {
+    width: 65%;
+    height: max-content;
+    border: 1px solid sandybrown;
+    min-height: 350px;
+    height: 400px;
+    display: flex;
+    box-sizing: border-box;
+    position: absolute;
+    top: 240px;
+    left: 20px;
+}
+
+/* lista */
+.visor .list-img {
+    width: 30%;
+    height: 100%;
+    overflow-y: scroll;
+    position: relative;
+}
+.visor .list-img .img{
+    margin: 10px auto;
+    width: 100%;
+    height: calc(100% / 3);
+    max-height: 9rem;
+}
+
+.visor .main-img {
+    width: 70%;
+    height: 100%;
+    margin-left: 15px;
+}
 .main.row{
   margin: 0px;
   width: 65%;
@@ -80,6 +116,7 @@
 #contMayor{
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 #carousel{
   top: 200px;
