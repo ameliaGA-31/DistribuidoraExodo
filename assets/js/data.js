@@ -1,6 +1,6 @@
 const spreadsheetsId='1WfxVETEfl-fmU4QGfOG1wk-93ClARjK5wkgUbAg3BXg';
 //const range='Respuestas de formulario 1!A1:F5';
-const range='Data!A1:I20';
+const range='Data!A1:I150';
 const apiKey='AIzaSyBb1-sH8j-c6qSKNT4UK7CqP65w7v-ugq8';
 const urlOriginal=`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetsId}/values/${range}?key=${apiKey}`;
 let dataValue;
@@ -13,7 +13,7 @@ function initialize(url){
 		console.log("data",data);
 		dataValue=transformData(data);
 		getOptionCategory(dataValue);
-		getImages(dataValue);
+		getImages(dataValue[7]);
 	})
 	.catch(error=> console.log("error:*",error))
 	
@@ -42,6 +42,9 @@ function valor(value){
 	if(value.indexOf('*') !== -1){
 		return value.split('*').filter(element => element != "").map(val => val.trim());
 	}
+	if(value.indexOf(',') !== -1){
+		return value.split(',').filter(element => element != "").map(val => val.trim());
+	}
 	//console.log("valoresdePropiedades",value)
 	return value;
 }
@@ -61,17 +64,28 @@ function getOptionCategory(arrObj){
 		cartones:cartones,
 		empaques:empaques
 	}
+	//console.log("categories",categories);
 	setEventOptions(categories);
-	return categories;
+	return "";
 }
 //integrando for in de objeto para selector 
 function setEventOptions(categoriesObj){
+		let selectContainer=document.getElementById('selectContainer');
+
 	for(const property in categoriesObj){
-		let selectContainer=document.querySelector(`#${property}Content`);
-		let optionSelect=categoriesObj[property].map(infoProduct => `<option>${infoProduct.name}</option>`);
-	    //optionSelect.unshift(`<option disabled selected>${categoriesObj.property[0].category}</option>`);
-		selectContainer.innerHTML=optionSelect;
-		selectContainer.addEventListener('change',(e)=> selectOption(e),false);
+		if (categoriesObj[property].length != 0) {
+			const div = document.createElement("div");
+			div.setAttribute("class", "input-field col s3");
+			const select = document.createElement("select");
+			div.appendChild(select);
+			selectContainer.appendChild(div);
+			let optionSelect=categoriesObj[property].map(infoProduct => `<option>${infoProduct.name}</option>`);
+		    optionSelect.unshift(`<option disabled selected>${categoriesObj[property][0].category}</option>`);
+		    
+			select.innerHTML=optionSelect;
+			select.addEventListener('change',(e)=> selectOption(e),false);
+		}
+		
 	}
 }
 //console por si index y valor
@@ -80,21 +94,18 @@ function selectOption(event) {
   }
 //traer imagenes
 function getImages(productInfo) {
+	console.log("productInfo",productInfo)
     let visor = document.getElementById('visor');
-    let img=productInfo.map(cadaObj=> cadaObj.imagen.split(' '));
+    let img=productInfo.imagen;
     document.getElementById('mainImg').innerHTML = `<img class="urls" src="${img[0]}"/>`; 
     document.getElementById('listImg').innerHTML = img.map(url => `<img class="urls" src="${url}" />`).join('');
     console.log("imagen",img);
-    //document.getElementById('mainImg').innerHTML =  `<img src="${productInfo.url-img[0]}" />`;
-    //document.getElementById('listImg').innerHTML = productInfo.src.map(url => `<img src="${url}" />`).join('');
-    /*
-    document.getElementById('mainImg').innerHTML =  `<div class="img" id="0"></div>`;
-    document.getElementById('listImg').innerHTML = productInfo.src.map((el, index) => `<div class="img" id="${index}></div>`).join('');
-    let imagesNodes = Array.from(document.getElementsByClassName('img'));
-    imagesNodes.forEach((node, index) => node.setAttribute('background-image', `url(${productInfo.src[index]})`));
-    */
+    setInfoProduct(productInfo);
 }
-
+function setInfoProduct(infoCadaUno){
+	console.log("infoCadaUno",infoCadaUno);
+	
+}
 //input de html + eventos 
 let input=document.getElementById('searchInput');
 let lista=document.getElementById('list');

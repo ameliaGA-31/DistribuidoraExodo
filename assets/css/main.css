@@ -5,21 +5,59 @@
   --max-width-input:20rem;
 }
 /*iniciando con estilos personales*/
+.show{
+  display: block;
+}
+.hide{
+  display: none;
+}
+.añadir{
+
+}
+.sum{
+
+}
+.conteo{
+
+}
+.rest{
+
+}
+.sumRest{
+
+}
+#name,#size, #price{
+  width: 100%;
+}
+.contDatos{
+  width: 32%;
+  position: absolute;
+  top: 240px;
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  right: 50px;
+  height: 400px;
+  margin: 0px 15px;
+}
 .urls{
   width: 100%;
   height: 100%;
 }
+.contenedor{
+  width: 100%;
+}
 .visor {
-    width: 65%;
+    width: 60%;
     height: max-content;
-    border: 1px solid sandybrown;
+    /*border: 1px solid sandybrown;*/
     min-height: 350px;
     height: 400px;
     display: flex;
     box-sizing: border-box;
     position: absolute;
     top: 240px;
-    left: 20px;
+    left: 30px;
 }
 
 /* lista */
@@ -37,7 +75,7 @@
 }
 
 .visor .main-img {
-    width: 70%;
+    width: 60%;
     height: 100%;
     margin-left: 15px;
 }
