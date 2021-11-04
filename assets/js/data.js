@@ -104,7 +104,11 @@ function getImages(productInfo) {
 }
 function setInfoProduct(infoCadaUno){
 	console.log("infoCadaUno",infoCadaUno);
-	
+	document.getElementById('information').innerHTML=
+	`<div> ${infoCadaUno.name}</div>
+	<div> ${infoCadaUno.size}</div>
+	<div> ${infoCadaUno.price}</div>
+	`
 }
 //input de html + eventos 
 let input=document.getElementById('searchInput');
