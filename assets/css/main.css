@@ -12,19 +12,30 @@
   display: none;
 }
 .añadir{
-
+  width: 40%;
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    height: auto;
+    justify-content: center;
 }
-.sum{
-
+.rest, .sum{
+  width: 30%;
+  padding: 0px;
+  margin: 0px;
 }
-.conteo{
-
-}
-.rest{
-
+#valor{
+  width: 30%;
+  margin: 0px;
+  padding: 0px;
+  height: auto;
+  text-align: center;
+  border-bottom: 0px;
 }
 .sumRest{
-
+   width: 100px;
+    height: auto;
+    border: 1px solid;
 }
 #name,#size, #price{
   width: 100%;

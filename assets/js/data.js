@@ -92,7 +92,17 @@ function setEventOptions(categoriesObj){
 function selectOption(event) {
     console.log('seleccionada:::', event.target.value, 'index: ', event.target.selectedIndex);
   }
-//traer imagenes
+//datos de cada producto en la pag de producto 
+function setInfoProduct(infoCadaUno){
+	console.log("infoCadaUno",infoCadaUno);
+	document.getElementById('information').innerHTML=
+	`<div> ${infoCadaUno.name}</div>
+	<div> ${infoCadaUno.size}</div>
+	<div> ${infoCadaUno.price}</div>
+	`
+}
+
+//traer imagenes pagina del producto
 function getImages(productInfo) {
 	console.log("productInfo",productInfo)
     let visor = document.getElementById('visor');
@@ -102,18 +112,34 @@ function getImages(productInfo) {
     console.log("imagen",img);
     setInfoProduct(productInfo);
 }
-function setInfoProduct(infoCadaUno){
-	console.log("infoCadaUno",infoCadaUno);
-	document.getElementById('information').innerHTML=
-	`<div> ${infoCadaUno.name}</div>
-	<div> ${infoCadaUno.size}</div>
-	<div> ${infoCadaUno.price}</div>
-	`
+
+//boton mas y menos de la pag producto
+var menos=document.getElementById('rest');
+menos.addEventListener('click',()=>contadormenos());
+                                                            
+var mas=document.getElementById('sum');
+mas.addEventListener('click',()=>contadormas());
+
+var valor = document.getElementById("valor");
+
+var empieza = 0; 
+function contadormas(){
+    
+    valor.value = empieza;
+    empieza = empieza + 1;
 }
+function contadormenos(){ 
+    if(empieza>=1){
+        empieza = empieza - 1; 
+        valor.value = empieza;
+    }
+}
+
+
 //input de html + eventos 
 let input=document.getElementById('searchInput');
 let lista=document.getElementById('list');
-input.addEventListener('keyup',()=> typing(dataValue))
+input.addEventListener('keyup',()=> typing(dataValue));
 
 
 function typing(dataMyList){
