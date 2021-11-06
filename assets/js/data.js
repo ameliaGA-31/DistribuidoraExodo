@@ -84,6 +84,9 @@ function setEventList(){
 	let getLi=Array.from(document.getElementsByClassName("item"));
 	getLi.forEach((elemento) => elemento.addEventListener("click",()=>selectItem(elemento),false));
 }
+function selectItem(opcion){
+	console.log("selectItem",opcion);
+}
 //funcion que agrega a funcion  typing para entrar al nombre del producto
 function getProductList(valuesArr){
 
@@ -99,14 +102,12 @@ function getAbecedario(namesArr){
 	let primeraLetra=namesArr.map(name=> name[0]);
 	let letrasEncontradas=abecedario.filter(letra => primeraLetra.indexOf(letra) != -1); 
 	let ul=document.getElementById("abecedario");
-	let nuevoAbc=letrasEncontradas.map(elemento =>`<li class="abc">${elemento}</li>`).join("").toUpperCase();
+	let nuevoAbc=letrasEncontradas.map(elemento =>`<li id="abc" class="abc">${elemento}</li>`).join("").toUpperCase();
 	ul.innerHTML=nuevoAbc;	                                        
 console.log("letra encontrada",nuevoAbc);
 }
 
-function selectItem(opcion){
-	console.log("selectItem",opcion);
-}
+
 
 //carrouzel
 $(document).ready(function(){
@@ -171,9 +172,9 @@ function getImages(productInfo) {
 function setInfoProduct(infoCadaUno,nameNodo){
 	console.log("infoCadaUno",infoCadaUno);
 	document.getElementById(nameNodo).innerHTML=
-	`<div> ${infoCadaUno.name}</div>
-	<div> ${infoCadaUno.size}</div>
-	<div> ${infoCadaUno.price}</div>`
+	`<div class="datoIndividual"> ${infoCadaUno.name}</div>
+	<div class="datoIndividual"> ${infoCadaUno.size}</div>
+	<div class="datoIndividual"> ${infoCadaUno.price}</div>`
 	
 }
 

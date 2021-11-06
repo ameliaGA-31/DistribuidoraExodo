@@ -5,6 +5,27 @@
   --max-width-input:20rem;
 }
 /*iniciando con estilos personales*/
+body{
+  background:#F2F2F2;
+}
+.datoIndividual{
+  background: white;
+  margin: 5px 5px 0px;
+  padding: 3px;
+}
+#calProduct{
+  display: flex;
+  justify-content: space-evenly;
+  height: 30px;
+  align-items: center;
+  margin: 5px 0px;
+}
+#title{
+  font-weight: 500;
+    display: flex;
+    margin: 10px;
+    padding: 2px;
+}
 .show{
   display: block;
 }
@@ -14,10 +35,8 @@
 .añadir{
   width: 40%;
     display: flex;
-    margin: 0px;
-    padding: 0px;
-    height: auto;
     justify-content: center;
+    padding: 3px;
 }
 .rest, .sum{
   width: 30%;
@@ -33,23 +52,25 @@
   border-bottom: 0px;
 }
 .sumRest{
-   width: 100px;
-    height: auto;
-    border: 1px solid;
+  border: 1px solid;
+  width: 40%;
+  padding: 2px;
 }
 #name,#size, #price{
   width: 100%;
 }
 .contDatos{
-  width: 32%;
+  width: 25%;
   position: absolute;
-  top: 240px;
+  top: 300px;
   border: 1px solid;
   display: flex;
   flex-direction: column;
-  right: 50px;
-  height: 400px;
+  right: 80px;
+  height: 150px;
   margin: 0px 15px;
+  align-items: center;
+  justify-content: space-evenly;
 }
 .urls{
   width: 100%;
@@ -69,6 +90,7 @@
     position: absolute;
     top: 240px;
     left: 30px;
+    justify-content: center;
 }
 
 /* lista */
@@ -93,9 +115,12 @@
 .main.row{
   margin: 0px;
   width: 65%;
+  margin: 3px;
+  padding: 3px;
 }
 .main select{
   display: block;
+  border-radius: 2em;
 }
 #card-horizontal{
   box-sizing: border-box;
@@ -168,7 +193,7 @@
   position: relative;
 }
 #carousel{
-  top: 200px;
+  top: 100px;
     position: absolute;
 }
 #headerCard{
@@ -177,9 +202,9 @@
     font-size: 2em;
 }
 #cards{
-      position: absolute;
-    top: 600px;
-    width: 100%;
+  position: absolute;
+  top: 500px;
+  width: 100%;
 }
 #footer{
   position: absolute;
@@ -198,24 +223,25 @@
   flex-direction: column;
 }
 .contHeader{
-   display: flex;
-    /* flex-direction: column; */
-    /* flex-wrap: wrap; */
-    margin: 10px 10px 0px;
-    align-items: center;
+  display: flex;
+  box-sizing: border-box;
+  padding: 2px 5px;
+  margin: 5px 5px 0px;
+  background:white;
 }
 .logo{
-      width: 80%;
+  width: 80%;
+  display: flex;
 }
-
 .login{
-  width: 12%;
-    border-radius: 1.5em;
+  width: 60px;
+  border-radius: 1.5em;
 }
 .icons{
-       width: 20%;
-    display: flex;
-    align-items: flex-start;
+  width: 20%;
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
 }
 .iconEmail{
   font-size: 1em;
@@ -227,11 +253,11 @@
 }
 .contNav{
   color: black;
-      width: 100%;
-    display: flex;
-    /* flex-direction: column; */
-    flex-wrap: wrap;
-    box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  max-height: 100px;
 }
 .main{
   width: 70%;
@@ -239,19 +265,17 @@
   color: brown;
 }
 .buscador{
-      border: 1px solid rgb(255 255 255 / 70%);
-    box-sizing: border-box;
-    display: flex;
-    flex-wrap: nowrap;
-    /* min-width: 320px; */
-    /* max-width: 1000px; */
-    height: 50px;
-    width: 30%;
-    padding: 5px 16px;
-    border-radius: 20px;
-    margin: 10px 0px;
-    background: #E1E1E1;
-    flex-direction: row;
+  border: 1px solid rgb(255 255 255 / 70%);
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: nowrap;
+  max-height: 50px;
+  width: 30%;
+  border-radius: 20px;
+  background: #E1E1E1;
+  flex-direction: row;
+  margin: 3px;
+  padding: 3px;
     
 }
 .buscador input{
@@ -347,17 +371,24 @@
 
 #abecedario{
   width: 100%;
-    display: flex;
-    height: 50px;
-    justify-content: center;
-        color: aliceblue;
+  display: flex;
+  max-height: 50px;
+  justify-content: center;
+  color: aliceblue;
+  align-items: center;
 }
-.abc{
-     width: 35px;
-    font-size: 1.2em;
-    border: 1px solid;
-    display: inline-block;
-    height: 40px;
-    contain: content;
+#ABC{
+  width: 35px;
+  font-size: 1.2em;
+  border: 1px solid;
+  display: inline-block;
+  height: 35px;
+  contain: content;
+  align-self: center;
+  border-radius: 1em;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
 }
 
