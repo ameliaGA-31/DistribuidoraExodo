@@ -15,7 +15,8 @@ function initialize(url){
 		dataValue=transformData(data);
 		getOptionCategory(dataValue);
 		getAbecedario(getProductList(dataValue));
-		getImages(dataValue[7]);
+		setEventInputSearch();
+		//getImages(dataValue[7]);
 	})
 	.catch(error=> console.log("error:*",error))
 	
@@ -53,14 +54,14 @@ function valor(value){
 	return value;
 }
 //continuacion de mi codigo html
+function setEventInputSearch(){
+	//input de html + eventos 
+	let input=document.getElementById('searchInput');
+	input.addEventListener('keyup',(input)=> typing(dataValue,input.target));
+}
 
-//input de html + eventos 
-let input=document.getElementById('searchInput');
-let lista=document.getElementById('list');
-input.addEventListener('keyup',()=> typing(dataValue));
-
-
-function typing(dataMyList){
+function typing(dataMyList,input){
+	let lista=document.getElementById('list');
 	let productsArr=getProductList(dataMyList);
   let productsList='';
   if(input.value == '' ){
@@ -102,12 +103,24 @@ function getAbecedario(namesArr){
 	let primeraLetra=namesArr.map(name=> name[0]);
 	let letrasEncontradas=abecedario.filter(letra => primeraLetra.indexOf(letra) != -1); 
 	let ul=document.getElementById("abecedario");
-	let nuevoAbc=letrasEncontradas.map(elemento =>`<li id="abc" class="abc">${elemento}</li>`).join("").toUpperCase();
-	ul.innerHTML=nuevoAbc;	                                        
+	let nuevoAbc=letrasEncontradas.map(elemento =>`<li class="abc">${elemento.toUpperCase()}</li>`).join("");
+	ul.innerHTML=nuevoAbc;
+	setEventAbecedario();
+
 console.log("letra encontrada",nuevoAbc);
 }
 
+//evento a letra abecedario
+function setEventAbecedario(){
 
+	let abc=Array.from(document.getElementsByClassName("abc"));
+	abc.forEach((unaLi)=> unaLi.addEventListener('click',(unaLi)=>getProductCoincidencia(unaLi.target.textContent),false));
+} 
+//TODO:next page catalogo.html
+function getProductCoincidencia(letra){
+	let listProduct=dataValue.filter(productInfo=> productInfo.name[0] == letra);
+	console.log("letra",letra,"listProduct",listProduct);
+}
 
 //carrouzel
 $(document).ready(function(){
