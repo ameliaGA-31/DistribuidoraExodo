@@ -16,7 +16,7 @@ function initialize(url){
 		getOptionCategory(dataValue);
 		getAbecedario(getProductList(dataValue));
 		setEventInputSearch();
-		//getImages(dataValue[7]);
+		setImages(dataValue[7]);
 	})
 	.catch(error=> console.log("error:*",error))
 	
@@ -117,6 +117,7 @@ function setEventAbecedario(){
 	abc.forEach((unaLi)=> unaLi.addEventListener('click',(unaLi)=>getProductCoincidencia(unaLi.target.textContent),false));
 } 
 //TODO:next page catalogo.html
+//funcion que encuentra coincidencias en el abecedario
 function getProductCoincidencia(letra){
 	let listProduct=dataValue.filter(productInfo=> productInfo.name[0] == letra);
 	console.log("letra",letra,"listProduct",listProduct);
@@ -171,16 +172,39 @@ function selectOption(event) {
   }
 
 //traer imagenes pagina del producto
-function getImages(productInfo) {
-	console.log("productInfo",productInfo)
+function setImages(productInfo) {
     let visor = document.getElementById('visor');
-    let img=productInfo.imagen;
-    document.getElementById('mainImg').innerHTML = `<img class="urls" src="${img[0]}"/>`; 
-    document.getElementById('listImg').innerHTML = img.map(url => `<img class="urls" src="${url}" />`).join('');
+    //let img=productInfo.imagen;
+    document.getElementById('mainImg').innerHTML = `<img src="${productInfo.imagen[0]}"/>`; 
+    document.getElementById('listImg').innerHTML = productInfo.imagen.map((url,idx) => `<img class="imgProduct" id="${idx}" src="${url}" />`).join('');
    // console.log("imagen",img);
+   	setEventImages();
     setInfoProduct(productInfo, "information");
-    setEventContador();
+    
 }
+
+function setEventImages() {
+  let images =Array.from(document.getElementsByClassName('imgProduct') );
+  images.forEach(img => img.addEventListener('click', (img) => changeImg(img.target.id), false));
+  //console.log("imagenes en for",images)
+}
+
+function changeImg(id) {
+	console.log("id",id)
+	let cambioImg=dataValue[7];
+  document.getElementById('mainImg').innerHTML =  `<img src="${cambioImg.imagen[id]}" />`;
+}
+/*
+function setEventImages() {
+  let images =Array.from(document.getElementsByClassName('urls') );
+  images.forEach(img => img.addEventListener('click', (img) => changeImg(img.target.id), false));
+  console.log("images",images)
+}
+
+function changeImg(id) {
+  document.getElementById('mainImg').innerHTML =  `<img src="${productInfo.imagen[id]}" />`; 
+}*/
+
 //datos de cada producto en la pag de producto 
 function setInfoProduct(infoCadaUno,nameNodo){
 	console.log("infoCadaUno",infoCadaUno);
@@ -188,9 +212,10 @@ function setInfoProduct(infoCadaUno,nameNodo){
 	`<div class="datoIndividual"> ${infoCadaUno.name}</div>
 	<div class="datoIndividual"> ${infoCadaUno.size}</div>
 	<div class="datoIndividual"> ${infoCadaUno.price}</div>`
+	setEventContador();
 	
 }
-
+//TODO::next page Carrito compras.html PENDIENTE:CALCULO DE SUMAS DE PRODUCTOS... 
 //boton mas y menos de la pag producto
 function setEventContador(){ 
 	var menos=document.getElementById('rest');
@@ -198,14 +223,15 @@ function setEventContador(){
 	                                                            
 	var mas=document.getElementById('sum');
 	mas.addEventListener('click',()=>contadormas());
-
-	var contador = document.getElementById("valor");
 }
 function contadormas(){
-	contador.value = contadorInicial;
+	var contador = document.getElementById("valor");
+	contador.value = contadorInicial +1;
+
 	contadorInicial = contadorInicial + 1;
 }
 function contadormenos(){ 
+	var contador = document.getElementById("valor");
     if(contadorInicial>=1){
         contadorInicial = contadorInicial - 1; 
         contador.value = contadorInicial;
