@@ -59,7 +59,7 @@ function setEventInputSearch(){
 	let input=document.getElementById('searchInput');
 	input.addEventListener('keyup',(input)=> typing(dataValue,input.target));
 }
-
+//funcion del evento al escribir en input y su busueda por producto
 function typing(dataMyList,input){
 	let lista=document.getElementById('list');
 	let productsArr=getProductList(dataMyList);
@@ -74,7 +74,6 @@ function typing(dataMyList,input){
     productsList= result.map((product,index) =>`<li id="${index}" class="item">${product.charAt(0).toUpperCase()+ product.slice(1)}</li>`).join("");
     
     lista.innerHTML =(productsList.length != 0) ? productsList:"No se encontro coincidencias";
-    //console.log("productsList",productsList);
     setEventList();
     return productsList;
   }
@@ -85,6 +84,8 @@ function setEventList(){
 	let getLi=Array.from(document.getElementsByClassName("item"));
 	getLi.forEach((elemento) => elemento.addEventListener("click",()=>selectItem(elemento),false));
 }
+//TODO: next page producto.html
+//opcion seleccionada por el buscador
 function selectItem(opcion){
 	console.log("selectItem",opcion);
 }
@@ -146,7 +147,7 @@ function getOptionCategory(arrObj){
 	setEventOptions(categories);
 	return "";
 }
-//integrando for in de objeto para selector 
+//integrando metodo For In de objeto para select 
 function setEventOptions(categoriesObj){
 		let selectContainer=document.getElementById('selectContainer');
 
@@ -166,7 +167,8 @@ function setEventOptions(categoriesObj){
 		
 	}
 }
-//console por si index y valor
+//TODO:next page producto.html
+//opcion selecciona por el select por su nombre y index 
 function selectOption(event) {
     console.log('seleccionada:::', event.target.value, 'index: ', event.target.selectedIndex);
   }
@@ -194,27 +196,40 @@ function changeImg(id) {
 	let cambioImg=dataValue[7];
   document.getElementById('mainImg').innerHTML =  `<img src="${cambioImg.imagen[id]}" />`;
 }
-/*
-function setEventImages() {
-  let images =Array.from(document.getElementsByClassName('urls') );
-  images.forEach(img => img.addEventListener('click', (img) => changeImg(img.target.id), false));
-  console.log("images",images)
-}
-
-function changeImg(id) {
-  document.getElementById('mainImg').innerHTML =  `<img src="${productInfo.imagen[id]}" />`; 
-}*/
 
 //datos de cada producto en la pag de producto 
 function setInfoProduct(infoCadaUno,nameNodo){
-	console.log("infoCadaUno",infoCadaUno);
-	document.getElementById(nameNodo).innerHTML=
-	`<div class="datoIndividual"> ${infoCadaUno.name}</div>
-	<div class="datoIndividual"> ${infoCadaUno.size}</div>
-	<div class="datoIndividual"> ${infoCadaUno.price}</div>`
-	setEventContador();
-	
+	//opcion 1 sin poder ver el select y agregando por separados los contenedores de html---->
+	let nameProducto=document.getElementById("nameP");
+	let contDatosProducto=document.getElementById(nameNodo);
+	let information2=document.getElementById("information2");
+
+	const divSize=document.createElement("div");
+	divSize.setAttribute("class", "input-field col s3");
+	const selectSize=document.createElement("select");
+	divSize.appendChild(selectSize);
+	contDatosProducto.appendChild(divSize);
+	const divPrice=document.createElement("div");
+	divPrice.setAttribute("class", "input-field col s3");
+	const selectPrice=document.createElement("select");
+	divPrice.appendChild(selectPrice);
+	information2.appendChild(divPrice);
+
+	nameProducto.innerHTML=`<div class="datoIndividual"> ${infoCadaUno.name}</div>`;
+	let optionSize= `<option >${infoCadaUno.size}</option>`;
+	let optionPrice=`<option>${infoCadaUno.price}</option>`;
+	console.log("optionPrice",optionPrice,"nameNodo",nameNodo,"optionSize",optionSize);
+
+	selectSize.innerHTML=optionSize;
+	selectSize.addEventListener('change',(e)=> changePrice(e),false);
+	selectPrice.innerHTML=optionPrice;
+	setEventContador();	
 }
+function changePrice(val){
+	console.log('opcionSeleccionada:', event.target.value, 'indice: ', event.target.selectedIndex);
+}
+
+
 //TODO::next page Carrito compras.html PENDIENTE:CALCULO DE SUMAS DE PRODUCTOS... 
 //boton mas y menos de la pag producto
 function setEventContador(){ 
@@ -227,7 +242,6 @@ function setEventContador(){
 function contadormas(){
 	var contador = document.getElementById("valor");
 	contador.value = contadorInicial +1;
-
 	contadorInicial = contadorInicial + 1;
 }
 function contadormenos(){ 
@@ -275,6 +289,25 @@ function contadormenos(){
  $(document).ready(function(){
     $('.modal').modal();
   });
+
+
+
+ //parte del select de precio y tamaños dentro de un solo contenedor desde html 
+
+/*	let contDatosProducto=document.getElementById(nameNodo);
+
+			const divPS = document.createElement("div");
+			divPS.setAttribute("class", "input-field col s3");
+			const selectPS = document.createElement("select");
+			divPS.appendChild(selectPS);
+			contDatosProducto.appendChild(divPS);
+			let optionPS= `<option>${infoCadaUno.price}</option>
+			<option>${infoCadaUno.size}</option>`;
+		    
+			selectPS.innerHTML=optionPS;
+			selectPS.addEventListener('change',(e)=> changePrice(e),false);*/
+		
+
 
 
 
