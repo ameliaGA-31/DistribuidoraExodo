@@ -1,6 +1,6 @@
 const spreadsheetsId='1WfxVETEfl-fmU4QGfOG1wk-93ClARjK5wkgUbAg3BXg';
 //const range='Respuestas de formulario 1!A1:F5';
-const range='Data!A1:I178';
+const range='Data!A1:I9';
 const apiKey='AIzaSyBb1-sH8j-c6qSKNT4UK7CqP65w7v-ugq8';
 const urlOriginal=`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetsId}/values/${range}?key=${apiKey}`;
 let dataValue;
@@ -13,10 +13,11 @@ function initialize(url){
 	.then(data =>{
 		console.log("data",data);
 		dataValue=transformData(data);
-		getOptionCategory(dataValue);
-		getAbecedario(getProductList(dataValue));
+		//getOptionCategory(dataValue);
+		//getAbecedario(getProductList(dataValue));
 		setEventInputSearch();
-		setImages(dataValue[7]);
+		//setImages(dataValue[7]);
+		getcatalogoProductos(dataValue);
 	})
 	.catch(error=> console.log("error:*",error))
 	
@@ -53,6 +54,46 @@ function valor(value){
 	//console.log("valoresdePropiedades",value)
 	return value;
 }
+
+
+function getcatalogoProductos(cadaProducto){
+	console.log("cadaProducto",cadaProducto);
+	const contenedor=document.getElementById('contenedor');
+
+    let nameProducto='';
+    cadaProducto.map(obje =>{
+    	let urlxImg=obje.imagen[0];	
+    	let precioxProduct=obje.price[1];
+        console.log("nom",obje.name,"+",precioxProduct,'+',urlxImg);
+        nameProducto += 
+
+        `<div class="row">
+        <div class="col s4">
+        <div  onclick="selectProduct('${obje.name}', this)">
+            <div class="card horizontal">
+                <div class="card-image">
+                    <img class="img" src="${urlxImg}" alt="img-${obje.name}"/>
+                </div>
+                <div  class="card-stacked">
+                    <div class="card-content">
+                        <p>${obje.name}</p>
+                        <p>${obje.price}</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        `;
+    });
+    contenedor.innerHTML =nameProducto;
+    return nameProducto;
+
+}
+//TODO:next page de producto.html
+//funcion para saber cual producto seleccione 
+function selectProduct(unProducto){
+	console.log("unProducto",unProducto);
+}    
 //continuacion de mi codigo html
 function setEventInputSearch(){
 	//input de html + eventos 
@@ -255,6 +296,7 @@ function contadormenos(){
 
 
 
+
 //inicializacion de vento de Icono a las lista por categoria
 //funcion anonima 
 /*funcion  (){
@@ -289,23 +331,6 @@ function contadormenos(){
  $(document).ready(function(){
     $('.modal').modal();
   });
-
-
-
- //parte del select de precio y tamaños dentro de un solo contenedor desde html 
-
-/*	let contDatosProducto=document.getElementById(nameNodo);
-
-			const divPS = document.createElement("div");
-			divPS.setAttribute("class", "input-field col s3");
-			const selectPS = document.createElement("select");
-			divPS.appendChild(selectPS);
-			contDatosProducto.appendChild(divPS);
-			let optionPS= `<option>${infoCadaUno.price}</option>
-			<option>${infoCadaUno.size}</option>`;
-		    
-			selectPS.innerHTML=optionPS;
-			selectPS.addEventListener('change',(e)=> changePrice(e),false);*/
 		
 
 
