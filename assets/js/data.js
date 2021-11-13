@@ -14,9 +14,9 @@ function initialize(url){
 		//console.log("data",data);
 		dataValue=transformData(data);
 		getOptionCategory(dataValue);
-		getAbecedario(getProductList(dataValue));
+		getAbecedario(dataValue);
 		setEventInputSearch();
-		//setImages(dataValue[7]);
+		setImages(dataValue[7]);
 		getcatalogoProductos(dataValue);
 		setEvenIcon();
 	})
@@ -76,7 +76,7 @@ function setEventInputSearch(){
 //funcion del evento al escribir en input y su busueda por producto
 function typing(dataMyList,input){
 	let lista=document.getElementById('list');
-	let productsArr=getProductList(dataMyList);
+	//let productsArr=getProductList(dataMyList);
   let productsList='';
   if(input.value == '' ){
     //se oculta la lista
@@ -84,8 +84,9 @@ function typing(dataMyList,input){
   } else{
     //se muestra lista
     lista.removeAttribute('class','hide');
-      let result = productsArr.filter((elemento,indice,array)=>  elemento.indexOf(input.value.toLowerCase()) != -1);
-    productsList= result.map((product,index) =>`<li id="${index}" class="item">${product.charAt(0).toUpperCase()+ product.slice(1)}</li>`).join("");
+      let result = dataMyList.filter((elemento,indice,array)=>elemento.name.toLowerCase().indexOf(input.value.toLowerCase()) != -1);
+      console.log("result",result,"dataMyList",dataMyList)
+    productsList= result.map((product,index) =>`<li id="${product.id}" class="item">${product.name.charAt(0).toUpperCase()+ product.name.slice(1)}</li>`).join("");
     
     lista.innerHTML =(productsList.length != 0) ? productsList:"No se encontro coincidencias";
     setEventList();
@@ -103,19 +104,11 @@ function setEventList(){
 function selectItem(opcion){
 	console.log("selectItem",opcion);
 }
-//funcion que agrega a funcion  typing para entrar al nombre del producto
-function getProductList(valuesArr){
-
-	let names=valuesArr.map(objeto => objeto.name.toLowerCase())
-	//console.log("propiedades",names);
-	return names;
-}
 function getAbecedario(namesArr){
 	// creando abecedario
 	let abecedario="abcdefghijklmnñopqrstuvwxyz";
 	abecedario=abecedario.split('');
-	//busqueda por inicial abecedario
-	let primeraLetra=namesArr.map(name=> name[0]);
+	let primeraLetra=namesArr.map(cadaObj=> cadaObj.name[0].toLowerCase());
 	let letrasEncontradas=abecedario.filter(letra => primeraLetra.indexOf(letra) != -1); 
 	let ul=document.getElementById("abecedario");
 	let nuevoAbc=letrasEncontradas.map(elemento =>`<li class="abc">${elemento.toUpperCase()}</li>`).join("");
@@ -173,7 +166,7 @@ function setEventOptions(categoriesObj){
 
 			div.appendChild(select);
 			selectContainer.appendChild(div);
-			let optionSelect=categoriesObj[property].map(infoProduct => `<option>${infoProduct.name}</option>`);
+			let optionSelect=categoriesObj[property].map(infoProduct => `<option id="${infoProduct.id}">${infoProduct.name}</option>`);
 		    optionSelect.unshift(`<option disabled selected>${categoriesObj[property][0].category}</option>`);
 		    
 			select.innerHTML=optionSelect;
@@ -184,8 +177,11 @@ function setEventOptions(categoriesObj){
 }
 //TODO:next page producto.html
 //opcion selecciona por el select por su nombre y index 
-function selectOption(event) {
-    console.log('seleccionada:::', event.target.value, 'index: ', event.target.selectedIndex);
+function selectOption(event){
+	let idLista=event.target.selectedIndex;
+	let etiqueta=event.target[idLista];
+	//`<option id="${idOriginal}">${infoProduct.name}</option>`);
+    console.log('idOriginal',etiqueta.id,"id lista",idLista);
   }
 
 //traer imagenes pagina del producto
@@ -325,7 +321,7 @@ function contadormenos(){
 
 	`
 		<div class="col s3">
-			<div  onclick="selectProduct('${contenido.name}', this)">
+			<div onclick="selectProduct('${contenido.name}','${contenido.id}', this)">
 				<div class="card horizontal">
 					<div class="card-image">
 						<img class="img" src="${urlxImg}" alt="img-${contenido.name}"/>
@@ -348,8 +344,8 @@ function contadormenos(){
 }
 //TODO:next page de producto.html
 //funcion para saber cual producto seleccione 
-function selectProduct(unProducto){
-	console.log("unProducto",unProducto);
+function selectProduct(unProducto,idProducto){
+	console.log("unProducto",unProducto,"idProducto",idProducto);
 }   
 		
 
