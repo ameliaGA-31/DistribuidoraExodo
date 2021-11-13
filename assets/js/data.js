@@ -99,9 +99,9 @@ function setEventList(){
 	getLi.forEach((elemento) => elemento.addEventListener("click",()=>selectItem(elemento),false));
 }
 //TODO: next page producto.html
-//opcion seleccionada por el buscador
+//opcion seleccionada por el INPUT
 function selectItem(opcion){
-	//console.log("selectItem",opcion);
+	console.log("selectItem",opcion);
 }
 //funcion que agrega a funcion  typing para entrar al nombre del producto
 function getProductList(valuesArr){
@@ -124,7 +124,6 @@ function getAbecedario(namesArr){
 
 //console.log("letra encontrada",nuevoAbc);
 }
-
 //evento a letra abecedario
 function setEventAbecedario(){
 
@@ -134,8 +133,9 @@ function setEventAbecedario(){
 //TODO:next page catalogo.html
 //funcion que encuentra coincidencias en el abecedario
 function getProductCoincidencia(letra){
-	let listProduct=dataValue.filter(productInfo=> productInfo.name[0] == letra);
-	//console.log("letra",letra,"listProduct",listProduct);
+	let listProduct=dataValue.filter(productInfo=> productInfo.name[0].toLowerCase() == letra.toLowerCase());
+	
+	console.log("letra",letra,"listProduct",listProduct);
 }
 
 //carrouzel
@@ -185,7 +185,7 @@ function setEventOptions(categoriesObj){
 //TODO:next page producto.html
 //opcion selecciona por el select por su nombre y index 
 function selectOption(event) {
-    //console.log('seleccionada:::', event.target.value, 'index: ', event.target.selectedIndex);
+    console.log('seleccionada:::', event.target.value, 'index: ', event.target.selectedIndex);
   }
 
 //traer imagenes pagina del producto
