@@ -5,6 +5,9 @@
   --max-width-input:20rem;
 }
 /*iniciando con estilos personales*/
+.card-image .img{
+  height: 230px;
+}
 #cajaProucto{
   display: flex;
   flex-direction: column;

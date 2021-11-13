@@ -16,7 +16,7 @@ function initialize(url){
 		getOptionCategory(dataValue);
 		getAbecedario(dataValue);
 		setEventInputSearch();
-		setImages(dataValue[7]);
+		//setImages(dataValue[7]);
 		getcatalogoProductos(dataValue);
 		setEvenIcon();
 	})
@@ -58,25 +58,25 @@ function valor(value){
 
  
 //continuacion de mi codigo html
-
+//funcion que trae iconos para agregar eventos
 function setEvenIcon(){
  let cars= document.getElementById('cars');
  cars.addEventListener("click",changePage,false);
 }
 
 //TODO::next page Carrito compras.html... 
+//funcion que enlaza pag del carrito al icono
 function changePage(){
 	console.log("ver pagina carrito ")
 }
-function setEventInputSearch(){
-	//input de html + eventos 
+//funcion de lo que entra en el input de html mas eventos
+function setEventInputSearch(){ 
 	let input=document.getElementById('searchInput');
 	input.addEventListener('keyup',(input)=> typing(dataValue,input.target));
 }
 //funcion del evento al escribir en input y su busueda por producto
 function typing(dataMyList,input){
 	let lista=document.getElementById('list');
-	//let productsArr=getProductList(dataMyList);
   let productsList='';
   if(input.value == '' ){
     //se oculta la lista
@@ -102,7 +102,13 @@ function setEventList(){
 //TODO: next page producto.html
 //opcion seleccionada por el INPUT
 function selectItem(opcion){
-	console.log("selectItem",opcion);
+	let idProduct=opcion.id;
+	console.log("idProduct",idProduct)
+	/*window.location.href = "producto.html";
+	let objetoProducto=dataValue.filter(cadaObj=> cadaObj.id == idProduct);
+	console.log("selectItem",idProduct,"objetop",objetoProducto);
+	setImages(objetoProducto[0]);*/
+	
 }
 function getAbecedario(namesArr){
 	// creando abecedario
@@ -114,8 +120,6 @@ function getAbecedario(namesArr){
 	let nuevoAbc=letrasEncontradas.map(elemento =>`<li class="abc">${elemento.toUpperCase()}</li>`).join("");
 	ul.innerHTML=nuevoAbc;
 	setEventAbecedario();
-
-//console.log("letra encontrada",nuevoAbc);
 }
 //evento a letra abecedario
 function setEventAbecedario(){
@@ -124,7 +128,7 @@ function setEventAbecedario(){
 	abc.forEach((unaLi)=> unaLi.addEventListener('click',(unaLi)=>getProductCoincidencia(unaLi.target.textContent),false));
 } 
 //TODO:next page catalogo.html
-//funcion que encuentra coincidencias en el abecedario
+//funcion que encuentra coincidencias en el ABECEDARIO
 function getProductCoincidencia(letra){
 	let listProduct=dataValue.filter(productInfo=> productInfo.name[0].toLowerCase() == letra.toLowerCase());
 	
@@ -150,7 +154,6 @@ function getOptionCategory(arrObj){
 		cartones:cartones,
 		empaques:empaques
 	}
-	////console.log("categories",categories);
 	setEventOptions(categories);
 	return "";
 }
@@ -176,34 +179,29 @@ function setEventOptions(categoriesObj){
 	}
 }
 //TODO:next page producto.html
-//opcion selecciona por el select por su nombre y index 
+//opcion selecciona por el SELECT de CATEGORIAS por su nombre y index 
 function selectOption(event){
 	let idLista=event.target.selectedIndex;
 	let etiqueta=event.target[idLista];
-	//`<option id="${idOriginal}">${infoProduct.name}</option>`);
-    console.log('idOriginal',etiqueta.id,"id lista",idLista);
+    console.log('idOriginal select',etiqueta);
   }
 
 //traer imagenes pagina del producto
 function setImages(productInfo) {
     let visor = document.getElementById('visor');
-    //let img=productInfo.imagen;
     document.getElementById('mainImg').innerHTML = `<img src="${productInfo.imagen[0]}"/>`; 
     document.getElementById('listImg').innerHTML = productInfo.imagen.map((url,idx) => `<img class="imgProduct" id="${idx}" src="${url}" />`).join('');
-   // //console.log("imagen",img);
    	setEventImages();
     setInfoProduct(productInfo, "information");
     
 }
-
+//funcion de cada imagen en pag de producto las llamo y agrego evento
 function setEventImages() {
   let images =Array.from(document.getElementsByClassName('imgProduct') );
   images.forEach(img => img.addEventListener('click', (img) => changeImg(img.target.id), false));
-  ////console.log("imagenes en for",images)
 }
-
+//funcion evento del cambio de imagen por la posicion
 function changeImg(id) {
-	//console.log("id",id)
 	let cambioImg=dataValue[7];
   document.getElementById('mainImg').innerHTML =  `<img src="${cambioImg.imagen[id]}" />`;
 }
@@ -226,12 +224,11 @@ function setInfoProduct(infoCadaUno,nameNodo){
 	let optionSize=infoCadaUno.size.map(medida=> `<option class="optionSize">${medida}</option>`);
 	price.innerHTML=`<div>${infoCadaUno.price[0]}</div>`;
 
-	//console.log("optionPrice",optionPrice,"nameNodo",nameNodo,"optionSize",optionSize);
-
 	selectSize.innerHTML=optionSize;
 	selectSize.addEventListener('change',(e)=> setEventMedidas(e.target.selectedIndex),false);
 	setEventContador();	
 }
+//funcion que optiene precio deacuerdo a las medidas que tuvieron evento (select) 
 function setEventMedidas(index){
 	let cambioPrecio=dataValue[7];
   	document.getElementById("price").innerHTML =`<div>${cambioPrecio.price[index]}</div>`;
@@ -343,7 +340,7 @@ function contadormenos(){
 
 }
 //TODO:next page de producto.html
-//funcion para saber cual producto seleccione 
+//funcion para saber cual producto seleccione de la parte del catalogo
 function selectProduct(unProducto,idProducto){
 	console.log("unProducto",unProducto,"idProducto",idProducto);
 }   
