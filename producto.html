@@ -18,10 +18,10 @@
 						<a href="index.html"><strong id="title">Distribuidora Exodo</strong></a>
 					</div>
 					<div class="icons">	
-						<a id="enlaces" href="#"><i class="fas fa-cart-plus"></i></a>
-						<a id="enlaces" href="#"><i class="fab fa-whatsapp"></i></a>
-						<a id="enlaces" href="#"><i class="fab fa-facebook"></i></a>
-						<a id="enlaces" href="#"><i class="fas fa-envelope"></i></a>	
+						<a id="cars" class="enlaces"  href="#"><i class="fas fa-cart-plus"></i></a>
+						<a class="enlaces" href="#"><i class="fab fa-whatsapp"></i></a>
+						<a class="enlaces" href="#"><i class="fab fa-facebook"></i></a>
+						<a class="enlaces" href="#"><i class="fas fa-envelope"></i></a>	
 					</div>
 				</div>
 				<nav id="nav">
@@ -38,48 +38,55 @@
 					</div>
 				</nav>
 			</header>
-			<div>
+			<div id="cajaProucto">
 				<div id="visor" class="visor">
 		            <div id="listImg"></div>
 		            <div id="mainImg"></div>
 	          	</div>
 	          	<div class="contDatos" id="contDatos">
-		          	<div id="nameP" class="name"></div>
-	          		<div id="information"></div>
-		          	<div id="information2"></div>
+		          	<div id="nameP"></div>
+		          	<div id="cajaSize">
+			          	<p>Tamaño</p>
+		          		<div id="information"></div>
+	          		</div>
+	          		<div id="cajaPrice">
+		          		<p>Precio</p>
+		          		<div id="price"></div>
+	          		</div>
 		          	<div id="calProduct">
+		          		<p>Cantidad</p>
 			          	<div class="sumRest">
 		          			<button id="rest" class="rest"> - </button>
-		          			<input id="valor" type="text" readonly  name="" value="0" class="conteo"/>
+		          			<input id="valor" type="text" readonly  name="" value="1" class="conteo"/>
 		          			<button id="sum" class="sum"> + </button>
 		          		</div>
-		          		<button class="añadir">Añadir al carrito</button>
-		          	</div>	
+		          	</div>
+		          	<button class="añadir">Añadir al carrito</button>	
 	          	</div>
 	        </div>
 			<footer id="footerProduc">
-									<!-- Modal Trigger -->
-									<div id="modalTrabajo">
-										<a class="waves-effect waves-light btn modal-trigger" href="#modal1">¿Buscas Trabajo?</a>
+			<!-- Modal Trigger -->
+				<div id="modalTrabajo">
+					<a class="waves-effect waves-light btn modal-trigger" href="#modal1">¿Buscas Trabajo?</a>
 
-										  <!-- Modal Structure -->
-										<div id="modal1" class="modal">
-										    <div class="modal-content">
-										      <h4>Modal Header</h4>
-										      <p>A bunch of text</p>
-										    </div>
-										    <div class="modal-footer">
-										      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
-										    </div>
-										</div>
-									</div>
-									<span>Mantente comunicado para dudas y pedidos.</span>
-									<div class="iconFooter">	
-											<a id="enlaces" href="#"><i class="fas fa-cart-plus"></i></a>
-											<a id="enlaces" href="#"><i class="fab fa-whatsapp"></i></a>
-											<a id="enlaces" href="#"><i class="fab fa-facebook"></i></a>
-											<a id="enlaces" href="#"><i class="fas fa-envelope"></i></a>	
-									</div>
+					  <!-- Modal Structure -->
+					<div id="modal1" class="modal">
+					    <div class="modal-content">
+					      <h4>Modal Header</h4>
+					      <p>A bunch of text</p>
+					    </div>
+					    <div class="modal-footer">
+					      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+					    </div>
+					</div>
+				</div>
+				<span>Mantente comunicado para dudas y pedidos.</span>
+				<div class="iconFooter">	
+						<a id="enlaces" href="#"><i class="fas fa-cart-plus"></i></a>
+						<a id="enlaces" href="#"><i class="fab fa-whatsapp"></i></a>
+						<a id="enlaces" href="#"><i class="fab fa-facebook"></i></a>
+						<a id="enlaces" href="#"><i class="fas fa-envelope"></i></a>	
+				</div>
 			</footer>
 
 		<!-- Scripts -->

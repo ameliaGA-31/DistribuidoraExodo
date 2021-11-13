@@ -4,27 +4,28 @@ const range='Data!A1:I9';
 const apiKey='AIzaSyBb1-sH8j-c6qSKNT4UK7CqP65w7v-ugq8';
 const urlOriginal=`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetsId}/values/${range}?key=${apiKey}`;
 let dataValue;
-var contadorInicial = 0;
+var contadorInicial = 1;
 window.onload=initialize(urlOriginal);
 
 function initialize(url){
 	fetch(url)
 	.then(response => response.json())
 	.then(data =>{
-		console.log("data",data);
+		//console.log("data",data);
 		dataValue=transformData(data);
-		//getOptionCategory(dataValue);
-		//getAbecedario(getProductList(dataValue));
+		getOptionCategory(dataValue);
+		getAbecedario(getProductList(dataValue));
 		setEventInputSearch();
 		//setImages(dataValue[7]);
 		getcatalogoProductos(dataValue);
+		setEvenIcon();
 	})
-	.catch(error=> console.log("error:*",error))
+	.catch(error=>console.log("error:*",error))
 	
 }
 
 function transformData(data){
-	//console.log(data);
+	////console.log(data);
 	let arrays=[];
 	if(data && data.values && data.values.length >1){
 		let propiedadesPrincipales=data.values[0];
@@ -33,11 +34,11 @@ function transformData(data){
 			propiedadesPrincipales.forEach((propiedad,index)=>{
 				objetoPersonal[propiedad]=valor(data.values[i][index]);
 			});
-			//console.log("price",objetoPersonal.category);
+			////console.log("price",objetoPersonal.category);
 			arrays.push(objetoPersonal);
 		}
 	}
-	console.log("arrayDeObjetos",arrays)
+	//console.log("arrayDeObjetos",arrays)
 	return arrays;
 }
 
@@ -51,50 +52,22 @@ function valor(value){
 			return value.split(',').filter(element => element != "").map(val => val.trim());
 		}
 	}
-	//console.log("valoresdePropiedades",value)
+	////console.log("valoresdePropiedades",value)
 	return value;
 }
 
-
-function getcatalogoProductos(cadaProducto){
-	console.log("cadaProducto",cadaProducto);
-	const contenedor=document.getElementById('contenedor');
-
-    let nameProducto='';
-    cadaProducto.map(obje =>{
-    	let urlxImg=obje.imagen[0];	
-    	let precioxProduct=obje.price[1];
-        console.log("nom",obje.name,"+",precioxProduct,'+',urlxImg);
-        nameProducto += 
-
-        `<div class="row">
-        <div class="col s4">
-        <div  onclick="selectProduct('${obje.name}', this)">
-            <div class="card horizontal">
-                <div class="card-image">
-                    <img class="img" src="${urlxImg}" alt="img-${obje.name}"/>
-                </div>
-                <div  class="card-stacked">
-                    <div class="card-content">
-                        <p>${obje.name}</p>
-                        <p>${obje.price}</p>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </div>
-        `;
-    });
-    contenedor.innerHTML =nameProducto;
-    return nameProducto;
-
-}
-//TODO:next page de producto.html
-//funcion para saber cual producto seleccione 
-function selectProduct(unProducto){
-	console.log("unProducto",unProducto);
-}    
+ 
 //continuacion de mi codigo html
+
+function setEvenIcon(){
+ let cars= document.getElementById('cars');
+ cars.addEventListener("click",changePage,false);
+}
+
+//TODO::next page Carrito compras.html... 
+function changePage(){
+	console.log("ver pagina carrito ")
+}
 function setEventInputSearch(){
 	//input de html + eventos 
 	let input=document.getElementById('searchInput');
@@ -128,13 +101,13 @@ function setEventList(){
 //TODO: next page producto.html
 //opcion seleccionada por el buscador
 function selectItem(opcion){
-	console.log("selectItem",opcion);
+	//console.log("selectItem",opcion);
 }
 //funcion que agrega a funcion  typing para entrar al nombre del producto
 function getProductList(valuesArr){
 
 	let names=valuesArr.map(objeto => objeto.name.toLowerCase())
-	console.log("propiedades",names);
+	//console.log("propiedades",names);
 	return names;
 }
 function getAbecedario(namesArr){
@@ -149,7 +122,7 @@ function getAbecedario(namesArr){
 	ul.innerHTML=nuevoAbc;
 	setEventAbecedario();
 
-console.log("letra encontrada",nuevoAbc);
+//console.log("letra encontrada",nuevoAbc);
 }
 
 //evento a letra abecedario
@@ -162,12 +135,12 @@ function setEventAbecedario(){
 //funcion que encuentra coincidencias en el abecedario
 function getProductCoincidencia(letra){
 	let listProduct=dataValue.filter(productInfo=> productInfo.name[0] == letra);
-	console.log("letra",letra,"listProduct",listProduct);
+	//console.log("letra",letra,"listProduct",listProduct);
 }
 
 //carrouzel
-$(document).ready(function(){
-    $('.carousel').carousel();
+$ (document).ready(function(){
+    $ ('.carousel').carousel();
   });
 
 //separador por categorias 
@@ -184,7 +157,7 @@ function getOptionCategory(arrObj){
 		cartones:cartones,
 		empaques:empaques
 	}
-	//console.log("categories",categories);
+	////console.log("categories",categories);
 	setEventOptions(categories);
 	return "";
 }
@@ -197,6 +170,7 @@ function setEventOptions(categoriesObj){
 			const div = document.createElement("div");
 			div.setAttribute("class", "input-field col s3");
 			const select = document.createElement("select");
+
 			div.appendChild(select);
 			selectContainer.appendChild(div);
 			let optionSelect=categoriesObj[property].map(infoProduct => `<option>${infoProduct.name}</option>`);
@@ -211,7 +185,7 @@ function setEventOptions(categoriesObj){
 //TODO:next page producto.html
 //opcion selecciona por el select por su nombre y index 
 function selectOption(event) {
-    console.log('seleccionada:::', event.target.value, 'index: ', event.target.selectedIndex);
+    //console.log('seleccionada:::', event.target.value, 'index: ', event.target.selectedIndex);
   }
 
 //traer imagenes pagina del producto
@@ -220,7 +194,7 @@ function setImages(productInfo) {
     //let img=productInfo.imagen;
     document.getElementById('mainImg').innerHTML = `<img src="${productInfo.imagen[0]}"/>`; 
     document.getElementById('listImg').innerHTML = productInfo.imagen.map((url,idx) => `<img class="imgProduct" id="${idx}" src="${url}" />`).join('');
-   // console.log("imagen",img);
+   // //console.log("imagen",img);
    	setEventImages();
     setInfoProduct(productInfo, "information");
     
@@ -229,11 +203,11 @@ function setImages(productInfo) {
 function setEventImages() {
   let images =Array.from(document.getElementsByClassName('imgProduct') );
   images.forEach(img => img.addEventListener('click', (img) => changeImg(img.target.id), false));
-  //console.log("imagenes en for",images)
+  ////console.log("imagenes en for",images)
 }
 
 function changeImg(id) {
-	console.log("id",id)
+	//console.log("id",id)
 	let cambioImg=dataValue[7];
   document.getElementById('mainImg').innerHTML =  `<img src="${cambioImg.imagen[id]}" />`;
 }
@@ -243,35 +217,30 @@ function setInfoProduct(infoCadaUno,nameNodo){
 	//opcion 1 sin poder ver el select y agregando por separados los contenedores de html---->
 	let nameProducto=document.getElementById("nameP");
 	let contDatosProducto=document.getElementById(nameNodo);
-	let information2=document.getElementById("information2");
+	let price=document.getElementById("price")
 
 	const divSize=document.createElement("div");
 	divSize.setAttribute("class", "input-field col s3");
 	const selectSize=document.createElement("select");
+	selectSize.setAttribute("class","show");
 	divSize.appendChild(selectSize);
 	contDatosProducto.appendChild(divSize);
-	const divPrice=document.createElement("div");
-	divPrice.setAttribute("class", "input-field col s3");
-	const selectPrice=document.createElement("select");
-	divPrice.appendChild(selectPrice);
-	information2.appendChild(divPrice);
 
 	nameProducto.innerHTML=`<div class="datoIndividual"> ${infoCadaUno.name}</div>`;
-	let optionSize= `<option >${infoCadaUno.size}</option>`;
-	let optionPrice=`<option>${infoCadaUno.price}</option>`;
-	console.log("optionPrice",optionPrice,"nameNodo",nameNodo,"optionSize",optionSize);
+	let optionSize=infoCadaUno.size.map(medida=> `<option class="optionSize">${medida}</option>`);
+	price.innerHTML=`<div>${infoCadaUno.price[0]}</div>`;
+
+	//console.log("optionPrice",optionPrice,"nameNodo",nameNodo,"optionSize",optionSize);
 
 	selectSize.innerHTML=optionSize;
-	selectSize.addEventListener('change',(e)=> changePrice(e),false);
-	selectPrice.innerHTML=optionPrice;
+	selectSize.addEventListener('change',(e)=> setEventMedidas(e.target.selectedIndex),false);
 	setEventContador();	
 }
-function changePrice(val){
-	console.log('opcionSeleccionada:', event.target.value, 'indice: ', event.target.selectedIndex);
+function setEventMedidas(index){
+	let cambioPrecio=dataValue[7];
+  	document.getElementById("price").innerHTML =`<div>${cambioPrecio.price[index]}</div>`;
 }
 
-
-//TODO::next page Carrito compras.html PENDIENTE:CALCULO DE SUMAS DE PRODUCTOS... 
 //boton mas y menos de la pag producto
 function setEventContador(){ 
 	var menos=document.getElementById('rest');
@@ -283,11 +252,11 @@ function setEventContador(){
 function contadormas(){
 	var contador = document.getElementById("valor");
 	contador.value = contadorInicial +1;
-	contadorInicial = contadorInicial + 1;
+	contadorInicial = contadorInicial +1;
 }
 function contadormenos(){ 
 	var contador = document.getElementById("valor");
-    if(contadorInicial>=1){
+    if(contadorInicial>1){
         contadorInicial = contadorInicial - 1; 
         contador.value = contadorInicial;
     }
@@ -331,6 +300,57 @@ function contadormenos(){
  $(document).ready(function(){
     $('.modal').modal();
   });
+
+ //funcion para traer todos los productos a la pag del catalogo
+ function getcatalogoProductos(cadaProducto){
+	console.log("cadaProducto",cadaProducto);
+	const contenedor=document.getElementById('contenedor');
+
+    let nameProducto='';
+    let urlxImg;
+    cadaProducto.forEach(contenido =>{
+    	if(typeof contenido.imagen === 'string'){
+    		urlxImg=contenido.imagen;
+    	}else{
+    		urlxImg=contenido.imagen[0];
+    	}	
+    	let precioxProduct;
+    	if(typeof contenido.price === 'string'){
+    		precioxProduct=contenido.price;
+    	}else{
+    		precioxProduct=contenido.price[0];
+    	};
+        console.log("precio",precioxProduct);
+        nameProducto = 
+
+	`
+		<div class="col s3">
+			<div  onclick="selectProduct('${contenido.name}', this)">
+				<div class="card horizontal">
+					<div class="card-image">
+						<img class="img" src="${urlxImg}" alt="img-${contenido.name}"/>
+					</div>
+					<div  class="card-stacked">
+						<div class="card-content">
+							<p>${contenido.name}</p>
+							<p>${precioxProduct}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        ` +nameProducto;
+
+    });
+    contenedor.innerHTML=`<div class="row">${nameProducto}</div>`;
+    return nameProducto;
+
+}
+//TODO:next page de producto.html
+//funcion para saber cual producto seleccione 
+function selectProduct(unProducto){
+	console.log("unProducto",unProducto);
+}   
 		
 
 

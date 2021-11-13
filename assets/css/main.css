@@ -5,10 +5,38 @@
   --max-width-input:20rem;
 }
 /*iniciando con estilos personales*/
+#cajaProucto{
+  display: flex;
+  flex-direction: column;
+}
+#cajaPrice p,#information p,#cajaSize p{
+  margin-top:10px;
+}
+#cajaPrice,#information,#cajaSize{
+  display: flex;
+  align-items: center;
+  max-height: 40px;
+}
+.cardContent{
+  width: 50%;
+}
+.cardImg .img{
+  width: 100%;
+}
+.cardImg{
+  width: 60%;
+}
+.cajas{
+  width: 50%;
+  max-height: 200px;
+  display: flex;
+  flex-direction: inherit;
+}
 #contenedor{
   position: absolute;
   width: 100%;
-  top: 130px;
+  margin-top: 155px;
+  display: flex;
 }
 #card-starcked{
 
@@ -52,6 +80,7 @@ body{
     display: flex;
     justify-content: center;
     padding: 3px;
+    margin: 10px auto;
 }
 .rest, .sum{
   width: 30%;
@@ -82,7 +111,7 @@ body{
   display: flex;
   flex-direction: column;
   right: 80px;
-  height: 150px;
+  /*height: 150px;*/
   margin: 0px 15px;
   align-items: center;
   justify-content: space-evenly;
@@ -95,11 +124,11 @@ body{
   width: 100%;
 }
 .visor {
-    width: 60%;
+    width: 50%;
     height: max-content;
     /*border: 1px solid sandybrown;*/
     min-height: 350px;
-    height: 500px;
+    height: 400px;
     display: flex;
     box-sizing: border-box;
     position: absolute;
@@ -123,7 +152,7 @@ body{
   height: 100%;
 }
 .imgProduct{
-    margin: 10px auto;
+    margin-top: 10px auto;
     width: 100%;
     height: calc(100% / 3);
 }
@@ -186,7 +215,7 @@ body{
 .iconFooter{
 
 }
-#enlaces{
+.enlaces,#cars{
   font-size: 1.5em;
   margin-right: 10px;
 }
@@ -420,5 +449,6 @@ body{
   display: flex;
   align-items: center;
   padding: 10px;
+  cursor: pointer;
 }
 
