@@ -5,17 +5,25 @@
   --max-width-input:20rem;
 }
 /*iniciando con estilos personales*/
+#price,#total{
+  margin-left: 10px;
+}
 .card-image .img{
   height: 230px;
 }
 #cajaProucto{
   display: flex;
   flex-direction: column;
+  margin-top: 160px;
+  height: 450px;
+  position: inherit;
+  box-sizing: border-box;
+  justify-content: space-evenly;
 }
-#cajaPrice p,#information p,#cajaSize p{
+#cajaPrice p,#information p,#cajaSize p,#cajatotal p{
   margin-top:10px;
 }
-#cajaPrice,#information,#cajaSize{
+#cajaPrice,#information,#cajaSize,#cajatotal{
   display: flex;
   align-items: center;
   max-height: 40px;
@@ -109,15 +117,12 @@ body{
 .contDatos{
   width: 25%;
   position: absolute;
-  top: 300px;
   border: 1px solid;
   display: flex;
   flex-direction: column;
-  right: 80px;
-  /*height: 150px;*/
+  right: 8%;
   margin: 0px 15px;
   align-items: center;
-  justify-content: space-evenly;
 }
 .urls{
   width: 100%;
@@ -129,15 +134,12 @@ body{
 .visor {
     width: 50%;
     height: max-content;
-    /*border: 1px solid sandybrown;*/
     min-height: 350px;
     height: 400px;
     display: flex;
     box-sizing: border-box;
     position: absolute;
-    top: 200px;
-    left: 30px;
-    justify-content: center;
+    left: 6%;
 }
 
 /* lista */

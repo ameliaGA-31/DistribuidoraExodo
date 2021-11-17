@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-		<title>Carrito Compras</title>
+		<title>carritoCompras</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -18,46 +18,15 @@
 						<a href="index.html"><strong id="title">Distribuidora Exodo</strong></a>
 					</div>
 					<div class="icons">	
-						<a id="enlaces" href="#"><i class="fas fa-cart-plus"></i></a>
-						<a id="enlaces" href="#"><i class="fab fa-whatsapp"></i></a>
-						<a id="enlaces" href="#"><i class="fab fa-facebook"></i></a>
-						<a id="enlaces" href="#"><i class="fas fa-envelope"></i></a>	
+						<a id="cars" class="enlaces"  href="#"><i class="fas fa-cart-plus"></i></a>
+						<a class="enlaces" href="#"><i class="fab fa-whatsapp"></i></a>
+						<a class="enlaces" href="#"><i class="fab fa-facebook"></i></a>
+						<a class="enlaces" href="#"><i class="fas fa-envelope"></i></a>	
 					</div>
 				</div>
 				<nav id="nav">
 					<div class="contNav">
-						<div class="main row">
-							<div class="input-field col s3">
-								<select>
-									<option value="" disabled selected>Tlapaleria General
-									<option value="1">Option 1</option>
-								</select>
-							</div>
-							<div class="col s2">
-								<select>
-									<option value="" disabled selected>Plomeria</option>
-									<option value="1">Option 1</option>
-								</select>
-							</div>
-							<div class="col s2">
-								<select>
-									<option value="" disabled selected>Herreria</option>
-									<option value="1">Option 1</option>
-			      				</select>
-							</div>
-							<div class="col s2">
-								<select>
-									<option value="" disabled selected>Cartones</option>
-									<option value="1">Option 1</option>
-								</select>
-							</div>
-							<div class="col s3">
-								<select>
-									<option value="" disabled selected>Empaques</option>
-									<option value="1">Option 1</option>
-								</select>
-							</div>
-						</div>
+						<div id="selectContainer" class="main row"></div>
 						<div class="buscador">
 							<div class="contInput">
 								<i id="iconSearch" class="fas fa-search"></i> 
@@ -65,44 +34,73 @@
 								<ul id="list"></ul>
 							</div>
 						</div>
+					<ul id="abecedario"></ul>
 					</div>
 				</nav>
 			</header>
-			<footer id="footer">
-									<!-- Modal Trigger -->
-									<div id="modalTrabajo">
-										<a class="waves-effect waves-light btn modal-trigger" href="#modal1">¿Buscas Trabajo?</a>
+			<div id="cajaProucto">
+				<div id="visor" class="visor">
+		            <div id="mainImg"></div>
+	          	</div>
+	          	<div class="contDatos" id="contDatos">
+		          	<div id="nameP"></div>
+		          	<div id="cajaSize">
+			          	<p>Tamaño</p>
+		          		<div id="information"></div>
+	          		</div>
+	          		<div id="cajaPrice">
+		          		<p>Precio</p>
+		          		<div id="price"></div>
+	          		</div>
+	          		<div id="cajatotal">
+		          		<p>total</p>
+		          		<div id="total"></div>
+	          		</div>
+		          	<div id="calProduct">
+		          		<p>Cantidad</p>
+			          	<div class="sumRest">
+		          			<button id="rest" class="rest"> - </button>
+		          			<input id="valor" type="text" readonly  name="" value="1" class="conteo"/>
+		          			<button id="sum" class="sum"> + </button>
+		          		</div>
+		          	</div>
+		          	<button class="añadir">Añadir al carrito</button>	
+	          	</div>
+	        </div>
+			<footer id="footerProduc">
+			<!-- Modal Trigger -->
+				<div id="modalTrabajo">
+					<a class="waves-effect waves-light btn modal-trigger" href="#modal1">¿Buscas Trabajo?</a>
 
-										  <!-- Modal Structure -->
-										<div id="modal1" class="modal">
-										    <div class="modal-content">
-										      <h4>Modal Header</h4>
-										      <p>A bunch of text</p>
-										    </div>
-										    <div class="modal-footer">
-										      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
-										    </div>
-										</div>
-									</div>
-									<span>Mantente comunicado para dudas y pedidos.</span>
-									<div class="iconFooter">	
-											<a id="enlaces" href="#"><i class="fas fa-cart-plus"></i></a>
-											<a id="enlaces" href="#"><i class="fab fa-whatsapp"></i></a>
-											<a id="enlaces" href="#"><i class="fab fa-facebook"></i></a>
-											<a id="enlaces" href="#"><i class="fas fa-envelope"></i></a>	
-									</div>
+					  <!-- Modal Structure -->
+					<div id="modal1" class="modal">
+					    <div class="modal-content">
+					      <h4>Modal Header</h4>
+					      <p>A bunch of text</p>
+					    </div>
+					    <div class="modal-footer">
+					      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+					    </div>
+					</div>
+				</div>
+				<span>Mantente comunicado para dudas y pedidos.</span>
+				<div class="iconFooter">	
+						<a id="enlaces" href="#"><i class="fas fa-cart-plus"></i></a>
+						<a id="enlaces" href="#"><i class="fab fa-whatsapp"></i></a>
+						<a id="enlaces" href="#"><i class="fab fa-facebook"></i></a>
+						<a id="enlaces" href="#"><i class="fas fa-envelope"></i></a>	
+				</div>
 			</footer>
 
 		<!-- Scripts -->
-			 <script defer src="https://pro.fontawesome.com/releases/v5.10.0/js/all.js" integrity="sha384-G/ZR3ntz68JZrH4pfPJyRbjW+c0+ojii5f+GYiYwldYU69A+Ejat6yIfLSxljXxD" crossorigin="anonymous"></script>
- 			<script type="text/javascript" src="./logica.js"> </script>
 			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script src="assets/js/data.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+			<script defer src="https://pro.fontawesome.com/releases/v5.10.0/js/all.js" integrity="sha384-G/ZR3ntz68JZrH4pfPJyRbjW+c0+ojii5f+GYiYwldYU69A+Ejat6yIfLSxljXxD" crossorigin="anonymous"></script>
+ 			<script type="text/javascript" src="./logica.js"> </script>
+			
+			<script src="assets/js/main.js"></script>
+
+			<script src="assets/js/data.js"></script>
 	</div>
 </body>
 </html>

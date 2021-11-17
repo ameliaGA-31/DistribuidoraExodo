@@ -13,17 +13,20 @@ function initialize(url){
 	.then(data =>{
 		//console.log("data",data);
 		dataValue=transformData(data);
+
 		getOptionCategory(dataValue);
 		getAbecedario(dataValue);
 		setEventInputSearch();
 		//setImages(dataValue[7]);
-		getcatalogoProductos(dataValue);
+		//getcatalogoProductos(dataValue);
 		setEvenIcon();
+
+
 	})
 	.catch(error=>console.log("error:*",error))
 	
 }
-
+//modifico mi data en proppiedad=valor
 function transformData(data){
 	////console.log(data);
 	let arrays=[];
@@ -42,7 +45,7 @@ function transformData(data){
 	return arrays;
 }
 
-
+//le doy el valor qiutando caracteres
 function valor(value){
 	if(value){ 
 		if(value.indexOf('*') !== -1){
@@ -58,6 +61,7 @@ function valor(value){
 
  
 //continuacion de mi codigo html
+
 //funcion que trae iconos para agregar eventos
 function setEvenIcon(){
  let cars= document.getElementById('cars');
@@ -68,6 +72,18 @@ function setEvenIcon(){
 //funcion que enlaza pag del carrito al icono
 function changePage(){
 	console.log("ver pagina carrito ")
+	let unproducto=dataValue[1];
+	//{producto:}
+		/*window.location.href = "carritoCompras.html";
+		//para guardarla mi variable ANTES DE QUE ME ENLACE A OTRA
+		let objetoConvertido=JSON.stringify(unproducto);
+		localStorage-setItem("objetoC",objetoConvdertido);
+		
+		//para obtener o entrar a ella CUANDO ESTOY EN LA OTRA PAG
+		unproducto=localStorage-getItem("objetoC");
+		let objetoRegresado=JSON.parse(unproducto);
+
+		*/
 }
 //funcion de lo que entra en el input de html mas eventos
 function setEventInputSearch(){ 
@@ -104,12 +120,22 @@ function setEventList(){
 function selectItem(opcion){
 	let idProduct=opcion.id;
 	console.log("idProduct",idProduct)
+	//para guardarla mi variable ANTES DE QUE ME ENLACE A OTRA
+		let objetoConvertido=JSON.stringify(idProduct);
+		sessionStorage.setItem("idProducto",objetoConvertido);
+		window.location.href = "producto.html";
+		
+		//para obtener o entrar a ella CUANDO ESTOY EN LA OTRA PAG
+		/*unproducto=localStorage-getItem("objetoC");
+		let objetoRegresado=JSON.parse(unproducto);*/
 	/*window.location.href = "producto.html";
+	
 	let objetoProducto=dataValue.filter(cadaObj=> cadaObj.id == idProduct);
 	console.log("selectItem",idProduct,"objetop",objetoProducto);
 	setImages(objetoProducto[0]);*/
 	
 }
+//traigo a mi abecedario
 function getAbecedario(namesArr){
 	// creando abecedario
 	let abecedario="abcdefghijklmnñopqrstuvwxyz";
@@ -131,7 +157,6 @@ function setEventAbecedario(){
 //funcion que encuentra coincidencias en el ABECEDARIO
 function getProductCoincidencia(letra){
 	let listProduct=dataValue.filter(productInfo=> productInfo.name[0].toLowerCase() == letra.toLowerCase());
-	
 	console.log("letra",letra,"listProduct",listProduct);
 }
 
@@ -211,7 +236,7 @@ function setInfoProduct(infoCadaUno,nameNodo){
 	//opcion 1 sin poder ver el select y agregando por separados los contenedores de html---->
 	let nameProducto=document.getElementById("nameP");
 	let contDatosProducto=document.getElementById(nameNodo);
-	let price=document.getElementById("price")
+	let price=document.getElementById("price");
 
 	const divSize=document.createElement("div");
 	divSize.setAttribute("class", "input-field col s3");
@@ -222,16 +247,26 @@ function setInfoProduct(infoCadaUno,nameNodo){
 
 	nameProducto.innerHTML=`<div class="datoIndividual"> ${infoCadaUno.name}</div>`;
 	let optionSize=infoCadaUno.size.map(medida=> `<option class="optionSize">${medida}</option>`);
-	price.innerHTML=`<div>${infoCadaUno.price[0]}</div>`;
-
+	price.innerText=`${infoCadaUno.price[0]}`;
+	setTotalProduct();
 	selectSize.innerHTML=optionSize;
 	selectSize.addEventListener('change',(e)=> setEventMedidas(e.target.selectedIndex),false);
-	setEventContador();	
+	setEventContador();
+}
+function setTotalProduct(){
+	let total=document.getElementById("total");
+	var contador = document.getElementById("valor");
+	let price=document.getElementById("price").textContent;
+
+	total.innerHTML=`<div>$${price.replace('$','')*contador.value}</div>`;
+	
+	console.log("contador",contador.value,"price",price)
 }
 //funcion que optiene precio deacuerdo a las medidas que tuvieron evento (select) 
 function setEventMedidas(index){
 	let cambioPrecio=dataValue[7];
-  	document.getElementById("price").innerHTML =`<div>${cambioPrecio.price[index]}</div>`;
+  	let price=document.getElementById("price").innerHTML =`${cambioPrecio.price[index]}`;
+  	setTotalProduct();
 }
 
 //boton mas y menos de la pag producto
@@ -244,14 +279,20 @@ function setEventContador(){
 }
 function contadormas(){
 	var contador = document.getElementById("valor");
-	contador.value = contadorInicial +1;
 	contadorInicial = contadorInicial +1;
+	contador.value = contadorInicial;
+	console.log("contadorIni+",contadorInicial);
+	setTotalProduct()
+
+	console.log("contador.value",contador.value)
 }
 function contadormenos(){ 
 	var contador = document.getElementById("valor");
     if(contadorInicial>1){
         contadorInicial = contadorInicial - 1; 
         contador.value = contadorInicial;
+        setTotalProduct()
+        console.log("contadorIni-",contadorInicial);
     }
 }
 
@@ -343,6 +384,10 @@ function contadormenos(){
 //funcion para saber cual producto seleccione de la parte del catalogo
 function selectProduct(unProducto,idProducto){
 	console.log("unProducto",unProducto,"idProducto",idProducto);
+	/*window.location.href = "producto.html";
+	let productCata=dataValue.filter(cadaObjeto=> cadaObjeto.id == idProduct);
+	console.log("selectItem",idProduct,"objetop",productCata);
+	---fu--(productCata);*/
 }   
 		
 
