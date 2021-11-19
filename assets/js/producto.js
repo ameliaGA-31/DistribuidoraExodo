@@ -39,7 +39,7 @@ function setEventImages() {
 //funcion evento del cambio de imagen por la posicion
 function changeImg(id) {
 	let cambioImg=dataValue[7];
-  document.getElementById('mainImg').innerHTML =  `<img src="${cambioImg.imagen[id]}" />`;
+  document.getElementById('mainImg').innerHTML =  `<img src="${cambioImg.imagen[id]}"/>`;
 }
 
 //datos de cada producto en la pag de producto 

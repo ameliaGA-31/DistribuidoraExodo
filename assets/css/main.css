@@ -5,6 +5,47 @@
   --max-width-input:20rem;
 }
 /*iniciando con estilos personales*/
+.calcCompra{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.times{
+  font-size: 1.5rem;
+}
+#cajaList{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 250px;
+  box-sizing: border-box;
+  justify-content: space-around;
+  align-items: center;
+}
+#cajaImg img{
+  width: 100%;
+  height: 200px;
+}
+#cajaImg{
+  width: 25%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+#miCar,#cajTotal,#cajElim{
+  display: flex;
+  align-items: center;
+}
+#Bienvenida{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  font-size: 1.5em;
+}
+section1{
+  margin-top: 125px;
+}
 #price,#total{
   margin-left: 10px;
 }
@@ -21,7 +62,7 @@
   justify-content: space-evenly;
 }
 #cajaPrice p,#information p,#cajaSize p,#cajatotal p{
-  margin-top:10px;
+  margin-right:10px;
 }
 #cajaPrice,#information,#cajaSize,#cajatotal{
   display: flex;
@@ -111,9 +152,7 @@ body{
   width: 40%;
   padding: 2px;
 }
-#name,#size, #price{
-  width: 100%;
-}
+
 .contDatos{
   width: 25%;
   position: absolute;
