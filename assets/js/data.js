@@ -17,7 +17,7 @@ function initialize(url){
 		getOptionCategory(dataValue);
 		//getAbecedario(dataValue);
 		setEventInputSearch();
-		setDatos(dataValue[7]);
+		//setDatos(dataValue[7]);
 		//getcatalogoProductos(dataValue);
 		setEvenIcon();
 

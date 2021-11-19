@@ -14,6 +14,7 @@ function initialiceProduct(){
 		let objetoProducto=dataReturn.filter(cadaObj=> cadaObj.id == objetoRegresado);
 		setImages(objetoProducto[0]);
 }
+
 //traer imagenes pagina del producto
 function setImages(productInfo) {
 	console.log(productInfo,"productInfo",objeto,"objeto")
@@ -21,10 +22,12 @@ function setImages(productInfo) {
     let img1;
     	if(typeof productInfo.imagen === 'string'){
     		img1=productInfo.imagen;
-    		document.getElementById('mainImg').innerHTML = `<img src="${img1}"/>`; 
+    		document.getElementById('mainImg').innerHTML = `<img src="${img1}"/>`;
+    		document.getElementById('listImg').setAttribute('class','hide'); 
     	}else{
     		img1=productInfo.imagen[0];
     		document.getElementById('mainImg').innerHTML = `<img src="${img1}"/>`;
+    		document.getElementById('listImg').removeAttribute('class','hide');
     		document.getElementById('listImg').innerHTML = productInfo.imagen.map((url,idx) => `<img class="imgProduct" id="${idx}" src="${url}" />`).join('');
     	}; 
     	setEventImages();
@@ -79,7 +82,7 @@ function setTotalProduct(){
 
 	total.innerHTML=`<div>$${price.replace('$','')*contador.value}</div>`;
 	
-	console.log("contador",contador.value,"price",price)
+	console.log("contador",contador.value,"price",price,"total",total.target)
 }
 //funcion que optiene precio deacuerdo a las medidas que tuvieron evento (select) 
 function setEventMedidas(index){
