@@ -4,7 +4,7 @@ const range='Data!A1:I9';
 const apiKey='AIzaSyBb1-sH8j-c6qSKNT4UK7CqP65w7v-ugq8';
 const urlOriginal=`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetsId}/values/${range}?key=${apiKey}`;
 let dataValue;
-var contadorInicial = 1;
+
 window.onload=initialize(urlOriginal);
 
 function initialize(url){
@@ -13,7 +13,7 @@ function initialize(url){
 	.then(data =>{
 		//console.log("data",data);
 		dataValue=transformData(data);
-
+		getVarData();
 		getOptionCategory(dataValue);
 		getAbecedario(dataValue);
 		setEventInputSearch();
@@ -61,7 +61,32 @@ function valor(value){
 
  
 //continuacion de mi codigo html
+function getVarData(){
+	let dataV=JSON.stringify(dataValue);
+		sessionStorage.setItem("dataValor",dataV);
+}
 
+
+//TODO: next page producto.html
+//opcion seleccionada por el INPUT
+function selectItem(opcion){
+	let idProduct=opcion.id;
+	console.log("idProduct",idProduct)
+	//para guardarla mi variable ANTES DE QUE ME ENLACE A OTRA
+		let objetoConvertido=JSON.stringify(idProduct);
+		sessionStorage.setItem("idProducto",objetoConvertido);
+		window.location.href = "producto.html";
+		
+		//para obtener o entrar a ella CUANDO ESTOY EN LA OTRA PAG
+		/*unproducto=localStorage-getItem("objetoC");
+		let objetoRegresado=JSON.parse(unproducto);*/
+	/*window.location.href = "producto.html";
+	
+	let objetoProducto=dataValue.filter(cadaObj=> cadaObj.id == idProduct);
+	console.log("selectItem",idProduct,"objetop",objetoProducto);
+	setImages(objetoProducto[0]);*/
+	
+}
 //funcion que trae iconos para agregar eventos
 function setEvenIcon(){
  let cars= document.getElementById('cars');
@@ -115,26 +140,7 @@ function setEventList(){
 	let getLi=Array.from(document.getElementsByClassName("item"));
 	getLi.forEach((elemento) => elemento.addEventListener("click",()=>selectItem(elemento),false));
 }
-//TODO: next page producto.html
-//opcion seleccionada por el INPUT
-function selectItem(opcion){
-	let idProduct=opcion.id;
-	console.log("idProduct",idProduct)
-	//para guardarla mi variable ANTES DE QUE ME ENLACE A OTRA
-		let objetoConvertido=JSON.stringify(idProduct);
-		sessionStorage.setItem("idProducto",objetoConvertido);
-		window.location.href = "producto.html";
-		
-		//para obtener o entrar a ella CUANDO ESTOY EN LA OTRA PAG
-		/*unproducto=localStorage-getItem("objetoC");
-		let objetoRegresado=JSON.parse(unproducto);*/
-	/*window.location.href = "producto.html";
-	
-	let objetoProducto=dataValue.filter(cadaObj=> cadaObj.id == idProduct);
-	console.log("selectItem",idProduct,"objetop",objetoProducto);
-	setImages(objetoProducto[0]);*/
-	
-}
+
 //traigo a mi abecedario
 function getAbecedario(namesArr){
 	// creando abecedario
@@ -210,92 +216,6 @@ function selectOption(event){
 	let etiqueta=event.target[idLista];
     console.log('idOriginal select',etiqueta);
   }
-
-//traer imagenes pagina del producto
-function setImages(productInfo) {
-    let visor = document.getElementById('visor');
-    document.getElementById('mainImg').innerHTML = `<img src="${productInfo.imagen[0]}"/>`; 
-    document.getElementById('listImg').innerHTML = productInfo.imagen.map((url,idx) => `<img class="imgProduct" id="${idx}" src="${url}" />`).join('');
-   	setEventImages();
-    setInfoProduct(productInfo, "information");
-    
-}
-//funcion de cada imagen en pag de producto las llamo y agrego evento
-function setEventImages() {
-  let images =Array.from(document.getElementsByClassName('imgProduct') );
-  images.forEach(img => img.addEventListener('click', (img) => changeImg(img.target.id), false));
-}
-//funcion evento del cambio de imagen por la posicion
-function changeImg(id) {
-	let cambioImg=dataValue[7];
-  document.getElementById('mainImg').innerHTML =  `<img src="${cambioImg.imagen[id]}" />`;
-}
-
-//datos de cada producto en la pag de producto 
-function setInfoProduct(infoCadaUno,nameNodo){
-	//opcion 1 sin poder ver el select y agregando por separados los contenedores de html---->
-	let nameProducto=document.getElementById("nameP");
-	let contDatosProducto=document.getElementById(nameNodo);
-	let price=document.getElementById("price");
-
-	const divSize=document.createElement("div");
-	divSize.setAttribute("class", "input-field col s3");
-	const selectSize=document.createElement("select");
-	selectSize.setAttribute("class","show");
-	divSize.appendChild(selectSize);
-	contDatosProducto.appendChild(divSize);
-
-	nameProducto.innerHTML=`<div class="datoIndividual"> ${infoCadaUno.name}</div>`;
-	let optionSize=infoCadaUno.size.map(medida=> `<option class="optionSize">${medida}</option>`);
-	price.innerText=`${infoCadaUno.price[0]}`;
-	setTotalProduct();
-	selectSize.innerHTML=optionSize;
-	selectSize.addEventListener('change',(e)=> setEventMedidas(e.target.selectedIndex),false);
-	setEventContador();
-}
-function setTotalProduct(){
-	let total=document.getElementById("total");
-	var contador = document.getElementById("valor");
-	let price=document.getElementById("price").textContent;
-
-	total.innerHTML=`<div>$${price.replace('$','')*contador.value}</div>`;
-	
-	console.log("contador",contador.value,"price",price)
-}
-//funcion que optiene precio deacuerdo a las medidas que tuvieron evento (select) 
-function setEventMedidas(index){
-	let cambioPrecio=dataValue[7];
-  	let price=document.getElementById("price").innerHTML =`${cambioPrecio.price[index]}`;
-  	setTotalProduct();
-}
-
-//boton mas y menos de la pag producto
-function setEventContador(){ 
-	var menos=document.getElementById('rest');
-	menos.addEventListener('click',()=>contadormenos());
-	                                                            
-	var mas=document.getElementById('sum');
-	mas.addEventListener('click',()=>contadormas());
-}
-function contadormas(){
-	var contador = document.getElementById("valor");
-	contadorInicial = contadorInicial +1;
-	contador.value = contadorInicial;
-	console.log("contadorIni+",contadorInicial);
-	setTotalProduct()
-
-	console.log("contador.value",contador.value)
-}
-function contadormenos(){ 
-	var contador = document.getElementById("valor");
-    if(contadorInicial>1){
-        contadorInicial = contadorInicial - 1; 
-        contador.value = contadorInicial;
-        setTotalProduct()
-        console.log("contadorIni-",contadorInicial);
-    }
-}
-
 
 
 
