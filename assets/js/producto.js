@@ -1,5 +1,5 @@
 var contadorInicial = 1;
-let objeto;
+let objetoProducto;
 window.onload=initialiceProduct();
 //producto no funciona bien ....platicar con rosa
 function initialiceProduct(){
@@ -11,13 +11,13 @@ function initialiceProduct(){
 		let dataVal=sessionStorage.getItem("dataValor");
 		let dataReturn=JSON.parse(dataVal);
 		//console.log(dataReturn,"dataReturn")
-		let objetoProducto=dataReturn.filter(cadaObj=> cadaObj.id == objetoRegresado);
-		setImages(objetoProducto[0]);
+		objetoProducto=dataReturn.filter(cadaObj=> cadaObj.id == objetoRegresado)[0];
+		setImages(objetoProducto);
 }
 
 //traer imagenes pagina del producto
 function setImages(productInfo) {
-	console.log(productInfo,"productInfo",objeto,"objeto")
+	console.log(productInfo.imagen,"productInfo")
     let visor = document.getElementById('visor');
     let img1;
     	if(typeof productInfo.imagen === 'string'){
@@ -36,12 +36,12 @@ function setImages(productInfo) {
 }
 //funcion de cada imagen en pag de producto las llamo y agrego evento
 function setEventImages() {
-  let images =Array.from(document.getElementsByClassName('imgProduct') );
+  let images =Array.from(document.getElementsByClassName('imgProduct'));
   images.forEach(img => img.addEventListener('click', (img) => changeImg(img.target.id), false));
 }
 //funcion evento del cambio de imagen por la posicion
 function changeImg(id) {
-	let cambioImg=dataValue[7];
+	let cambioImg=objetoProducto;
   document.getElementById('mainImg').innerHTML =  `<img src="${cambioImg.imagen[id]}"/>`;
 }
 
@@ -61,7 +61,7 @@ function setInfoProduct(infoCadaUno,nameNodo){
 
 	nameProducto.innerHTML=`<div class="datoIndividual"> ${infoCadaUno.name}</div>`;
 	let optionSize;
-    	if(typeof infoCadaUno.size === 'string' & typeof infoCadaUno.price === 'string'){
+    	if(typeof infoCadaUno.size === 'string' && typeof infoCadaUno.price === 'string'){
     		optionSize=infoCadaUno.size;
     		document.getElementById('information').innerHTML = `<div>${optionSize}</div>`;
     		price.innerHTML=`<div>${infoCadaUno.price}</div>`
@@ -86,7 +86,7 @@ function setTotalProduct(){
 }
 //funcion que optiene precio deacuerdo a las medidas que tuvieron evento (select) 
 function setEventMedidas(index){
-	let cambioPrecio=dataValue[7];
+	let cambioPrecio=objetoProducto;
   	let price=document.getElementById("price").innerHTML =`${cambioPrecio.price[index]}`;
   	setTotalProduct();
 }
