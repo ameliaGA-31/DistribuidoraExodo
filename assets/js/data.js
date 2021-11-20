@@ -13,12 +13,11 @@ function initialize(url){
 	.then(data =>{
 		//console.log("data",data);
 		dataValue=transformData(data);
-		getVarData();
 		getOptionCategory(dataValue);
 		//getAbecedario(dataValue);
 		setEventInputSearch();
 		//setDatos(dataValue[7]);
-		getcatalogoProductos(dataValue);
+		//getcatalogoProductos(dataValue);
 		//setEvenIcon();
 
 
@@ -61,11 +60,6 @@ function valor(value){
 
  
 //continuacion de mi codigo html
-function getVarData(){
-	let dataV=JSON.stringify(dataValue);
-		sessionStorage.setItem("dataValor",dataV);
-}
-
 
 //TODO: next page producto.html
 //opcion seleccionada por el INPUT

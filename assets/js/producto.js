@@ -6,13 +6,14 @@ function initialiceProduct(){
 	//para obtener o entrar a ella CUANDO ESTOY EN LA OTRA PAG
 		let unproducto=sessionStorage.getItem("idProducto");
 		let objetoRegresado=JSON.parse(unproducto);
-		console.log("objetoRegresado",objetoRegresado);
 
 		let dataVal=sessionStorage.getItem("dataValor");
 		let dataReturn=JSON.parse(dataVal);
-		//console.log(dataReturn,"dataReturn")
+		
 		objetoProducto=dataReturn.filter(cadaObj=> cadaObj.id == objetoRegresado)[0];
+		console.log(objetoProducto,"dataReturn")
 		setImages(objetoProducto);
+		
 }
 
 //traer imagenes pagina del producto
@@ -32,6 +33,7 @@ function setImages(productInfo) {
     	}; 
     	setEventImages();
 		setInfoProduct(productInfo, "information");
+
     
 }
 //funcion de cada imagen en pag de producto las llamo y agrego evento
@@ -47,7 +49,7 @@ function changeImg(id) {
 
 //datos de cada producto en la pag de producto 
 function setInfoProduct(infoCadaUno,nameNodo){
-	console.log(infoCadaUno,"nodos")
+	console.log(nameNodo,"nameNodo")
 	let nameProducto=document.getElementById("nameP");
 	let contDatosProducto=document.getElementById(nameNodo);
 	let price=document.getElementById("price");
@@ -72,7 +74,8 @@ function setInfoProduct(infoCadaUno,nameNodo){
 			setTotalProduct();
 			selectSize.innerHTML=optionSize;
 			selectSize.addEventListener('change',(e)=> setEventMedidas(e.target.selectedIndex),false);
-	 };	 
+	 };
+	 setEventAñadirCompra();	 
 	setEventContador();
 }
 function setTotalProduct(){
@@ -98,22 +101,45 @@ function setEventContador(){
 	                                                            
 	var mas=document.getElementById('sum');
 	mas.addEventListener('click',()=>contadormas());
+
 }
 function contadormas(){
 	var contador = document.getElementById("valor");
 	contadorInicial = contadorInicial +1;
 	contador.value = contadorInicial;
-	console.log("contadorIni+",contadorInicial);
 	setTotalProduct()
 
-	console.log("contador.value",contador.value)
 }
 function contadormenos(){ 
 	var contador = document.getElementById("valor");
     if(contadorInicial>1){
         contadorInicial = contadorInicial - 1; 
         contador.value = contadorInicial;
-        setTotalProduct()
-        console.log("contadorIni-",contadorInicial);
+        setTotalProduct();
     }
+}
+
+function setEventAñadirCompra(){
+		let agregar=document.getElementById('agregarCar');
+	agregar.addEventListener('click',(agregar)=> newObje(agregar.target));
+	console.log(agregar,'agregar')
+}
+function newObje(etiqueta){
+	let price=document.getElementById("price").textContent;
+	var contador = document.getElementById("valor");
+	let imag;
+	if(typeof objetoProducto.imagen == 'string'){
+		imag=objetoProducto.imagen;
+	}else{
+		imag=objetoProducto.imagen[0];
+	}
+	let newObjeto={
+		id:objetoProducto.id,
+		name:objetoProducto.name,
+		imagen:imag,
+		price:price.value,
+		//total:price.value,setTotalProduct(),
+		contidad:contador.value,
+	};
+	console.log(newObjeto,"newObjeto")
 }
