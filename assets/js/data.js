@@ -13,12 +13,12 @@ function initialize(url){
 	.then(data =>{
 		//console.log("data",data);
 		dataValue=transformData(data);
+		let dataVal=JSON.stringify(dataValue);
+		sessionStorage.setItem("valorData",dataVal);
 		getOptionCategory(dataValue);
-		//getAbecedario(dataValue);
+		getAbecedario(dataValue);
 		setEventInputSearch();
-		//setDatos(dataValue[7]);
-		//getcatalogoProductos(dataValue);
-		//setEvenIcon();
+		getcatalogoProductos(dataValue);
 
 
 	})
@@ -61,8 +61,8 @@ function valor(value){
  
 //continuacion de mi codigo html
 
-//TODO: next page producto.html
-//opcion seleccionada por el INPUT
+//TODO: next page producto.html --> LISTO YA ESTA ENLAZADA
+//opcion seleccionada por el INPUT enlsazsando a Session Strorage
 function selectItem(opcion){
 	let idProduct=opcion.id;
 	console.log("idProduct",idProduct)
@@ -70,36 +70,7 @@ function selectItem(opcion){
 		let objetoConvertido=JSON.stringify(idProduct);
 		sessionStorage.setItem("idProducto",objetoConvertido);
 		window.location.href = "producto.html";
-		
-		//para obtener o entrar a ella CUANDO ESTOY EN LA OTRA PAG
-		/*unproducto=localStorage-getItem("objetoC");
-		let objetoRegresado=JSON.parse(unproducto);*/
-	/*window.location.href = "producto.html";
-	
-	let objetoProducto=dataValue.filter(cadaObj=> cadaObj.id == idProduct);
-	console.log("selectItem",idProduct,"objetop",objetoProducto);
-	setImages(objetoProducto[0]);*/
-	
 }
-
-
-
-//TODO::next page Carrito compras.html... 
-//funcion que enlaza pag del carrito al icono
-/*function changePage()
-	console.log("ver pagina carrito ")
-	window.location.href = "carritoCompras.html";*/ 
-	//{producto:}
-		/*window.location.href = "carritoCompras.html";
-		//para guardarla mi variable ANTES DE QUE ME ENLACE A OTRA
-		let objetoConvertido=JSON.stringify(unproducto);
-		localStorage-setItem("objetoC",objetoConvdertido);
-		
-		//para obtener o entrar a ella CUANDO ESTOY EN LA OTRA PAG
-		unproducto=localStorage-getItem("objetoC");
-		let objetoRegresado=JSON.parse(unproducto);
-
-		*/
 //funcion de lo que entra en el input de html mas eventos
 function setEventInputSearch(){ 
 	let input=document.getElementById('searchInput');
@@ -199,12 +170,16 @@ function setEventOptions(categoriesObj){
 		
 	}
 }
-//TODO:next page producto.html
+//TODO:next page producto.html --> LISTO YA ESTA ENLAZADA
 //opcion selecciona por el SELECT de CATEGORIAS por su nombre y index 
 function selectOption(event){
 	let idLista=event.target.selectedIndex;
 	let etiqueta=event.target[idLista];
-    console.log('idOriginal select',etiqueta);
+    	let idProduct=etiqueta.id;
+	//para guardarla mi variable ANTES DE QUE ME ENLACE A OTRA
+		let objetoConvertido=JSON.stringify(idProduct);
+		sessionStorage.setItem("idProducto",objetoConvertido);
+		window.location.href = "producto.html";
   }
 
 
@@ -246,65 +221,4 @@ function selectOption(event){
   });
 
  //funcion para traer todos los productos a la pag del catalogo
- function getcatalogoProductos(cadaProducto){
-	console.log("cadaProducto",cadaProducto);
-	const contenedor=document.getElementById('contenedor');
-
-    let nameProducto='';
-    let urlxImg;
-    cadaProducto.forEach(contenido =>{
-    	if(typeof contenido.imagen === 'string'){
-    		urlxImg=contenido.imagen;
-    	}else{
-    		urlxImg=contenido.imagen[0];
-    	}	
-    	let precioxProduct;
-    	if(typeof contenido.price === 'string'){
-    		precioxProduct=contenido.price;
-    	}else{
-    		precioxProduct=contenido.price[0];
-    	};
-        console.log("precio",precioxProduct);
-        nameProducto = 
-
-	`
-		<div class="col s3">
-			<div onclick="selectProduct('${contenido.name}','${contenido.id}', this)">
-				<div class="card horizontal">
-					<div class="card-image">
-						<img class="img" src="${urlxImg}" alt="img-${contenido.name}"/>
-					</div>
-					<div  class="card-stacked">
-						<div class="card-content">
-							<p>${contenido.name}</p>
-							<p>${precioxProduct}</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-        ` +nameProducto;
-
-    });
-    contenedor.innerHTML=`<div class="row">${nameProducto}</div>`;
-    return nameProducto;
-
-}
-//TODO:next page de producto.html
-//funcion para saber cual producto seleccione de la parte del catalogo
-function selectProduct(unProducto,idProducto){
-	console.log("unProducto",unProducto,"idProducto",idProducto);
-	/*window.location.href = "producto.html";
-	let productCata=dataValue.filter(cadaObjeto=> cadaObjeto.id == idProduct);
-	console.log("selectItem",idProduct,"objetop",productCata);
-	---fu--(productCata);*/
-}   
-
-
-
-
-
-
-
-  
-
+ 

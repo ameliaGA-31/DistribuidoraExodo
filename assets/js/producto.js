@@ -7,11 +7,11 @@ function initialiceProduct(){
 		let unproducto=sessionStorage.getItem("idProducto");
 		let objetoRegresado=JSON.parse(unproducto);
 
-		let dataVal=sessionStorage.getItem("dataValor");
+		let dataVal=sessionStorage.getItem("valorData");
 		let dataReturn=JSON.parse(dataVal);
 		
 		objetoProducto=dataReturn.filter(cadaObj=> cadaObj.id == objetoRegresado)[0];
-		console.log(objetoProducto,"dataReturn")
+		//console.log(dataReturn,"dataReturn")
 		setImages(objetoProducto);
 		
 }
@@ -141,5 +141,11 @@ function newObje(etiqueta){
 		//total:price.value,setTotalProduct(),
 		contidad:contador.value,
 	};
-	console.log(newObjeto,"newObjeto")
+	console.log(newObjeto,"newObjeto");
+	//let objeto=newObj;
+	//para guardarla mi variable ANTES DE QUE ME ENLACE A OTRA
+		/*let objTransform=JSON.stringify(objeto);
+		sessionStorage.setItem("objNew",objTransform);
+		window.location.href = "carritoCompras.html";*/
 }
+
