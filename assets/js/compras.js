@@ -3,36 +3,27 @@ let listaCompras;
 window.onload=initializeCompras();
 
 function initializeCompras(){
-	listaCompras=JSON.parse(sessionStorage.getItem("dataValor"));
+	listaCompras=JSON.parse(sessionStorage.getItem("listCompra"));
 	listaCompras.forEach(cadaobj=> setDatos(cadaobj));
-	//setDatos(listaCompras[0]);
 	console.log("listaCompras",listaCompras)
 }
 //funcion que inicia para carrito trallendo solo un producto y llenando los campos...
 function setDatos(datos){
+	datos=JSON.parse(datos);
 	document.getElementById('name').innerText=`${datos.name}`;
 	let tamaño;
 	let price;
 	console.log("tamañoImg",datos)
 	//let precio;
-	if(typeof datos.size == 'string' && typeof datos.price == 'string'){
+	
 		tamaño=datos.size;
 		price=datos.price;
 		document.getElementById('tamaño').innerText=`${tamaño}"`;
 		document.getElementById('price').innerText=`${datos.price}`;
-	}else{
-		tamaño=datos.size[0];
-		price=datos.price[0];
-		document.getElementById('tamaño').innerText=`${tamaño}"`;
-		document.getElementById('price').innerText=`${datos.price[0]}`;
-	}
-	if(typeof datos.imagen == 'string'){
 		document.getElementById('imgCar').innerHTML=`<img src="${datos.imagen}"/>`;
-	}else{
-		document.getElementById('imgCar').innerHTML=`<img src="${datos.imagen[0]}"/>`;
-	}
-	//setEventContador();
-	//setTotalProduct();
+
+	setEventContador();
+	setTotalProduct();
 }	
 function setTotalProduct(){
 	let total=document.getElementById("total");

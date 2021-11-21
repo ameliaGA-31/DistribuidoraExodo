@@ -45,6 +45,7 @@ function setEventImages() {
 function changeImg(id) {
 	let cambioImg=objetoProducto;
   document.getElementById('mainImg').innerHTML =  `<img src="${cambioImg.imagen[id]}"/>`;
+
 }
 
 //datos de cada producto en la pag de producto 
@@ -84,8 +85,8 @@ function setTotalProduct(){
 	let price=document.getElementById("price").textContent;
 
 	total.innerHTML=`<div>$${price.replace('$','')*contador.value}</div>`;
+	return [price,total.textContent,contador.value];
 	
-	console.log("contador",contador.value,"price",price,"total",total.target)
 }
 //funcion que optiene precio deacuerdo a las medidas que tuvieron evento (select) 
 function setEventMedidas(index){
@@ -121,31 +122,38 @@ function contadormenos(){
 
 function setEventAñadirCompra(){
 		let agregar=document.getElementById('agregarCar');
-	agregar.addEventListener('click',(agregar)=> newObje(agregar.target));
+	//agregar.addEventListener('click',(agregar)=> newObje(agregar.target));
+	agregar.addEventListener('click',createListShop);
+
 	console.log(agregar,'agregar')
 }
-function newObje(etiqueta){
-	let price=document.getElementById("price").textContent;
-	var contador = document.getElementById("valor");
-	let imag;
-	if(typeof objetoProducto.imagen == 'string'){
-		imag=objetoProducto.imagen;
-	}else{
-		imag=objetoProducto.imagen[0];
-	}
+function newObje(){
+	let mainImg=Array.from(document.getElementById('mainImg').getElementsByTagName('img'))[0];
+	let valuePriceProduct=setTotalProduct();
 	let newObjeto={
 		id:objetoProducto.id,
 		name:objetoProducto.name,
-		imagen:imag,
-		price:price.value,
-		//total:price.value,setTotalProduct(),
-		contidad:contador.value,
+		imagen:mainImg.src,
+		price:valuePriceProduct[0],
+		total:valuePriceProduct[1],
+		cantidad:valuePriceProduct[2],
 	};
-	console.log(newObjeto,"newObjeto");
-	//let objeto=newObj;
-	//para guardarla mi variable ANTES DE QUE ME ENLACE A OTRA
-		/*let objTransform=JSON.stringify(objeto);
-		sessionStorage.setItem("objNew",objTransform);
-		window.location.href = "carritoCompras.html";*/
+	let objTransform=JSON.stringify(newObjeto);	
+	return objTransform;
+}
+function createListShop(){
+	let newObjeto=newObje();
+	if('sessionStorage' in window && window['sessionStorage'] !== null && sessionStorage.getItem('listCompra') !== null) {
+    	let arrList=JSON.parse(sessionStorage.getItem("listCompra"));
+    	arrList.push(newObjeto);
+    	arrList=JSON.stringify(arrList);
+    	sessionStorage.setItem('listCompra',arrList);
+	} else { 
+		let arr=[];
+		arr.push(newObjeto)
+		let arrString=JSON.stringify(arr);
+		sessionStorage.setItem("listCompra",arrString);
+	}
+	window.location.href = "carritoCompras.html";
 }
 
