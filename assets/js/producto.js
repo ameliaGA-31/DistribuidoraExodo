@@ -9,11 +9,15 @@ function initialiceProduct(){
 
 		let dataVal=sessionStorage.getItem("valorData");
 		let dataReturn=JSON.parse(dataVal);
-		
-		objetoProducto=dataReturn.filter(cadaObj=> cadaObj.id == objetoRegresado)[0];
-		//console.log(dataReturn,"dataReturn")
-		setImages(objetoProducto);
-		
+
+		if('sessionStorage' in window && window['sessionStorage'] !== null && sessionStorage.getItem('idProducto') !== null){
+			objetoProducto=dataReturn.filter(cadaObj=> cadaObj.id == objetoRegresado)[0];
+			console.log(objetoProducto,"dataReturn")
+			setImages(objetoProducto);		
+		}else{
+			objetoProducto=dataReturn.filter(objetoProduct=> objetoProduct.id)[0];
+			setImages(objetoProducto);
+		}	
 }
 
 //traer imagenes pagina del producto

@@ -16,7 +16,7 @@ function initialize(url){
 		let dataVal=JSON.stringify(dataValue);
 		sessionStorage.setItem("valorData",dataVal);
 		getOptionCategory(dataValue);
-		//getAbecedario(dataValue);
+		getAbecedario(dataValue);
 		setEventInputSearch();
 		//setDatos(dataValue[7])
 		//getcatalogoProductos(dataValue);
@@ -61,17 +61,9 @@ function valor(value){
 
  
 //continuacion de mi codigo html
+//PARTES QUE COMPARTEN ENTRE SI LAS PAGS
 
-//TODO: next page producto.html --> LISTO YA ESTA ENLAZADA
-//opcion seleccionada por el INPUT enlsazsando a Session Strorage
-function selectItem(opcion){
-	let idProduct=opcion.id;
-	console.log("idProduct",idProduct)
-	//para guardarla mi variable ANTES DE QUE ME ENLACE A OTRA
-		let objetoConvertido=JSON.stringify(idProduct);
-		sessionStorage.setItem("idProducto",objetoConvertido);
-		window.location.href = "producto.html";
-}
+
 //funcion de lo que entra en el input de html mas eventos
 function setEventInputSearch(){ 
 	let input=document.getElementById('searchInput');
@@ -103,6 +95,17 @@ function setEventList(){
 	getLi.forEach((elemento) => elemento.addEventListener("click",()=>selectItem(elemento),false));
 }
 
+//TODO: next page producto.html --> LISTO YA ESTA ENLAZADA
+//opcion seleccionada por el INPUT enlsazsando a Session Strorage
+function selectItem(opcion){
+	let idProduct=opcion.id;
+	console.log("idProduct",idProduct)
+	//para guardarla mi variable ANTES DE QUE ME ENLACE A OTRA
+		let objetoConvertido=JSON.stringify(idProduct);
+		sessionStorage.setItem("idProducto",objetoConvertido);
+		window.location.href = "producto.html";
+}
+
 //traigo a mi abecedario
 function getAbecedario(namesArr){
 	// creando abecedario
@@ -126,14 +129,15 @@ function setEventAbecedario(){
 function getProductCoincidencia(letra){
 	let listProduct=dataValue.filter(productInfo=> productInfo.name[0].toLowerCase() == letra.toLowerCase());
 	console.log("letra",letra,"listProduct",listProduct);
+	let productFound=listProduct;
+	//para guardarla mi variable ANTES DE QUE ME ENLACE A OTRA
+	let listSearch=JSON.stringify(productFound);
+	sessionStorage.setItem("productsFound",listSearch);
+	window.location.href="catalogo.html";
 }
 
-//carrouzel
-$ (document).ready(function(){
-    $ ('.carousel').carousel();
-  });
 
-//separador por categorias 
+//separador por categorias para select 
 function getOptionCategory(arrObj){
 	let tlapaleria=arrObj.filter(objeto => objeto.category == 'Tlapaleria general');
 	let plomeria=arrObj.filter(objeto => objeto.category == 'Plomeria');
@@ -171,6 +175,7 @@ function setEventOptions(categoriesObj){
 		
 	}
 }
+
 //TODO:next page producto.html --> LISTO YA ESTA ENLAZADA
 //opcion selecciona por el SELECT de CATEGORIAS por su nombre y index 
 function selectOption(event){
@@ -183,43 +188,23 @@ function selectOption(event){
 		window.location.href = "producto.html";
   }
 
-
-
-
-//inicializacion de vento de Icono a las lista por categoria
-//funcion anonima 
-/*funcion  (){
-	return "";
-}
-//funcion se ejecuta al momento
-()=> ""*/
-
-
-
-
-//inicializacion de carrucel desde materialize
- /*document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.carousel');
-    var instances = M.Carousel.init(elems, options);
-  });*/
- 
-
-  // Or with jQuery
-
-  
-
-  //inicializacions de modal
+// --> MODAL
+//inicializacions de modal
 
   /*document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems, options);
   });*/
-
   // Or with jQuery
 
  $(document).ready(function(){
     $('.modal').modal();
   });
 
- //funcion para traer todos los productos a la pag del catalogo
+//funcion anonima 
+/*funcion  (){
+	return "";
+}
+//funcion se ejecuta al momento
+()=> ""*/
  

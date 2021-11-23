@@ -1,4 +1,3 @@
-var contadorInicial = 1;
 let listaCompras;
 window.onload=initializeCompras();
 
