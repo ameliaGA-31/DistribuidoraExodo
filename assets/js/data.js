@@ -16,7 +16,7 @@ function initialize(url){
 		let dataVal=JSON.stringify(dataValue);
 		sessionStorage.setItem("valorData",dataVal);
 		getOptionCategory(dataValue);
-		getAbecedario(dataValue);
+		//getAbecedario(dataValue);
 		setEventInputSearch();
 		//setDatos(dataValue[7])
 		//getcatalogoProductos(dataValue);

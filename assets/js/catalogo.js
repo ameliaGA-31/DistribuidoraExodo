@@ -59,7 +59,7 @@ function getcatalogoProductos(cadaProducto){
 				</div>
 			</div>
 		</div>
-        `;
+        `+nameProductoNodo;
 
     });
     contenedor.innerHTML=`<div class="row">${nameProductoNodo}</div>`;

@@ -4,22 +4,50 @@ window.onload=initializeCompras();
 function initializeCompras(){
 	listaCompras=JSON.parse(sessionStorage.getItem("listCompra"));
 	listaCompras.forEach(cadaobj=> setDatos(cadaobj));
-	console.log("listaCompras",listaCompras)
+	
 }
+/*document.getElementById('name').innerText=`${datos.name}`;
+	document.getElementById('tamaño').innerText=`${datos.size}"`;
+	document.getElementById('price').innerText=`${datos.price}`;
+	document.getElementById('price').innerText=`${datos.total}`;
+	let valor=document.getElementById("valor").value=`${datos.cantidad}`;
+	*/
 //funcion que inicia para carrito trallendo solo un producto y llenando los campos...
 function setDatos(datos){
+	console.log(datos,"datos");
 	datos=JSON.parse(datos);
-	document.getElementById('name').innerText=`${datos.name}`;
-	let tamaño;
-	let price;
-	console.log("tamañoImg",datos)
-	//let precio;
-	
-		tamaño=datos.size;
-		price=datos.price;
-		document.getElementById('tamaño').innerText=`${tamaño}"`;
-		document.getElementById('price').innerText=`${datos.price}`;
-		document.getElementById('imgCar').innerHTML=`<img src="${datos.imagen}"/>`;
+	let listProducts=document.getElementById('cajaList');
+	 let listPedidosNodo="";
+	 listPedidosNodo+=
+		`
+		<div id="cajaImg">
+			<i class="times fas fa-times"></i>
+			<img id="imgCar" src="${datos.imagen}"/>;
+		</div>
+		<div id="info">
+			<div id="name">${datos.name}</div>
+			<div id="tamaño">${datos.size}</div>
+		</div>
+		<div class="calcCompra">
+			<div id="calProduct">
+          		<p>Cantidad</p>
+	          	<div class="sumRest">
+          			<button id="rest" class="rest"> - </button>
+          			<input id="valor" type="text" readonly  name="" value="${datos.cantidad}" class="conteo"/>
+          			<button id="sum" class="sum"> + </button>
+          		</div>
+          	</div>
+				<div id="cajaPrice">
+          		<p>Precio unitario</p>
+          		<div id="price">${datos.price}</div>
+      		</div>
+      		<div id="cajatotal">
+          		<p>total</p>
+          		<div id="total">${datos.total}</div>
+      		</div>
+      	</div>
+        `;
+	listProducts.innerHTML=`<div class="row">${listPedidosNodo}</div>`;
 
 	setEventContador();
 	setTotalProduct();
