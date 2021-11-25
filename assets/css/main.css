@@ -13,12 +13,9 @@
 .times{
   font-size: 1.5rem;
 }
-#cajaList{
+#cajaList .row{
   display: flex;
-  flex-direction: row;
   width: 100%;
-  height: 250px;
-  box-sizing: border-box;
   justify-content: space-around;
   align-items: center;
 }
@@ -194,6 +191,9 @@ body{
   position: relative;
   width: 30%;
   height: 100%;
+}
+.imgCar{
+  margin-left: 15px;
 }
 .imgProduct{
     margin-top: 10px auto;
