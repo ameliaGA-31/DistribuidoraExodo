@@ -514,6 +514,9 @@ body{
 .contNav{
   justify-content: space-evenly;
 }
+#abecedario{
+  display: none;
+}
 #selectContainer{
   display: none;
 }
@@ -550,6 +553,17 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.card{
+  display: flex;
+  flex-direction: column;
+}
+#imgs{
+    max-width: 100%; 
+}
+#imgs .img{
+      max-height: 200px;
+    width: 100%;
 }
 
 

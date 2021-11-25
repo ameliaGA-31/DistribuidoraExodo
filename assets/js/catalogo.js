@@ -46,8 +46,8 @@ function getcatalogoProductos(cadaProducto){
 	`
 		<div class="col s3">
 			<div onclick="selectProduct('${porUnObj.name}','${porUnObj.id}', this)">
-				<div class="card horizontal">
-					<div class="card-image">
+				<div class="card card horizontal">
+					<div id="imgs" class="card-image">
 						<img class="img" src="${urlxImg}" alt="img-${porUnObj.name}"/>
 					</div>
 					<div  class="card-stacked">
