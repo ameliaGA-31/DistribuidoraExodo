@@ -256,9 +256,6 @@ body{
   z-index: 99;
   width: 100%;
 }
-.iconFooter{
-
-}
 .enlaces,#cars{
   font-size: 1.5em;
   margin-right: 10px;
@@ -296,8 +293,7 @@ body{
   position: relative;
 }
 #carousel{
-  top: 100px;
-    position: absolute;
+  margin-top: 90px;
 }
 #headerCard{
       margin: 2px;
@@ -305,13 +301,9 @@ body{
     font-size: 2em;
 }
 #cards{
-  position: absolute;
-  top: 500px;
   width: 100%;
 }
 #footer{
-  position: absolute;
-    top: 1000px;
     display: flex;
     width: 100%;
     justify-content: space-evenly;
@@ -495,4 +487,70 @@ body{
   padding: 10px;
   cursor: pointer;
 }
+.selectContainer{
+  display: block;
+}
+.menu{
+  display: none;
+}
 
+@media (min-width: 320px) and (max-width: 900px){
+  #contMayor,header,#carouzel,.contUbicacion,footer{
+    width: 100%;
+  }
+.logo{
+  width:70%;
+}
+.menu{
+  display: inline-block;
+  font-size: 2.5rem;
+    display: flex;
+    align-self: center;
+    color: white;
+}
+.buscador{
+  width:70%;
+}
+.contNav{
+  justify-content: space-evenly;
+}
+#selectContainer{
+  display: none;
+}
+.contUbicacion{
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+}
+#card-horizontal {
+    box-sizing: border-box;
+    padding: 1em;
+    margin: 1em;
+    flex-direction: column;
+}
+.mapouter {
+    width: 80%;
+    align-self: center;
+}
+#card-stacked {
+    width: 80%;
+    font-size: 1.2em;
+    color: brown;
+    align-self: center;
+}
+#imgCarou {
+    width: 90%;
+    height: 90%;
+}
+#carousel{
+  margin-top: 80px;
+  max-height: 300px;
+}
+#footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+}
