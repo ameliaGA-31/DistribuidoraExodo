@@ -56,7 +56,9 @@ listProducts.innerHTML= `<div class="row">${listPedidosNodo}</div>`;*/
 		`
 		
 		<div id="cajaImg">
-			<i class="times fas fa-times"></i>
+			<div id="times"> 
+				<i class="times fas fa-times"></i>
+			</div>
 			<img class="imgCar" src="${datos.imagen}"/>;
 		</div>
 		<div id="info">
@@ -83,11 +85,13 @@ listProducts.innerHTML= `<div class="row">${listPedidosNodo}</div>`;*/
       	</div>
     </div>
         `;
-	listProducts.innerHTML= `<div class="row">${listPedidosNodo}</div>`;
+	listProducts.innerHTML= `<div id="fila" class="row">${listPedidosNodo}</div>`;
 
 	setEventContador();
 	setTotalProduct();
 	getFullPrice();
+	setEventElilimarTodo()
+	setEventIconElim();
 }	
 function setTotalProduct(){
 	let total=document.getElementById("total");
@@ -128,4 +132,25 @@ function contadormenos(){
         setTotalProduct();
         getFullPrice();
     }
+}
+function setEventElilimarTodo(){
+	let elim=document.getElementById('cajElim');
+	elim.addEventListener('click',()=>removeTodo());
+}
+function removeTodo(){
+	//let hijo=document.getElementById()
+	let cajaList=document.getElementById('cajaList');
+	let hijo=document.getElementById('fila');
+	cajaList.removeChild(hijo);
+	//console.log(cajaList,'cajaList')
+	//return cajaList
+}
+function setEventIconElim(){
+	let elimRom=document.getElementById('times');
+	elimRom.addEventListener('click',()=>removeFila());
+}
+function removeFila(){
+	let cajaList=document.getElementById('cajaList');
+	let hijo=document.getElementById('fila');
+	cajaList.removeChild(hijo);
 }
