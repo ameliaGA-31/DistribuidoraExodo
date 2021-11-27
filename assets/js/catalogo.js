@@ -14,7 +14,7 @@ function initializeCatalogo(){
         elemento=initialLetter.map(elemento=> elemento);
         getcatalogoProductos(elemento);    
     }else{
-            elemento=dataReturn;
+            elemento=dataReturn.filter(obje=> obje.name.indexOf('c') != -1);
             getcatalogoProductos(elemento);
             //por defaut deje todos 
     }  

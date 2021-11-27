@@ -33,6 +33,9 @@
   display: flex;
   align-items: center;
 }
+#info,.calcCompra{
+  width: 25%;
+}
 #Bienvenida{
   display: flex;
   flex-direction: row;
@@ -90,13 +93,6 @@ section1{
 #card-starcked{
 
 }
-#footerProduc{
-  top: 750px;
-  position: absolute;
-  display: flex;
-  width: 100%;
-  justify-content: space-evenly;
-}
 body{
   background:#F2F2F2;
 }
@@ -136,19 +132,27 @@ body{
   padding: 0px;
   margin: 0px;
 }
-#valor{
+.sumRest input{
+    text-align: center;
+    margin: 2px;
+    border-bottom: 0px;
+}
+/*.valor{
   width: 30%;
   margin: 0px;
   padding: 0px;
   height: auto;
   text-align: center;
   border-bottom: 0px;
-}
+
+}*/
 .sumRest{
-  border: 1px solid;
-  width: 40%;
-  padding: 2px;
-}
+    height: 100%;
+    border: 1px solid;
+    width: 40%;
+    padding: 2px;
+    display: flex;
+    align-items: center;}
 
 .contDatos{
   width: 25%;
@@ -490,10 +494,9 @@ body{
 .selectContainer{
   display: block;
 }
-.menu{
+.menu,#navMenu{
   display: none;
 }
-
 @media (min-width: 320px) and (max-width: 900px){
   #contMayor,header,#carouzel,.contUbicacion,footer{
     width: 100%;
@@ -565,6 +568,8 @@ body{
       max-height: 200px;
     width: 100%;
 }
-
+#navMenu{
+  display: block;
+}
 
 }

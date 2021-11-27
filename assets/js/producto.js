@@ -65,14 +65,14 @@ function setInfoProduct(infoCadaUno,nameNodo){
 	selectSize.setAttribute("class","show");
 	selectSize.setAttribute('id',"size");
 	divSize.appendChild(selectSize);
-	contDatosProducto.appendChild(divSize);
+	contDatosProducto.appendChild(selectSize);
 
 	nameProducto.innerHTML=`<div class="datoIndividual"> ${infoCadaUno.name}</div>`;
 	let optionSize;
 	//let tamaño;
     	if(typeof infoCadaUno.size === 'string' && typeof infoCadaUno.price === 'string'){
     		optionSize=infoCadaUno.size;
-    		document.getElementById('information').innerHTML = `<div>${optionSize}</div>`;
+    		document.getElementById('information').innerText =optionSize;
     		price.innerHTML=`<div>${infoCadaUno.price}</div>`
     		setTotalProduct();
     	}else{
@@ -90,8 +90,17 @@ function setInfoProduct(infoCadaUno,nameNodo){
 	 
 }
 function sizeProduct(){
+	let sizeOrigi;
 	let size=document.getElementById('size');
-	return size.value;
+	let information=document.getElementById('information');
+	return (information.textContent != null ? information.textContent:size.value);
+	/*if(information != null){
+		sizeOrigi=information.textContent;	
+	}else{
+		sizeOrigi=size.value;
+	}*/
+	//return size.value;
+	//return sizeOrigi;
 }
 function setTotalProduct(){
 	let total=document.getElementById("total");

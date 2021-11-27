@@ -8,18 +8,19 @@ function initializeCompras(){
 	listaCompras.forEach((cadaobj,index)=>{
 		listPedidosNodo+=setDatos(cadaobj,index);
 	});
-	listProducts.innerHTML= `<div id="fila" class="row">${listPedidosNodo}</div>`;
+	listProducts.innerHTML=listPedidosNodo;
 }
 function setDatos(datos,id){
 	console.log(datos,"datos");
 	datos=JSON.parse(datos);
 	let listPedidosNodo=
 		`
+	<div id="fila" class="row">
 		<div id="cajaImg">
-			<div id="times"> 
+			<div id="times${id}"> 
 				<i class="times fas fa-times"></i>
 			</div>
-			<img class="imgCar" src="${datos.imagen}"/>;
+			<img class="imgCar" src="${datos.imagen}"/>
 		</div>
 		<div id="info">
 			<div id="name">${datos.name}</div>
@@ -27,31 +28,32 @@ function setDatos(datos,id){
 		</div>
 		<div class="calcCompra">
 			<div id="calProduct">
-          		<p>Cantidad</p>
-	          	<div class="sumRest">
-          			<button id="rest${id}" class="rest"> - </button>
-          			<input id="valor${id}" type="text" readonly  name="" value="${datos.cantidad}" class="conteo"/>
-          			<button id="sum${id}" class="sum"> + </button>
-          		</div>
-          	</div>
-				<div id="cajaPrice">
-          		<p>Precio unitario</p>
-          		<div id="price">${datos.price}</div>
-      		</div>
-      		<div id="cajatotal">
-          		<p>total</p>
-          		<div id="total">${datos.total}</div>
-      		</div>
-      	</div>
+				<p>Cantidad</p>
+				<div class="sumRest">
+					<button id="rest${id}" class="rest"> - </button>
+					<input id="valor${id}" class="valor" type="text" readonly  name="" value="${datos.cantidad}" class="conteo"/>
+					<button id="sum${id}" class="sum"> + </button>
+				</div>
+			</div>
+			<div id="cajaPrice">
+				<p>Precio unitario</p>
+				<div id="price">${datos.price}</div>
+			</div>
+			<div id="cajatotal">
+				<p>total</p>
+				<div id="total">${datos.total}</div>
+			</div>
+		</div>
     </div>
         `;
 
 	//setEventContador();
 	//setTotalProduct();
 	//getFullPrice();
-	//setEventElilimarTodo();
-	//setEventIconElim();
+	setEventElilimarTodo();
+	setEventIconElim();
 	return listPedidosNodo;
+
 }	
 function setTotalProduct(){
 	let total=document.getElementById("total");
