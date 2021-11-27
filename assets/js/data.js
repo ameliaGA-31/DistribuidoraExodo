@@ -1,6 +1,6 @@
 const spreadsheetsId='1WfxVETEfl-fmU4QGfOG1wk-93ClARjK5wkgUbAg3BXg';
 //const range='Respuestas de formulario 1!A1:F5';
-const range='Data!A1:I20';
+const range='Data!A1:I150';
 const apiKey='AIzaSyBb1-sH8j-c6qSKNT4UK7CqP65w7v-ugq8';
 const urlOriginal=`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetsId}/values/${range}?key=${apiKey}`;
 let dataValue;
@@ -16,7 +16,7 @@ function initialize(url){
 		let dataVal=JSON.stringify(dataValue);
 		sessionStorage.setItem("valorData",dataVal);
 		getOptionCategory(dataValue);
-		//getAbecedario(dataValue);
+		getAbecedario(dataValue);
 		setEventInputSearch();
 
 
@@ -107,14 +107,17 @@ function selectItem(opcion){
 //traigo a mi abecedario
 function getAbecedario(namesArr){
 	// creando abecedario
-	let abecedario="abcdefghijklmnñopqrstuvwxyz";
-	abecedario=abecedario.split('');
-	let primeraLetra=namesArr.map(cadaObj=> cadaObj.name[0].toLowerCase());
-	let letrasEncontradas=abecedario.filter(letra => primeraLetra.indexOf(letra) != -1); 
 	let ul=document.getElementById("abecedario");
-	let nuevoAbc=letrasEncontradas.map(elemento =>`<li class="abc">${elemento.toUpperCase()}</li>`).join("");
-	ul.innerHTML=nuevoAbc;
-	setEventAbecedario();
+	if(ul && namesArr){
+		let abecedario="abcdefghijklmnñopqrstuvwxyz";
+		abecedario=abecedario.split('');
+		let primeraLetra=namesArr.map(cadaObj=> cadaObj.name[0].toLowerCase());
+		let letrasEncontradas=abecedario.filter(letra => primeraLetra.indexOf(letra) != -1); 
+		let nuevoAbc=letrasEncontradas.map(elemento =>`<li class="abc">${elemento.toUpperCase()}</li>`).join("");
+		ul.innerHTML=nuevoAbc;
+		setEventAbecedario();
+	}
+	
 }
 //evento a letra abecedario
 function setEventAbecedario(){

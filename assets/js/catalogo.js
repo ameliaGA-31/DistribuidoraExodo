@@ -44,7 +44,7 @@ function getcatalogoProductos(cadaProducto){
         nameProductoNodo += 
 
 	`
-		<div class="col s3">
+		<div class="col s6 m3">
 			<div onclick="selectProduct('${porUnObj.name}','${porUnObj.id}', this)">
 				<div class="card card horizontal">
 					<div id="imgs" class="card-image">

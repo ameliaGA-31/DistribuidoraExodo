@@ -63,6 +63,7 @@ function setInfoProduct(infoCadaUno,nameNodo){
 	divSize.setAttribute("class", "input-field col s3");
 	const selectSize=document.createElement("select");
 	selectSize.setAttribute("class","show");
+	selectSize.setAttribute('id',"size");
 	divSize.appendChild(selectSize);
 	contDatosProducto.appendChild(divSize);
 
@@ -75,7 +76,7 @@ function setInfoProduct(infoCadaUno,nameNodo){
     		price.innerHTML=`<div>${infoCadaUno.price}</div>`
     		setTotalProduct();
     	}else{
-	    	optionSize=infoCadaUno.size.map(medida=> `<option class="optionSize">${medida}</option>`);
+	    	optionSize=infoCadaUno.size.map(medida=> `<option value="${medida}" class="optionSize">${medida}</option>`);
 			price.innerText=`${infoCadaUno.price[0]}`;
 			setTotalProduct();
 			//tamaño=optionSize;
@@ -87,6 +88,10 @@ function setInfoProduct(infoCadaUno,nameNodo){
 
 	//return optionSize;
 	 
+}
+function sizeProduct(){
+	let size=document.getElementById('size');
+	return size.value;
 }
 function setTotalProduct(){
 	let total=document.getElementById("total");
@@ -141,7 +146,7 @@ function newObje(){
 	let valuePriceProduct=setTotalProduct();
 	let newObjeto={
 		id:objetoProducto.id,
-		//size:setInfoProduct(),
+		size:sizeProduct(),
 		imagen:mainImg.src,
 		name:objetoProducto.name,
 		price:valuePriceProduct[0],
