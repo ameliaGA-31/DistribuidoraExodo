@@ -31,8 +31,9 @@
     max-height: 70vh;
 }
 #cajaImg img{
-  width: 100%;
+  min-width: 220px;
   height: 200px;
+  margin-left: 15px;
 }
 #cajaImg{
   width: 25%;
@@ -207,10 +208,6 @@ body{
   position: relative;
   width: 30%;
   height: 100%;
-}
-.imgCar{
-  margin-left: 15px;
-  width:215px;
 }
 .imgProduct{
     margin-top: 10px auto;
@@ -512,7 +509,7 @@ body{
 }
 
 @media (min-width: 320px) and (max-width: 900px){
-  #contMayor,header,#carouzel,.contUbicacion,footer,#cajaList{
+  #contMayor,header,#carouzel,.contUbicacion,footer,#cajaList,#Bienvenida{
     width: 100%;
   }
   .logo{
@@ -618,11 +615,21 @@ body{
     display: none;
   }
   #cajaImg img {
-    width: 80%;
+    width: 100%;
     height: 130px;
+    min-width: 150px;
   }
-  #info, .calcCompra {
+  #info, .calcCompra,#cajaImg {
     width: 30%;
+    text-align: center;
   }
-
+  #cajaList .row {
+    text-align: center;
+    
+    margin: 10px auto;
+    padding: 5px 5px;
+  }
+  #cajaImg{
+    width: 35%;
+  }
 }
