@@ -93,7 +93,8 @@ function sizeProduct(){
 	let sizeOrigi;
 	let size=document.getElementById('size');
 	let information=document.getElementById('information');
-	return (information.textContent != null ? information.textContent:size.value);
+	console.log(information.textContent,"informationTexC")
+	return (size ? size.value:information.textContent);
 	/*if(information != null){
 		sizeOrigi=information.textContent;	
 	}else{
@@ -106,8 +107,8 @@ function setTotalProduct(){
 	let total=document.getElementById("total");
 	var contador = document.getElementById("valor");
 	let price=document.getElementById("price").textContent;
-
-	total.innerHTML=`<div>$${price.replace('$','')*contador.value}</div>`;
+	let multiplicacion=price.replace('$','')*contador.value;
+	total.innerHTML=`<div>$${multiplicacion.toFixed(2)}</div>`;
 	return [price,total.textContent,contador.value];
 	
 }

@@ -3,12 +3,10 @@ window.onload=initializeCompras();
 
 function initializeCompras(){
 	listaCompras=JSON.parse(sessionStorage.getItem("listCompra"));
-	let listProducts=document.getElementById('cajaList');
-	let listPedidosNodo="";
-	listaCompras.forEach((cadaobj,index)=>{
-		listPedidosNodo+=setDatos(cadaobj,index);
-	});
-	listProducts.innerHTML=listPedidosNodo;
+	setDatosList();
+	setEventElilimarTodo();
+	getFullPrice();
+
 }
 function setDatos(datos,id){
 	console.log(datos,"datos");
@@ -17,7 +15,7 @@ function setDatos(datos,id){
 		`
 	<div id="fila" class="row">
 		<div id="cajaImg">
-			<div id="times${id}"> 
+			<div id="times" onclick="setEventIconElim(${id})"> 
 				<i class="times fas fa-times"></i>
 			</div>
 			<img class="imgCar" src="${datos.imagen}"/>
@@ -30,35 +28,37 @@ function setDatos(datos,id){
 			<div id="calProduct">
 				<p>Cantidad</p>
 				<div class="sumRest">
-					<button id="rest${id}" class="rest"> - </button>
+					<button id="rest${id}" onclick="contadormenos(${id})" class="rest"> - </button>
 					<input id="valor${id}" class="valor" type="text" readonly  name="" value="${datos.cantidad}" class="conteo"/>
-					<button id="sum${id}" class="sum"> + </button>
+					<button id="sum${id}" onclick="contadormas(${id})" class="sum"> + </button>
 				</div>
 			</div>
 			<div id="cajaPrice">
 				<p>Precio unitario</p>
-				<div id="price">${datos.price}</div>
+				<div id="price${id}">${datos.price}</div>
 			</div>
 			<div id="cajatotal">
 				<p>total</p>
-				<div id="total">${datos.total}</div>
+				<div id="total${id}">${datos.total}</div>
 			</div>
 		</div>
     </div>
         `;
-
-	//setEventContador();
-	//setTotalProduct();
-	//getFullPrice();
-	setEventElilimarTodo();
-	setEventIconElim();
 	return listPedidosNodo;
 
+}
+function setDatosList(){
+	let listProducts=document.getElementById('cajaList');
+	let listPedidosNodo="";
+	listaCompras.forEach((cadaobj,index)=>{
+		listPedidosNodo+=setDatos(cadaobj,index);
+	});
+	listProducts.innerHTML=listPedidosNodo;
 }	
-function setTotalProduct(){
-	let total=document.getElementById("total");
-	var contador = document.getElementById("valor");
-	let price=document.getElementById("price").textContent;
+function setTotalProduct(id){
+	let total=document.getElementById(`total${id}`);
+	var contador = document.getElementById(`valor${id}`);
+	let price=document.getElementById(`price${id}`).textContent;
 
 	total.innerHTML=`<div>$${price.replace('$','')*contador.value}</div>`;
 	//console.log("contador",contador.value,"price",price)
@@ -70,29 +70,20 @@ function getFullPrice(){
 	totales.innerText=`${total}`
 	console.log(totales,"contenidoTotal")
 }
-//boton mas y menos de la pag producto
-function setEventContador(){ 
-	var menos=document.getElementById('rest');
-	menos.addEventListener('click',()=>contadormenos());
-	                                                            
-	var mas=document.getElementById('sum');
-	mas.addEventListener('click',()=>contadormas());
-}
-function contadormas(){
-	var contador = document.getElementById("valor");
+function contadormas(id){
+	var contador = document.getElementById(`valor${id}`);
 	contador.value = contador.value ++;
 	contador.value++;
 	//console.log("contadorIni+",contador.value);
-	setTotalProduct();
-	getFullPrice();
+	setTotalProduct(id);
+	
 }
-function contadormenos(){ 
-	var contador = document.getElementById("valor");
+function contadormenos(id){ 
+	var contador = document.getElementById(`valor${id}`);
     if(contador.value>1){
         contador.value = contador.value --; 
         contador.value --;
-        setTotalProduct();
-        getFullPrice();
+        setTotalProduct(id);
     }
 }
 function setEventElilimarTodo(){
@@ -103,16 +94,23 @@ function removeTodo(){
 	//let hijo=document.getElementById()
 	let cajaList=document.getElementById('cajaList');
 	let hijo=document.getElementById('fila');
-	cajaList.removeChild(hijo);
+	cajaList.innerHTML=`<p>Aun no hay producto a tu carrito</p>`;
+	listaCompras=[];
+	let listaenCero=JSON.stringify(listaCompras);
+	sessionStorage.setItem("listCompra",listaenCero);
+	//cajaList.removeChild(hijo);
 	//console.log(cajaList,'cajaList')
 	//return cajaList
 }
-function setEventIconElim(){
-	let elimRom=document.getElementById('times');
-	elimRom.addEventListener('click',()=>removeFila());
+function setEventIconElim(id){
+	//elimine del arreglo de lista
+	listaCompras.splice(id,1);
+	//convertir a string
+	let listaComprasString=JSON.stringify(listaCompras);
+	sessionStorage.setItem("listCompra",listaComprasString);
+	setDatosList();
+	console.log(id,"id",listaCompras,"listaCompras");
+	//let elimRom=document.getElementById('times');
+	//elimRom.addEventListener('click',()=>removeFila());
 }
-function removeFila(){
-	let cajaList=document.getElementById('cajaList');
-	let hijo=document.getElementById('fila');
-	cajaList.removeChild(hijo);
-}
+
