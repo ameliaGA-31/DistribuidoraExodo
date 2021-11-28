@@ -512,7 +512,7 @@ body{
 }
 
 @media (min-width: 320px) and (max-width: 900px){
-  #contMayor,header,#carouzel,.contUbicacion,footer{
+  #contMayor,header,#carouzel,.contUbicacion,footer,#cajaList{
     width: 100%;
   }
   .logo{
@@ -616,6 +616,13 @@ body{
   }
   #modalTrabajo{
     display: none;
+  }
+  #cajaImg img {
+    width: 80%;
+    height: 130px;
+  }
+  #info, .calcCompra {
+    width: 30%;
   }
 
 }
