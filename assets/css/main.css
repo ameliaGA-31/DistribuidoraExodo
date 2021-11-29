@@ -632,4 +632,14 @@ body{
   #cajaImg{
     width: 35%;
   }
+  .li{
+        display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-around;
+  }
+  #subMenu{
+      width: 100%;
+  border-radius: 1.5em;
+  }
 }

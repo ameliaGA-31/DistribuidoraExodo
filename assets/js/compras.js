@@ -65,10 +65,7 @@ function setTotalProduct(id){
 }
 
 function getFullPrice(){
-	let total=document.getElementById("total").textContent;
-	let totales=document.getElementById("totales");
-	totales.innerText=`${total}`
-	console.log(totales,"contenidoTotal")
+	
 }
 function contadormas(id){
 	var contador = document.getElementById(`valor${id}`);
