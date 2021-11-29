@@ -585,13 +585,16 @@ body{
       width: 100%;
   }
   .visor{
-  max-height: 300px;
+    /* max-height: 300px; */
     width: 60%;
     margin: 0px auto;
     /* display: flex; */
     position: relative;
     left: 0px;
     margin-top: 35px;
+    /* height: 150px; */
+    min-height: 200px;
+    height: 250px;
   }
   #mainImg{
     margin: 0px auto;
@@ -605,7 +608,7 @@ body{
   }
   #nameP{
         width: 100%;
-    margin-bottom: 360px;
+    margin-bottom: 260px;
     text-align: center;
 
   }
