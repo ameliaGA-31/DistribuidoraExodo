@@ -634,6 +634,7 @@ body{
   #cajaImg img {
     height: 70px;
     min-width: 70px;
+    margin-left: 0px;
   }
   #info,#cajaImg {
     width: 30%;
@@ -642,6 +643,7 @@ body{
   .calcCompra{
     width: 40%;
     font-size: 1rem;
+    margin: 0px 5px;
   }
   #cajaList .row {
     text-align: center;
