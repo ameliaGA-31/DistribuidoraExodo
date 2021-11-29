@@ -585,12 +585,13 @@ body{
       width: 100%;
   }
   .visor{
-    max-height: 300px;
+  max-height: 300px;
     width: 60%;
     margin: 0px auto;
     /* display: flex; */
     position: relative;
     left: 0px;
+    margin-top: 35px;
   }
   #mainImg{
     margin: 0px auto;
@@ -604,12 +605,16 @@ body{
   }
   #nameP{
         width: 100%;
-    margin-bottom: 380px;
+    margin-bottom: 360px;
     text-align: center;
+
   }
   #cajaProucto{
-    max-height: 450px;
+        /* max-height: 450px; */
     margin-top: 115px;
+    height: 500px;
+    display: flex;
+    flex-direction: row;  
   }
   #modalTrabajo{
     display: none;
