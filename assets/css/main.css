@@ -512,6 +512,15 @@ body{
   #contMayor,header,#carouzel,.contUbicacion,footer,#cajaList,#Bienvenida{
     width: 100%;
   }
+  .rest,.sum{
+    width: 60%;
+  }
+  #calProduct{
+    width: 150px;
+  }
+  #Bienvenida{
+    font-size: 1rem;
+  }
   .logo{
     width:70%;
   }
@@ -623,13 +632,16 @@ body{
     display: none;
   }
   #cajaImg img {
-    width: 100%;
-    height: 130px;
-    min-width: 150px;
+    height: 70px;
+    min-width: 70px;
   }
-  #info, .calcCompra,#cajaImg {
+  #info,#cajaImg {
     width: 30%;
     text-align: center;
+  }
+  .calcCompra{
+    width: 40%;
+    font-size: 1rem;
   }
   #cajaList .row {
     text-align: center;
@@ -649,5 +661,8 @@ body{
   #subMenu{
       width: 100%;
   border-radius: 1.5em;
+  }
+  .times{
+    font-size: 1rem;
   }
 }
