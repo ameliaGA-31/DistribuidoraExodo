@@ -78,3 +78,20 @@ function selectProduct(unProducto,id){
         window.location.href = "producto.html";
 
 }
+
+/*function getOptionCategory(arrObj){
+    let tlapaleria=arrObj.filter(objeto => objeto.category == 'Tlapaleria general');
+    let plomeria=arrObj.filter(objeto => objeto.category == 'Plomeria');
+    let herreria=arrObj.filter(objeto => objeto.category == 'Herreria');
+    let cartones=arrObj.filter(objeto => objeto.category == 'Cartones');
+    let empaques=arrObj.filter(objeto => objeto.category == 'Empeques');
+    let categories={
+        tlapaleria:tlapaleria,
+        plomeria:plomeria,
+        herreria:herreria,
+        cartones:cartones,
+        empaques:empaques
+    }
+    setEventOptions(categories);
+    return "";
+}*/

@@ -18,6 +18,7 @@ function initialize(url){
 		getOptionCategory(dataValue);
 		getAbecedario(dataValue);
 		setEventInputSearch();
+		setEventMenu();
 
 	})
 	.catch(error=>console.log("error:*",error))
@@ -200,7 +201,19 @@ function selectOption(event){
  $(document).ready(function(){
     $('.modal').modal();
   });
-
+function setEventMenu(){
+	let menu=document.getElementById('iconMenu');
+	menu.addEventListener('click',()=>mostrarListMenu(),false);
+}
+function mostrarListMenu(){
+	console.log("funciono evento")
+	let ul=document.getElementById('ulMenu');
+	if(ul){
+		ul.setAttribute('class','hide')
+	}else{
+		ul.removeAttribute('class','hide');
+	}
+}
 
 
 //funcion anonima 
