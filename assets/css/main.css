@@ -5,6 +5,9 @@
   --max-width-input:20rem;
 }
 /*iniciando con estilos personales*/
+#contenedor404{
+  position: absolute;
+}
 .contCompras,.contProduct{
   height: 100vh;
 }
@@ -74,7 +77,7 @@ section1{
   justify-content: space-evenly;
 }
 #cajaPrice p,#information p,#cajaSize p,#cajatotal p{
-  margin-right:10px;
+  margin: 0px 5px; 
 }
 #cajaPrice,#information,#cajaSize,#cajatotal{
   display: flex;
@@ -120,11 +123,16 @@ body{
   align-items: center;
   margin: 5px 0px;
 }
-#title{
+#title,.title{
   font-weight: 500;
     display: flex;
     margin: 10px;
     padding: 2px;
+    
+}
+.title{
+  font-size: 1.2rem;
+    color: white;
 }
 .show{
   display: block;
@@ -259,16 +267,17 @@ body{
     height:300px!important;
     width: 100%;
   }
-#imgProduct{
-  
-}
 #down{
   cursor: pointer;
 }
-#heder{
+#heder,#heder404{
   position: fixed;
   z-index: 99;
   width: 100%;
+}
+#heder404{
+  height: 60px;
+  background: darkgray;
 }
 .enlaces,#cars{
   font-size: 1.5em;
@@ -317,10 +326,31 @@ body{
 #cards{
   width: 100%;
 }
-#footer{
+#footer,#footer404{
     display: flex;
     width: 100%;
     justify-content: space-evenly;
+}
+#footer404{
+  position: fixed;
+  background: darkgray;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  bottom: 0px;
+}
+#sec404{
+      display: flex;
+    align-items: center;
+    margin: 70px 50px 10px;
+    justify-content: space-evenly;
+}
+#sec404 img{
+  width: 50%;
+  border-radius: 5rem;
+}
+#sec404 div{
+  width: 30%;
 }
 #footer span{
       /* width: 40%; */
@@ -341,9 +371,14 @@ body{
 .logo{
   width: 80%;
   display: flex;
+  align-items: center;
 }
 .login{
   width: 60px;
+  border-radius: 1.5em;
+}
+.login404{
+  width: 80px;
   border-radius: 1.5em;
 }
 .icons{
@@ -504,16 +539,16 @@ body{
 .selectContainer{
   display: block;
 }
-.menu,#navMenu{
-  display: none;
-}
 
 @media (min-width: 320px) and (max-width: 900px){
   #contMayor,header,#carouzel,.contUbicacion,footer,#cajaList,#Bienvenida{
     width: 100%;
   }
+  #cajaList{
+    text-transform: capitalize;
+  }
   .rest,.sum{
-    width: 60%;
+    width: 80%;
   }
   #calProduct{
     width: 150px;
@@ -523,13 +558,6 @@ body{
   }
   .logo{
     width:70%;
-  }
-  .menu{
-    display: inline-block;
-    font-size: 2.5rem;
-      display: flex;
-      align-self: center;
-      color: white;
   }
   .buscador{
     width:70%;
@@ -654,17 +682,11 @@ body{
   #cajaImg{
     width: 35%;
   }
-  .li{
-        display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    justify-content: space-around;
+  .sumRest{
+    width: 45%;
   }
-  #subMenu{
-      width: 100%;
-  border-radius: 1.5em;
+  .imgProduct{
+    margin-top: 3px;
   }
-  .times{
-    font-size: 1rem;
-  }
+
 }

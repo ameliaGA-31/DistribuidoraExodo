@@ -5,7 +5,7 @@ function initializeCompras(){
 	listaCompras=JSON.parse(sessionStorage.getItem("listCompra"));
 	setDatosList();
 	setEventElilimarTodo();
-	getFullPrice();
+	//getFullPrice();
 
 }
 function setDatos(datos,id){
@@ -34,7 +34,7 @@ function setDatos(datos,id){
 				</div>
 			</div>
 			<div id="cajaPrice">
-				<p>Precio unitario</p>
+				<p>Precio</p>
 				<div id="price${id}">${datos.price}</div>
 			</div>
 			<div id="cajatotal">
@@ -50,6 +50,7 @@ function setDatos(datos,id){
 function setDatosList(){
 	let listProducts=document.getElementById('cajaList');
 	let listPedidosNodo="";
+	console.log("lista",listaCompras)
 	listaCompras.forEach((cadaobj,index)=>{
 		listPedidosNodo+=setDatos(cadaobj,index);
 	});
@@ -59,13 +60,15 @@ function setTotalProduct(id){
 	let total=document.getElementById(`total${id}`);
 	var contador = document.getElementById(`valor${id}`);
 	let price=document.getElementById(`price${id}`).textContent;
-
-	total.innerHTML=`<div>$${price.replace('$','')*contador.value}</div>`;
-	//console.log("contador",contador.value,"price",price)
+	let operacion=price.replace('$','')*contador.value;
+	total.innerHTML=`<div>$${operacion.toFixed(2)}</div>`;
+	let calculo=operacion.toFixed(2);
+	//console.log(calculo,"etiqueTotal",id,"id")
+	//getFullPrice(calculo,id);
 }
 
-function getFullPrice(){
-	
+function getFullPrice(calc,id){
+
 }
 function contadormas(id){
 	var contador = document.getElementById(`valor${id}`);
