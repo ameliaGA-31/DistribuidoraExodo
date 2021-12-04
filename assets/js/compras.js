@@ -5,7 +5,7 @@ function initializeCompras(){
 	listaCompras=JSON.parse(sessionStorage.getItem("listCompra"));
 	setDatosList();
 	setEventElilimarTodo();
-	//getFullPrice();
+	getFullPrice();
 
 }
 function setDatos(datos,id){
@@ -67,8 +67,9 @@ function setTotalProduct(id){
 	//getFullPrice(calculo,id);
 }
 
-function getFullPrice(calc,id){
-
+function getFullPrice(){
+	let transfrom=JSON.parse(listaCompras[0])
+	console.log(transfrom.total,"transfrom")
 }
 function contadormas(id){
 	var contador = document.getElementById(`valor${id}`);

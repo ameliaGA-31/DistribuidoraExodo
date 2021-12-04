@@ -545,22 +545,13 @@ body{
 .selectContainer{
   display: block;
 }
-.iconMenu{
-  display: none;
-}
-.ulMenu{
-  display: none;
-}
+
+
 @media (min-width: 320px) and (max-width: 900px){
   #contMayor,header,#carouzel,.contUbicacion,footer,#cajaList,#Bienvenida{
     width: 100%;
   }
-  .ulMenu{
-    display: block;
-  }
-  .iconMenu{
-    display: block;
-  }
+
   #cajaList{
     text-transform: capitalize;
   }

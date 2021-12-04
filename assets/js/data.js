@@ -18,7 +18,7 @@ function initialize(url){
 		getOptionCategory(dataValue);
 		getAbecedario(dataValue);
 		setEventInputSearch();
-		setEventMenu();
+		//setEventMenu();
 
 	})
 	.catch(error=>console.log("error:*",error))
@@ -201,18 +201,20 @@ function selectOption(event){
  $(document).ready(function(){
     $('.modal').modal();
   });
-function setEventMenu(){
+/*function setEventMenu(){
 	let menu=document.getElementById('iconMenu');
 	menu.addEventListener('click',()=>mostrarListMenu(),false);
-}
+}*/
 function mostrarListMenu(){
-	console.log("funciono evento")
-	let ul=document.getElementById('ulMenu');
-	if(ul){
-		ul.setAttribute('class','hide')
+	let ul=document.getElementById('ulMenu').classList;
+	if(ul.contains('show')){
+		ul.add('hide');
+		ul.remove('show')
 	}else{
-		ul.removeAttribute('class','hide');
+		ul.add('show');
+		ul.remove('hide');
 	}
+	console.log(ul,"funciono evento")
 }
 
 
