@@ -62,24 +62,31 @@ function setTotalProduct(id){
 	let price=document.getElementById(`price${id}`).textContent;
 	let operacion=price.replace('$','')*contador.value;
 	total.innerHTML=`<div>$${operacion.toFixed(2)}</div>`;
-	let calculo=operacion.toFixed(2);
+	upDateListaCompras(id,total.textContent,contador.value);
 	//console.log(calculo,"etiqueTotal",id,"id")
 	//getFullPrice(calculo,id);
 }
+function upDateListaCompras(id,total,cantidad){
+	let objeto=JSON.parse(listaCompras[id]);
+	objeto.total=total;
+	objeto.cantidad=cantidad;
+	listaCompras[id]=JSON.stringify(objeto);
+	//console.log(total,cantidad,"total y cantidad",listaModificada,"lista");
+	setItemSession();
+
+}
 
 function getFullPrice(){
-	let arr;
+	let sumTotal;
 	let totales=[];
 	let unObj;
 	listaCompras.forEach(cadaobje=>{
 		unObj=JSON.parse(cadaobje);
 		totales.push(Number(unObj.total.replace('$',' ')));
-		
 	});
-	console.log(totales,"totales")
-	/*
-	let transfrom=JSON.parse(listaCompras)
-	console.log(transfrom.total,"transfrom")*/
+	sumTotal=totales.reduce((x,y)=> x + y);
+	document.getElementById('totales').innerText=sumTotal;
+	console.log(totales,"totales",sumTotal,"sumTotal",listaCompras,"lista3")
 }
 function contadormas(id){
 	var contador = document.getElementById(`valor${id}`);
@@ -87,6 +94,7 @@ function contadormas(id){
 	contador.value++;
 	//console.log("contadorIni+",contador.value);
 	setTotalProduct(id);
+	
 	
 }
 function contadormenos(id){ 
@@ -117,11 +125,17 @@ function setEventIconElim(id){
 	//elimine del arreglo de lista
 	listaCompras.splice(id,1);
 	//convertir a string
-	let listaComprasString=JSON.stringify(listaCompras);
-	sessionStorage.setItem("listCompra",listaComprasString);
+	setItemSession();
 	setDatosList();
-	console.log(id,"id",listaCompras,"listaCompras");
+	//console.log(id,"id",listaCompras,"listaCompras");
 	//let elimRom=document.getElementById('times');
 	//elimRom.addEventListener('click',()=>removeFila());
+}
+function setItemSession(){
+	let listaComprasString=JSON.stringify(listaCompras);
+	sessionStorage.setItem("listCompra",listaComprasString);
+	//console.log(listaCompras,"listaCom")
+	getFullPrice();
+
 }
 
