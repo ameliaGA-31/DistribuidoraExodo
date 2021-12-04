@@ -18,7 +18,7 @@ function initialize(url){
 		getOptionCategory(dataValue);
 		getAbecedario(dataValue);
 		setEventInputSearch();
-		//setEventMenu();
+		//setEventLi();
 
 	})
 	.catch(error=>console.log("error:*",error))
@@ -215,6 +215,26 @@ function mostrarListMenu(){
 		ul.remove('hide');
 	}
 	console.log(ul,"funciono evento")
+	setEventLi()
+
+}
+function setEventLi(){
+	let li=Array.from(document.getElementsByClassName("lis"));
+	li.forEach((elemento) => elemento.addEventListener("click",()=>categorySelect(elemento.textContent),false));
+}
+
+//TODO: next page catalogo.html --> LISTO YA ESTA ENLAZADA
+//opcion seleccionadapor el menu de hamburgesa enlsazsando a Session Strorage
+function categorySelect(opcion){
+	
+	let liCategory=dataValue.filter(obje=> obje.category == opcion);
+	console.log(opcion,"option",liCategory,"liCategory");
+	let categoryFound=liCategory;
+
+	let lisCategory=JSON.stringify(categoryFound);
+	sessionStorage.setItem("categorysFound",lisCategory);
+	window.location.href="catalogo.html";
+
 }
 
 
