@@ -68,8 +68,18 @@ function setTotalProduct(id){
 }
 
 function getFullPrice(){
-	let transfrom=JSON.parse(listaCompras[0])
-	console.log(transfrom.total,"transfrom")
+	let arr;
+	let totales=[];
+	let unObj;
+	listaCompras.forEach(cadaobje=>{
+		unObj=JSON.parse(cadaobje);
+		totales.push(Number(unObj.total.replace('$',' ')));
+		
+	});
+	console.log(totales,"totales")
+	/*
+	let transfrom=JSON.parse(listaCompras)
+	console.log(transfrom.total,"transfrom")*/
 }
 function contadormas(id){
 	var contador = document.getElementById(`valor${id}`);
