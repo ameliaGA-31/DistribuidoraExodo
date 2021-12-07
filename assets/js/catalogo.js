@@ -7,23 +7,26 @@ function initializeCatalogo(){
     let dataVal=sessionStorage.getItem("valorData");
     let dataReturn=JSON.parse(dataVal);
     let elemento;
-        
-    if('sessionStorage' in window && window['sessionStorage'] !== null && sessionStorage.getItem("productsFound") !== null){
-        let letterSearch=dataReturn.map(cadaObjeto=> cadaObjeto.name[0]);
+
+//.toLowerCase()
+    let letterSearch=dataReturn.map(cadaObjeto=> cadaObjeto.name[0]);
         let initialLetter=listaProducts.filter(obj=> letterSearch.indexOf(obj.name[0]) != -1);
         elemento=initialLetter.map(elemento=> elemento);
+        
+    if('sessionStorage' in window && window['sessionStorage'] !== null && sessionStorage.getItem("productsFound") !== null){
         getcatalogoProductos(elemento);    
     }else{
-            elemento=dataReturn.filter(obje=> obje.name.indexOf('c') != -1);
-            getcatalogoProductos(elemento);
+            let carga=dataReturn.filter(obje=> obje.name.indexOf('c') != -1);
+            getcatalogoProductos(carga);
             //por defaut deje todos 
-    }  
+    } 
+     
 }
 
 //en las col s3 cuando solo entre un producto no se logra acomodar y se tendria que desabilitar de materialize las cols3 para que creesca
 //pregunta para ver si asi lo dejo o entraria en condicional para que se acomode a uno o mas???
 function getcatalogoProductos(cadaProducto){
-	console.log("cadaProductoesArray",cadaProducto);
+	//console.log("cadaProductoesArray",cadaProducto);
 	const contenedor=document.getElementById('contenedor');
 
     let nameProductoNodo='';
@@ -40,7 +43,7 @@ function getcatalogoProductos(cadaProducto){
     	}else{
     		precioxProduct=porUnObj.price[0];
     	};
-        console.log("precio",precioxProduct);
+        //console.log("precio",precioxProduct);<li id="${product.id}" class="item">${product.name.charAt(0).toUpperCase()+ product.name.slice(1)}</li>).join("");
         nameProductoNodo += 
 
 	`
@@ -48,7 +51,7 @@ function getcatalogoProductos(cadaProducto){
 			<div onclick="selectProduct('${porUnObj.name}','${porUnObj.id}', this)">
 				<div class="card card horizontal">
 					<div id="imgs" class="card-image">
-						<img class="img" src="${urlxImg}" alt="img-${porUnObj.name}"/>
+						<img class="img" src="${urlxImg}" alt="img-${porUnObj.name.charAt(0).toUpperCase()+ porUnObj.name.slice(1)}"/>.join("")                        
 					</div>
 					<div  class="card-stacked">
 						<div class="card-content">
@@ -78,20 +81,3 @@ function selectProduct(unProducto,id){
         window.location.href = "producto.html";
 
 }
-
-/*function getOptionCategory(arrObj){
-    let tlapaleria=arrObj.filter(objeto => objeto.category == 'Tlapaleria general');
-    let plomeria=arrObj.filter(objeto => objeto.category == 'Plomeria');
-    let herreria=arrObj.filter(objeto => objeto.category == 'Herreria');
-    let cartones=arrObj.filter(objeto => objeto.category == 'Cartones');
-    let empaques=arrObj.filter(objeto => objeto.category == 'Empeques');
-    let categories={
-        tlapaleria:tlapaleria,
-        plomeria:plomeria,
-        herreria:herreria,
-        cartones:cartones,
-        empaques:empaques
-    }
-    setEventOptions(categories);
-    return "";
-}*/

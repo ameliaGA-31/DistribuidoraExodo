@@ -9,7 +9,7 @@ function initializeCompras(){
 
 }
 function setDatos(datos,id){
-	console.log(datos,"datos");
+	//console.log(datos,"datos");
 	datos=JSON.parse(datos);
 	let listPedidosNodo=
 		`
@@ -50,7 +50,7 @@ function setDatos(datos,id){
 function setDatosList(){
 	let listProducts=document.getElementById('cajaList');
 	let listPedidosNodo="";
-	console.log("lista",listaCompras)
+	//console.log("lista",listaCompras)
 	listaCompras.forEach((cadaobj,index)=>{
 		listPedidosNodo+=setDatos(cadaobj,index);
 	});
@@ -63,23 +63,35 @@ function setTotalProduct(id){
 	let operacion=price.replace('$','')*contador.value;
 	total.innerHTML=`<div>$${operacion.toFixed(2)}</div>`;
 	let calculo=operacion.toFixed(2);
+	upDateListaCompras(id,total.textContent,contador.value);
 	//console.log(calculo,"etiqueTotal",id,"id")
 	//getFullPrice(calculo,id);
+}
+function upDateListaCompras(id,total,cantidad){
+	let objeto=JSON.parse(listaCompras[id]);
+	objeto.total=total;
+	objeto.cantidad=cantidad;
+	listaCompras[id]=JSON.stringify(objeto);
+	//console.log(total,cantidad,"total y cantidad",listaModificada,"lista");
+	setItemSession();
+
 }
 
 function getFullPrice(){
 	let arr;
+	let sumTotal;
 	let totales=[];
 	let unObj;
 	listaCompras.forEach(cadaobje=>{
 		unObj=JSON.parse(cadaobje);
 		totales.push(Number(unObj.total.replace('$',' ')));
-		
+
 	});
 	console.log(totales,"totales")
-	/*
-	let transfrom=JSON.parse(listaCompras)
-	console.log(transfrom.total,"transfrom")*/
+
+	sumTotal=totales.reduce((x,y)=> x + y);
+	document.getElementById('totales').innerText=sumTotal;
+	//console.log(totales,"totales",sumTotal,"sumTotal",listaCompras,"lista3")
 }
 function contadormas(id){
 	var contador = document.getElementById(`valor${id}`);
@@ -119,9 +131,18 @@ function setEventIconElim(id){
 	//convertir a string
 	let listaComprasString=JSON.stringify(listaCompras);
 	sessionStorage.setItem("listCompra",listaComprasString);
+	setItemSession();
 	setDatosList();
 	console.log(id,"id",listaCompras,"listaCompras");
+	//console.log(id,"id",listaCompras,"listaCompras");
 	//let elimRom=document.getElementById('times');
 	//elimRom.addEventListener('click',()=>removeFila());
+}
+function setItemSession(){
+	let listaComprasString=JSON.stringify(listaCompras);
+	sessionStorage.setItem("listCompra",listaComprasString);
+	//console.log(listaCompras,"listaCom")
+	getFullPrice();
+
 }
 

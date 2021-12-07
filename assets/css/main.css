@@ -282,7 +282,7 @@ body{
 #heder404 strong{
   color: white;
 }
-.enlaces,#cars{
+#cars{
   font-size: 1.5em;
   margin-right: 10px;
 }
@@ -302,7 +302,9 @@ body{
     color: brown;
 }
 #map{
-  color: brown;
+  color: goldenrod;
+  padding: 5px;
+  margin: 0px;
 }
 #listDom{
   list-style: circle;
@@ -358,9 +360,7 @@ body{
   width: 30%;
 }
 #footer span{
-      /* width: 40%; */
-    text-align: right;
-    margin: 0px 10px;
+  margin: 3px 0px 25px;
 }
 .is-preload{
   display: flex;
@@ -370,7 +370,6 @@ body{
   display: flex;
   box-sizing: border-box;
   padding: 2px 5px;
-  margin: 5px 5px 0px;
   background:white;
 }
 .logo{
@@ -388,7 +387,7 @@ body{
   border-radius: 1.5em;
 }
 .icons{
-  width: 20%;
+  width: 50%;
   display: flex;
   align-self: center;
   justify-content: space-between;
@@ -407,7 +406,7 @@ body{
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
-  max-height: 100px;
+  max-height: 110px;
 }
 .main{
   width: 70%;
@@ -545,13 +544,59 @@ body{
 .selectContainer{
   display: block;
 }
-
+.icons .fas,.icons .fab{
+  width: 2.5rem;
+  padding: 6px;
+  height: 36px;
+}
+#iconMenu{
+  display: none;
+}
 
 @media (min-width: 320px) and (max-width: 900px){
   #contMayor,header,#carouzel,.contUbicacion,footer,#cajaList,#Bienvenida{
     width: 100%;
   }
-
+  .iconFooter{
+    display: none;
+  }
+  #iconMenu{
+    display: block;
+    color: white;
+    width: 36px;
+    height: 36px;
+  }
+  #ulMenu{
+    background: brown;
+    box-sizing: border-box;
+    color: white;
+  }
+  .lis{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+  }
+  .liBotton{
+    display: flex;
+    /* width: 60px; */
+    height: 30px;
+    margin: 5px 5px 10px;
+    padding: 3px;
+    width: 100%;
+    justify-content: center;
+  }
+  .liBotton button{
+    width: 60px;
+  }
+  #ulMenu a{
+    width: 90%;
+  }
+  /*#ulMenu .lis .fas{
+    color: white;
+    width: 25px;
+    height: 20px;
+  }*/
   #cajaList{
     text-transform: capitalize;
   }
@@ -565,7 +610,12 @@ body{
     font-size: 1rem;
   }
   .logo{
-    width:70%;
+    width:50%;
+    margin-left: 0px;
+    margin-right: 20px;
+  }
+  .title{
+    margin: 3px 2px;
   }
   .buscador{
     width:70%;
@@ -605,8 +655,8 @@ body{
       height: 90%;
   }
   #carousel{
-    margin-top: 80px;
-    max-height: 300px;
+    margin-top: 110px;
+    max-height: 260px;
   }
   #footer{
       display: flex;
@@ -658,8 +708,7 @@ body{
 
   }
   #cajaProucto{
-        /* max-height: 450px; */
-    margin-top: 115px;
+    margin-top: 130px;
     height: 500px;
     display: flex;
     flex-direction: row;  

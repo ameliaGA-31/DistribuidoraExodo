@@ -229,10 +229,10 @@ function categorySelect(opcion){
 	
 	let liCategory=dataValue.filter(obje=> obje.category == opcion);
 	console.log(opcion,"option",liCategory,"liCategory");
-	let categoryFound=liCategory;
+	//let categoryFound=liCategory;
 
-	let lisCategory=JSON.stringify(categoryFound);
-	sessionStorage.setItem("categorysFound",lisCategory);
+	let lisCategory=JSON.stringify(liCategory);
+	sessionStorage.setItem("productsFound",lisCategory);
 	window.location.href="catalogo.html";
 
 }

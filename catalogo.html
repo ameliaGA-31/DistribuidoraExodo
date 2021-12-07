@@ -34,12 +34,23 @@
 								<ul id="list"></ul>
 							</div>
 						</div>
-						<i class="menu fas fa-bars"></i>
+						<div id="iconMenu"><i onclick="mostrarListMenu()" class="menu fas fa-bars"></i></div>
+						<ul id="ulMenu" class="ulMenu hide">
+							<li class="lis"><a  href="#">Tlapaleria general</a><i class="fas fa-angle-right"></i></li>
+							<li class="lis"><a href="#">Plomeria</a><i class="fas fa-angle-right"></i></li>
+							<li class="lis"><a href="#">Herreria</a><i class="fas fa-angle-right"></i></li>
+							<li class="lis"><a href="#">Cartones</a><i class="fas fa-angle-right"></i></li>
+							<li class="lis"><a href="#">Empaques</a><i class="fas fa-angle-right"></i></li>
+							<li class="liBotton"><button onclick="mostrarListMenu()">cerrar</button></li>
+						</ul>
 					<ul id="abecedario"></ul>
 					</div>
 				</nav>
 			</header>
 			<div id="contenedor"></div>
+			<footer>
+				<div id="footerCatalog"></div>
+			</footer>
 
 		<!-- Scripts -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
