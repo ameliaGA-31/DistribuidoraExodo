@@ -51,7 +51,7 @@ function getcatalogoProductos(cadaProducto){
 			<div onclick="selectProduct('${porUnObj.name}','${porUnObj.id}', this)">
 				<div class="card card horizontal">
 					<div id="imgs" class="card-image">
-						<img class="img" src="${urlxImg}" alt="img-${porUnObj.name.charAt(0).toUpperCase()+ porUnObj.name.slice(1)}"/>.join("")                        
+						<img class="img" src="${urlxImg}" alt="img-${porUnObj.name.charAt(0).toUpperCase()+ porUnObj.name.slice(1)}/>                        
 					</div>
 					<div  class="card-stacked">
 						<div class="card-content">
@@ -63,9 +63,9 @@ function getcatalogoProductos(cadaProducto){
 			</div>
 		</div>
         `;
-
+console.log(porUnObj.name.charAt(0).toUpperCase()+ porUnObj.name.slice(1),"");
     });
-    contenedor.innerHTML=`<div class="row">${nameProductoNodo}</div>`;
+    contenedor.innerHTML=`<div class="row contNodo">${nameProductoNodo}</div>`;
     //return nameProductoNodo;
 
 }

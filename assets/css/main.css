@@ -80,9 +80,10 @@ section1{
   margin: 0px 5px; 
 }
 #cajaPrice,#information,#cajaSize,#cajatotal{
-  display: flex;
-  align-items: center;
-  max-height: 40px;
+ display: flex;
+    align-items: center;
+    max-height: 40px;
+    width: 100%;
 }
 .cardContent{
   width: 50%;
@@ -118,7 +119,6 @@ body{
 }
 #calProduct{
   display: flex;
-  justify-content: space-evenly;
   height: 30px;
   align-items: center;
   margin: 5px 0px;
@@ -167,22 +167,26 @@ body{
 
 }*/
 .sumRest{
-    height: 100%;
+    max-height: 40px;
     border: 1px solid;
-    width: 40%;
-    padding: 2px;
+    width: 60%;
+    /* padding: 2px; */
     display: flex;
-    align-items: center;}
-
+    align-items: center;
+    justify-content: space-around;
+}
+.sumRest #valor{
+  width: 30px;
+}
 .contDatos{
-  width: 25%;
-  position: absolute;
-  border: 1px solid;
-  display: flex;
-  flex-direction: column;
-  right: 8%;
-  margin: 0px 15px;
-  align-items: center;
+    width: 25%;
+    position: absolute;
+    /* border: 1px solid; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    right: 8%;
+    margin: 0px 15px;
+        text-align: center;
 
 }
 .urls{
@@ -387,7 +391,7 @@ body{
   border-radius: 1.5em;
 }
 .icons{
-  width: 50%;
+  width: 40%;
   display: flex;
   align-self: center;
   justify-content: space-between;
@@ -552,6 +556,11 @@ body{
 #iconMenu{
   display: none;
 }
+.contNodo{
+    width: 80%;
+    border-bottom: #ee6e73 5px double;
+    
+}
 
 @media (min-width: 320px) and (max-width: 900px){
   #contMayor,header,#carouzel,.contUbicacion,footer,#cajaList,#Bienvenida{
@@ -592,16 +601,14 @@ body{
   #ulMenu a{
     width: 90%;
   }
-  /*#ulMenu .lis .fas{
-    color: white;
-    width: 25px;
-    height: 20px;
-  }*/
   #cajaList{
     text-transform: capitalize;
   }
   .rest,.sum{
-    width: 80%;
+    width: 25px;
+    height: 25px;
+    /* padding: 6px; */
+    font-size: 1.2rem;
   }
   #calProduct{
     width: 150px;
@@ -663,10 +670,15 @@ body{
       flex-direction: column;
       align-items: center;
   }
-  #footer.footerProduct{
+  #footer,#footerProduct{
     flex-direction: column-reverse;
         position: fixed;
     bottom: 0px;
+  }
+  #footerProduct{
+    position: absolute;
+    margin: 10px 0px 20px;
+    text-align: center;
   }
   .card{
     display: flex;
@@ -695,9 +707,9 @@ body{
     margin: 0px auto;
   }
   .contDatos{
-    width: 70%;
+   width: 80%;
     height: 450px;
-    left: 15%;
+    /* left: 15%; */
     align-items: center;
     border: 0px;
   }
@@ -740,7 +752,13 @@ body{
     width: 35%;
   }
   .sumRest{
-    width: 45%;
+    width: 100%;
+    min-height: 30px;
+    height: 30px;
+  }
+  .añadir{
+    width: 50%;
+    margin: 5px auto;
   }
   .imgProduct{
     margin-top: 3px;

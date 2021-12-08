@@ -52,55 +52,62 @@
 		            <div id="listImg"></div>
 		            <div id="mainImg"></div>
 	          	</div>
-	          	<div class="contDatos" id="contDatos">
-		          	<div id="nameP"></div>
-		          	<div id="cajaSize">
-			          	<p>Tamaño</p>
-		          		<div id="information"></div>
-	          		</div>
-	          		<div id="cajaPrice">
-		          		<p>Precio</p>
-		          		<div id="price"></div>
-	          		</div>
-	          		<div id="cajatotal">
-		          		<p>total</p>
-		          		<div id="total"></div>
-	          		</div>
-		          	<div id="calProduct">
-		          		<p>Cantidad</p>
-			          	<div class="sumRest">
-		          			<button id="rest" class="rest"> - </button>
-		          			<input id="valor" type="text" readonly  name="" value="1" class="conteo"/>
-		          			<button id="sum" class="sum"> + </button>
-		          		</div>
-		          	</div>
-		          	<button id="agregarCar" class="añadir">Añadir al carrito</button>	
-	          	</div>
-	        </div>
-			<footer id="footer" class="footerProduct">
-			<!-- Modal Trigger -->
-				<div id="modalTrabajo">
-					<a class="waves-effect waves-light btn modal-trigger" href="#modal1">¿Buscas Trabajo?</a>
 
-					  <!-- Modal Structure -->
-					<div id="modal1" class="modal">
-					    <div class="modal-content">
-					      <h4>Modal Header</h4>
-					      <p>A bunch of text</p>
-					    </div>
-					    <div class="modal-footer">
-					      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
-					    </div>
-					</div>
+	          	<div class="contDatos" id="contDatos">
+	          	<div id="nameP"></div>
+		          	<table>
+						<tr>
+							<th><div id="cajaSize">
+				          	<p>Tamaño</p></div></th>
+							<td><div id="information"></div></td>
+						</tr>
+						<tr>
+							<th><div id="cajaPrice">
+			          		<p>Precio</p></div></th>
+							<td><div id="price"></div></td>
+						</tr>
+						<tr>
+							<th><div id="calProduct">
+			          		<p>Cantidad</p></div></th>
+							<td><div class="sumRest">
+			          			<button id="rest" class="rest"> - </button>
+			          			<input id="valor" type="text" readonly  name="" value="1" class="conteo"/>
+			          			<button id="sum" class="sum"> + </button>
+			          		</div></td>
+						</tr>
+						<tr>
+							<th><div id="cajatotal">
+		          		<p>total</p></div></th>
+							<td><div id="total"></div></td>
+						</tr>
+					</table>
+					<button id="agregarCar" class="añadir">Añadir al carrito</button>
+		    	</div>
+		    </div>  
+			<footer id="footerProduct">
+			<!-- Modal Trigger -->
+			<div id="modalTrabajo">
+				<a class="waves-effect waves-light btn modal-trigger" href="#modal1">¿Buscas Trabajo?</a>
+
+			  <!-- Modal Structure -->
+				<div id="modal1" class="modal">
+				    <div class="modal-content">
+				      <h4>Modal Header</h4>
+				      <p>A bunch of text</p>
+				    </div>
+				    <div class="modal-footer">
+				      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+				    </div>
 				</div>
+			</div>
 				<span>Mantente comunicado para dudas y pedidos.</span>
-				<div class="iconFooter">	
-						<a id="enlaces" href="#"><i class="fas fa-cart-plus"></i></a>
-						<a id="enlaces" href="#"><i class="fab fa-whatsapp"></i></a>
-						<a id="enlaces" href="#"><i class="fab fa-facebook"></i></a>
-						<a id="enlaces" href="#"><i class="fas fa-envelope"></i></a>	
-				</div>
-			</footer>
+			<div class="iconFooter">	
+				<a id="enlaces" href="#"><i class="fas fa-cart-plus"></i></a>
+				<a id="enlaces" href="#"><i class="fab fa-whatsapp"></i></a>
+				<a id="enlaces" href="#"><i class="fab fa-facebook"></i></a>
+				<a id="enlaces" href="#"><i class="fas fa-envelope"></i></a>	
+			</div>
+		</footer>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
