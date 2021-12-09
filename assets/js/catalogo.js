@@ -5,6 +5,7 @@ function initializeCatalogo(){
     let listaProducts=JSON.parse(listSearch);
 
     let dataVal=sessionStorage.getItem("valorData");
+    console.log(dataVal,"dataVal")
     let dataReturn=JSON.parse(dataVal);
     let elemento;
 
@@ -26,7 +27,7 @@ function initializeCatalogo(){
 //en las col s3 cuando solo entre un producto no se logra acomodar y se tendria que desabilitar de materialize las cols3 para que creesca
 //pregunta para ver si asi lo dejo o entraria en condicional para que se acomode a uno o mas???
 function getcatalogoProductos(cadaProducto){
-	//console.log("cadaProductoesArray",cadaProducto);
+	console.log("cadaProductoesArray",cadaProducto);
 	const contenedor=document.getElementById('contenedor');
 
     let nameProductoNodo='';
@@ -51,11 +52,11 @@ function getcatalogoProductos(cadaProducto){
 			<div onclick="selectProduct('${porUnObj.name}','${porUnObj.id}', this)">
 				<div class="card card horizontal">
 					<div id="imgs" class="card-image">
-						<img class="img" src="${urlxImg}" alt="img-${porUnObj.name.charAt(0).toUpperCase()+ porUnObj.name.slice(1)}/>                        
+						<img class="img imgC" src="${urlxImg}" alt="img-${porUnObj.name}/>                        
 					</div>
 					<div  class="card-stacked">
 						<div class="card-content">
-							<p>${porUnObj.name}</p>
+							<p>${porUnObj.name.charAt(0).toUpperCase()+ porUnObj.name.slice(1)}</p>
 							<p>${precioxProduct}</p>
 						</div>
 					</div>

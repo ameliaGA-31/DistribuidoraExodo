@@ -33,7 +33,7 @@ function transformData(data){
 		for (var i=1; i<data.values.length; i++){
 			let objetoPersonal={};
 			propiedadesPrincipales.forEach((propiedad,index)=>{
-				objetoPersonal[propiedad]=valor(data.values[i][index]);
+				objetoPersonal[propiedad]=valor(data.values[i][index],propiedad);
 			});
 			////console.log("price",objetoPersonal.category);
 			arrays.push(objetoPersonal);
@@ -44,7 +44,7 @@ function transformData(data){
 }
 
 //le doy el valor qiutando caracteres
-function valor(value){
+function valor(value,propiedad){
 	if(value){ 
 		if(value.indexOf('*') !== -1){
 			return value.split('*').filter(element => element != "").map(val => val.trim());
@@ -52,6 +52,9 @@ function valor(value){
 		if(value.indexOf(',') !== -1){
 			return value.split(',').filter(element => element != "").map(val => val.trim());
 		}
+	}
+	if(propiedad == 'name'){
+		return value.toLowerCase();
 	}
 	////console.log("valoresdePropiedades",value)
 	return value;

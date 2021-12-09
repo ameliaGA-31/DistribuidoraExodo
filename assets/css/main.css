@@ -381,6 +381,7 @@ body{
   display: flex;
   align-items: center;
   margin-left: 20px;
+  font-size: 1.3em;
 }
 .login{
   width: 60px;
@@ -390,6 +391,13 @@ body{
   width: 80px;
   border-radius: 1.5em;
 }
+#footerProduct{
+  display: flex;
+  justify-content: space-around;
+}
+#footerProduct span{
+    margin-top: 20px;
+  }
 .icons{
   width: 40%;
   display: flex;
@@ -548,20 +556,17 @@ body{
 .selectContainer{
   display: block;
 }
-.icons .fas,.icons .fab{
-  width: 2.5rem;
+.icons span, .iconFooter span{
+  font-size: 1.5em;
   padding: 6px;
-  height: 36px;
 }
 #iconMenu{
   display: none;
 }
 .contNodo{
     width: 80%;
-    border-bottom: #ee6e73 5px double;
-    
+    border-bottom: #ee6e73 5px double;   
 }
-
 @media (min-width: 320px) and (max-width: 900px){
   #contMayor,header,#carouzel,.contUbicacion,footer,#cajaList,#Bienvenida{
     width: 100%;
@@ -641,12 +646,12 @@ body{
       box-sizing: border-box;
       flex-direction: column;
   }
-  #card-horizontal {
+  /*#card-horizontal {
       box-sizing: border-box;
       padding: 1em;
       margin: 1em;
       flex-direction: column;
-  }
+  }*/
   .mapouter {
       width: 80%;
       align-self: center;
@@ -684,13 +689,13 @@ body{
     display: flex;
     flex-direction: column;
   }
-  #imgs{
+/*#imgs{
       max-width: 100%; 
   }
   #imgs .img{
         max-height: 200px;
       width: 100%;
-  }
+  }*/
   .visor{
     /* max-height: 300px; */
     width: 60%;

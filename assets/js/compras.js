@@ -21,26 +21,28 @@ function setDatos(datos,id){
 			<img class="imgCar" src="${datos.imagen}"/>
 		</div>
 		<div id="info">
-			<div id="name">${datos.name}</div>
-			<div id="tamaño">${datos.size}</div>
+			<div id="name">${datos.name.charAt(0).toUpperCase()+ datos.name.slice(1)}</div>
+			<div id="tamaño">${datos.size.charAt(0).toUpperCase()+ datos.size.slice(1)}</div>
 		</div>
 		<div class="calcCompra">
-			<div id="calProduct">
-				<p>Cantidad</p>
-				<div class="sumRest">
+			<table>
+				<tr>
+					<th><div id="cajaPrice"><p>Precio</p></div></th>
+					<td><div id="price${id}">${datos.price}</div></td>
+				</tr>
+				<tr>
+					<th><div id="calProduct"><p>Cantidad</p></div></th>
+					<td><div class="sumRest">
 					<button id="rest${id}" onclick="contadormenos(${id})" class="rest"> - </button>
 					<input id="valor${id}" class="valor" type="text" readonly  name="" value="${datos.cantidad}" class="conteo"/>
 					<button id="sum${id}" onclick="contadormas(${id})" class="sum"> + </button>
-				</div>
-			</div>
-			<div id="cajaPrice">
-				<p>Precio</p>
-				<div id="price${id}">${datos.price}</div>
-			</div>
-			<div id="cajatotal">
-				<p>total</p>
-				<div id="total${id}">${datos.total}</div>
-			</div>
+					</div></td>
+				</tr>
+				<tr>
+					<th><div id="cajatotal"><p>total</p></th>
+					<td><div id="total${id}">${datos.total}</div></td>
+				</tr>
+			</table>
 		</div>
     </div>
         `;
