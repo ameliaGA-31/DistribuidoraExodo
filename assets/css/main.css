@@ -32,6 +32,11 @@
 #cajaList{
     overflow-y: scroll;
     max-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 20px;
 }
 #cajaImg img{
   min-width: 220px;
@@ -47,6 +52,9 @@
 #miCar,#cajTotal,#cajElim{
   display: flex;
   align-items: center;
+}
+#cajElim{
+  cursor: pointer;
 }
 #info,.calcCompra{
   width: 25%;
@@ -128,7 +136,7 @@ body{
     display: flex;
     margin: 10px;
     padding: 2px;
-    
+    color: goldenrod;
 }
 .title{
   font-size: 1.2rem;
@@ -148,7 +156,7 @@ body{
     margin: 10px auto;
 }
 .rest, .sum{
-  width: 30%;
+  width: 60%;
   padding: 0px;
   margin: 0px;
 }
@@ -168,12 +176,13 @@ body{
 }*/
 .sumRest{
     max-height: 40px;
-    border: 1px solid;
-    width: 60%;
+    width: 40%;
     /* padding: 2px; */
     display: flex;
     align-items: center;
     justify-content: space-around;
+    background: white;
+    margin-left: 10px;
 }
 .sumRest #valor{
   width: 30px;
@@ -207,12 +216,7 @@ body{
     left: 6%;
 }
 
-/* lista */
 #listImg {
-    /*width: 30%;
-    
-    overflow-y: scroll;
-    position: relative;*/
     overflow-y: scroll;
   max-height: 500px;
   display: flex;
@@ -220,6 +224,7 @@ body{
   position: relative;
   width: 30%;
   height: 100%;
+  cursor: pointer;
 }
 .imgProduct{
     margin-top: 10px auto;
@@ -249,6 +254,7 @@ body{
 .main select{
   display: block;
   border-radius: 2em;
+  cursor: pointer;
 }
 #card-horizontal{
   box-sizing: border-box;
@@ -410,7 +416,8 @@ body{
 }
 #nav{
   width: 100%;
-    height: auto;
+  height: auto;
+  background: brown;
 }
 .contNav{
   color: black;
@@ -480,6 +487,7 @@ body{
     border: 0px solid white;
     padding: 0.3em;
     border-radius: 1em 0px 0px 1em;
+    color: goldenrod;
 }
 #list{
       position: absolute;
@@ -559,6 +567,12 @@ body{
 .icons span, .iconFooter span{
   font-size: 1.5em;
   padding: 6px;
+  cursor: pointer;
+      color: goldenrod;
+}
+#Bienvenida span,#times span{
+  color: goldenrod;
+  font-size: 1.2em;
 }
 #iconMenu{
   display: none;
@@ -567,6 +581,15 @@ body{
     width: 80%;
     border-bottom: #ee6e73 5px double;   
 }
+#catCom{
+    width: 300px;
+    height: 350px;
+    margin: 0px auto;
+    border-radius: 1.5em;
+}
+#totales{
+      margin-left: 5px;
+    } 
 @media (min-width: 320px) and (max-width: 900px){
   #contMayor,header,#carouzel,.contUbicacion,footer,#cajaList,#Bienvenida{
     width: 100%;
@@ -607,19 +630,19 @@ body{
     width: 90%;
   }
   #cajaList{
-    text-transform: capitalize;
+    font-size: 1.1em;
+    font-weight: 500;
+    text-transform: none;
   }
   .rest,.sum{
-    width: 25px;
-    height: 25px;
-    /* padding: 6px; */
-    font-size: 1.2rem;
+        width: 60%;
   }
   #calProduct{
-    width: 150px;
+    width: 130px;
   }
   #Bienvenida{
     font-size: 1rem;
+    font-weight: bold;
   }
   .logo{
     width:50%;
@@ -760,6 +783,7 @@ body{
     width: 100%;
     min-height: 30px;
     height: 30px;
+    margin-left: 5px;
   }
   .añadir{
     width: 50%;
@@ -767,6 +791,16 @@ body{
   }
   .imgProduct{
     margin-top: 3px;
+  }
+  section1{
+  margin-top: 140px;
+  }
+  #catCom {
+    width: 200px;
+    height: 250px;
+  }
+  .sumRest input{
+        width: 10%;
   }
 
 }

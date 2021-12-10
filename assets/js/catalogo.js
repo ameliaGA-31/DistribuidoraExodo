@@ -44,7 +44,6 @@ function getcatalogoProductos(cadaProducto){
     	}else{
     		precioxProduct=porUnObj.price[0];
     	};
-        //console.log("precio",precioxProduct);<li id="${product.id}" class="item">${product.name.charAt(0).toUpperCase()+ product.name.slice(1)}</li>).join("");
         nameProductoNodo += 
 
 	`
