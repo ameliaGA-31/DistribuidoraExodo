@@ -1,7 +1,7 @@
 const spreadsheetsId='1WfxVETEfl-fmU4QGfOG1wk-93ClARjK5wkgUbAg3BXg';
 //1WfxVETEfl-fmU4QGfOG1wk-93ClARjK5wkgUbAg3BXg
 //const range='Respuestas de formulario 1!A1:F5';
-const range='Data!A1:I150';
+const range='Data!A1:I226';
 const apiKey='AIzaSyBb1-sH8j-c6qSKNT4UK7CqP65w7v-ugq8';
 const urlOriginal=`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetsId}/values/${range}?key=${apiKey}`;
 let dataValue;
@@ -144,11 +144,11 @@ function getProductCoincidencia(letra){
 
 //separador por categorias para select 
 function getOptionCategory(arrObj){
-	let tlapaleria=arrObj.filter(objeto => objeto.category == 'Tlapaleria general');
+	let tlapaleria=arrObj.filter(objeto => objeto.category == 'Tlapaleria en General');
 	let plomeria=arrObj.filter(objeto => objeto.category == 'Plomeria');
 	let herreria=arrObj.filter(objeto => objeto.category == 'Herreria');
 	let cartones=arrObj.filter(objeto => objeto.category == 'Cartones');
-	let empaques=arrObj.filter(objeto => objeto.category == 'Empeques');
+	let empaques=arrObj.filter(objeto => objeto.category == 'Empaques');
 	let categories={
 		tlapaleria:tlapaleria,
 		plomeria:plomeria,
@@ -156,6 +156,7 @@ function getOptionCategory(arrObj){
 		cartones:cartones,
 		empaques:empaques
 	}
+	console.log(categories,"categorias");
 	setEventOptions(categories);
 	return "";
 }

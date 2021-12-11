@@ -548,6 +548,8 @@ body{
   justify-content: center;
   color: aliceblue;
   align-items: center;
+  position: absolute;
+    bottom: 0px;
 }
 .abc{
   width: 35px;
@@ -563,6 +565,7 @@ body{
   align-items: center;
   padding: 10px;
   cursor: pointer;
+
 }
 .selectContainer{
   display: block;
@@ -666,8 +669,14 @@ position: absolute;
     justify-content: center;
   }
   .liBotton button{
-    width: 60px;
+    height: 30px;
+    padding: 2px;
+    width: 70px;
+    font-size: 1.3em;
+    align-self: end;
+    border-radius: 0.5em;
   }
+
   #ulMenu a{
     width: 90%;
   }
