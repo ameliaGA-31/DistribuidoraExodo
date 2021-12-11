@@ -8,6 +8,13 @@ let dataValue;
 
 window.onload=initialize(urlOriginal);
 
+//guardar al data en promesa
+window.dataStoredValorData= new Promise((resolve,reject)=>{
+	//guardar donde resuelve 
+	window.dataStoredValorDataResolve=resolve
+});
+
+
 function initialize(url){
 	fetch(url)
 	.then(response => response.json())
@@ -16,6 +23,9 @@ function initialize(url){
 		dataValue=transformData(data);
 		let dataVal=JSON.stringify(dataValue);
 		sessionStorage.setItem("valorData",dataVal);
+		//meto el valor de data pero en string y ya quedo guardado data por medio de promesas
+		window.dataStoredValorDataResolve(dataVal);
+
 		getOptionCategory(dataValue);
 		getAbecedario(dataValue);
 		setEventInputSearch();
@@ -167,7 +177,7 @@ function setEventOptions(categoriesObj){
 	for(const property in categoriesObj){
 		if (categoriesObj[property].length != 0) {
 			const div = document.createElement("div");
-			div.setAttribute("class", "input-field col s3");
+			div.setAttribute("class", "input-field col s2");
 			const select = document.createElement("select");
 
 			div.appendChild(select);

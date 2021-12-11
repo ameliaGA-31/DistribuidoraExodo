@@ -82,8 +82,7 @@ function setInfoProduct(infoCadaUno,nameNodo){
 			//tamaño=optionSize;
 			selectSize.innerHTML=optionSize;
 			selectSize.addEventListener('change',(e)=> setEventMedidas(e.target.selectedIndex),false);
-	 };
-	setEventAñadirCompra();	 
+	 };	 
 	setEventContador();
 
 	//return optionSize;
@@ -135,18 +134,10 @@ function contadormenos(){
         contador.value = contadorInicial;
         setTotalProduct();
     }
-} 
-function setEventAñadirCompra(){
-		let agregar=document.getElementById('agregarCar');
-		//agregar.addEventListener('click',createListShop);
-		agregar.addEventListener('click',newObje);
-
-	//console.log(agregar,'agregar')
 }
 
 
 function newObje(){
-	let msjShop=document.getElementById('msjShop');
 	let cajMsj=document.getElementById('cajMsj');
 	let mainImg=Array.from(document.getElementById('mainImg').getElementsByTagName('img'))[0];
 	let valuePriceProduct=setTotalProduct();
@@ -159,13 +150,23 @@ function newObje(){
 		total:valuePriceProduct[1],
 		cantidad:valuePriceProduct[2],
 	};
-	msjShop.innerHTML=`<div id="cajMsj">${newObjeto.name.charAt(0).toUpperCase()+ newObjeto.name.slice(1)}<br>${newObjeto.size.charAt(0).toUpperCase()+ newObjeto.size.slice(1)}</div>
+	sendNotification(newObjeto);
+	let objTransform=JSON.stringify(newObjeto);
+	return objTransform;
+}
+function sendNotification(newObjeto){
+	//console.log("notificaion");
+	let msjShop=document.getElementById('msjShop');
+	msjShop.innerHTML=`<div class="msjShop">${newObjeto.name.charAt(0).toUpperCase()+ newObjeto.name.slice(1)}<br>${newObjeto.size.charAt(0).toUpperCase()+ newObjeto.size.slice(1)}</div>
 												<div>Cantidad  ${newObjeto.cantidad}</div>
 												<div>Precio  ${newObjeto.price}</div>
 												<div>Total  ${newObjeto.total}</div>
 												<button><a href="carritoCompras.html">Ir al carrito</a></button>`;
-	let objTransform=JSON.stringify(newObjeto);
-	return objTransform;
+	setTimeout(()=>{
+		msjShop.innerHTML="";
+		console.log("time");
+	},2000);
+	
 }
 function createListShop(){
 	let newObjeto=newObje();

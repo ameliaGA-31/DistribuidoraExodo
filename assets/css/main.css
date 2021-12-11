@@ -1,4 +1,3 @@
-@import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,600italic|Roboto+Slab:400,700");
 
 :root{
@@ -432,7 +431,7 @@ body{
 }
 .main{
   width: 70%;
-  font-size: 1.2em;
+  font-size: 1em;
   color: brown;
 }
 .buscador{
@@ -596,7 +595,7 @@ body{
 #totales{
       margin-left: 5px;
     } 
-#msjShop{
+.msjShop{
 position: absolute;
     left: 0px;
     margin: 5px 0px;

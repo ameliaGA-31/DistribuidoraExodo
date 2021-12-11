@@ -1,27 +1,37 @@
 window.onload=initializeCatalogo();
 function initializeCatalogo(){
     //para obtener o entrar a ella CUANDO ESTOY EN LA OTRA PAG
+    let dataReturn;
+    //recibo demi promesa anterior promiseData
+    window.dataStoredValorData.then((promiseData)=>{
+        let dataVal=promiseData;
+        dataReturn=JSON.parse(dataVal);
+        processData(dataReturn);
+    });
+    
+}
+function processData(dataReturn){
     let listSearch=sessionStorage.getItem("productsFound");
     let listaProducts=JSON.parse(listSearch);
-
-    let dataVal=sessionStorage.getItem("valorData");
-    //console.log(dataVal,"dataVal")
-    let dataReturn=JSON.parse(dataVal);
     let elemento;
 
-//.toLowerCase()
-    let letterSearch=dataReturn.map(cadaObjeto=> cadaObjeto.name[0]);
-        let initialLetter=listaProducts.filter(obj=> letterSearch.indexOf(obj.name[0]) != -1);
-        elemento=initialLetter.map(elemento=> elemento);
-        
-    if('sessionStorage' in window && window['sessionStorage'] !== null && sessionStorage.getItem("productsFound") !== null){
-        getcatalogoProductos(elemento);    
-    }else{
-            let carga=dataReturn.filter(obje=> obje.name.indexOf('c') != -1);
+    if(dataReturn){
+        let letterSearch=dataReturn.map(cadaObjeto=> cadaObjeto.name[0]);
+        if('sessionStorage' in window && window['sessionStorage'] !== null && listSearch !== null){
+            let initialLetter=listaProducts.filter(obj=> letterSearch.indexOf(obj.name[0]) != -1);
+            elemento=initialLetter.map(elemento=> elemento);
+            getcatalogoProductos(elemento);    
+        }else{
+            console.log(dataReturn,"dataReturn")
+            let carga=dataReturn.filter(obje=> obje.name.indexOf('la') != -1);
+            console.log(carga.length,"lengt")
             getcatalogoProductos(carga);
-            //por defaut deje todos 
-    } 
-     
+        } 
+        
+    }
+        
+    
+ 
 }
 
 //en las col s3 cuando solo entre un producto no se logra acomodar y se tendria que desabilitar de materialize las cols3 para que creesca
@@ -51,7 +61,7 @@ function getcatalogoProductos(cadaProducto){
 			<div onclick="selectProduct('${porUnObj.name}','${porUnObj.id}', this)">
 				<div id="cardH" class="card card horizontal">
 					<div id="imgs" class="card-image">
-						<img class="img imgC" src="${urlxImg}" alt="img-${porUnObj.name}/>                        
+						<img class="img imgC" src="${urlxImg}" alt="img-${porUnObj.name}"/>                        
 					</div>
 					<div  class="card-stacked">
 						<div class="card-content">
