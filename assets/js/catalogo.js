@@ -5,7 +5,7 @@ function initializeCatalogo(){
     let listaProducts=JSON.parse(listSearch);
 
     let dataVal=sessionStorage.getItem("valorData");
-    console.log(dataVal,"dataVal")
+    //console.log(dataVal,"dataVal")
     let dataReturn=JSON.parse(dataVal);
     let elemento;
 
@@ -47,9 +47,9 @@ function getcatalogoProductos(cadaProducto){
         nameProductoNodo += 
 
 	`
-		<div class="col s6 m3">
+		<div id="cols" class="col s6 m3">
 			<div onclick="selectProduct('${porUnObj.name}','${porUnObj.id}', this)">
-				<div class="card card horizontal">
+				<div id="cardH" class="card card horizontal">
 					<div id="imgs" class="card-image">
 						<img class="img imgC" src="${urlxImg}" alt="img-${porUnObj.name}/>                        
 					</div>
@@ -63,7 +63,7 @@ function getcatalogoProductos(cadaProducto){
 			</div>
 		</div>
         `;
-console.log(porUnObj.name.charAt(0).toUpperCase()+ porUnObj.name.slice(1),"");
+//console.log(porUnObj.name.charAt(0).toUpperCase()+ porUnObj.name.slice(1),"");
     });
     contenedor.innerHTML=`<div class="row contNodo">${nameProductoNodo}</div>`;
     //return nameProductoNodo;

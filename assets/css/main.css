@@ -226,8 +226,11 @@ body{
   height: 100%;
   cursor: pointer;
 }
+.imgProduct:hover{
+  opacity: 0.7;
+}
 .imgProduct{
-    margin-top: 10px auto;
+        margin-top: 5px;
     width: 100%;
     height: calc(100% / 3);
 }
@@ -590,6 +593,45 @@ body{
 #totales{
       margin-left: 5px;
     } 
+#msjShop{
+position: absolute;
+    left: 0px;
+    margin: 5px 0px;
+    background: brown;
+    width: 100%;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    /* align-self: flex-start; */
+    text-align: center;
+    justify-content: space-around;
+    top: 0px;
+  }
+  #imgs{
+      max-width: 100%;
+      cursor: pointer;
+  }
+  #imgs:hover{
+    display: block;
+    outline: none;
+    -moz-box-shadow: 3px 3px 5px #000;
+    -webkit-box-shadow: 3px 3px 5px #000;
+    box-shadow: 3px 3px 5px #000;
+    background-color:goldenrod;
+  transition: background-color .5s;
+  }
+  #imgs img{
+    margin: 0px auto;
+    max-width: 95%; 
+  }
+  #cardH{
+    display: grid;
+    }
+  button:hover{
+   background: goldenrod;
+   cursor: pointer;
+  }
 @media (min-width: 320px) and (max-width: 900px){
   #contMayor,header,#carouzel,.contUbicacion,footer,#cajaList,#Bienvenida{
     width: 100%;
@@ -712,10 +754,8 @@ body{
     display: flex;
     flex-direction: column;
   }
-/*#imgs{
-      max-width: 100%; 
-  }
-  #imgs .img{
+
+ /* #imgs .img{
         max-height: 200px;
       width: 100%;
   }*/

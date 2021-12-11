@@ -13,7 +13,7 @@ function initialiceProduct(){
 		if('sessionStorage' in window && window['sessionStorage'] !== null && sessionStorage.getItem('idProducto') !== null){
 			objetoProducto=dataReturn.filter(cadaObj=> cadaObj.id == objetoRegresado)[0];
 			console.log(objetoProducto,"dataReturn")
-			setImages(objetoProducto);		
+			setImages(objetoProducto);	
 		}else{
 			objetoProducto=dataReturn.filter(objetoProduct=> objetoProduct.id)[0];
 			setImages(objetoProducto);
@@ -93,15 +93,8 @@ function sizeProduct(){
 	let sizeOrigi;
 	let size=document.getElementById('size');
 	let information=document.getElementById('information');
-	console.log(information.textContent,"informationTexC")
+	//console.log(information.textContent,"informationTexC")
 	return (size ? size.value:information.textContent);
-	/*if(information != null){
-		sizeOrigi=information.textContent;	
-	}else{
-		sizeOrigi=size.value;
-	}*/
-	//return size.value;
-	//return sizeOrigi;
 }
 function setTotalProduct(){
 	let total=document.getElementById("total");
@@ -142,16 +135,18 @@ function contadormenos(){
         contador.value = contadorInicial;
         setTotalProduct();
     }
-}
-
+} 
 function setEventAñadirCompra(){
 		let agregar=document.getElementById('agregarCar');
-	//agregar.addEventListener('click',(agregar)=> newObje(agregar.target));
-	agregar.addEventListener('click',createListShop);
+		//agregar.addEventListener('click',createListShop);
+		agregar.addEventListener('click',newObje);
 
-	console.log(agregar,'agregar')
+	//console.log(agregar,'agregar')
 }
+
+
 function newObje(){
+	let msjShop=document.getElementById('msjShop');
 	let mainImg=Array.from(document.getElementById('mainImg').getElementsByTagName('img'))[0];
 	let valuePriceProduct=setTotalProduct();
 	let newObjeto={
@@ -163,7 +158,12 @@ function newObje(){
 		total:valuePriceProduct[1],
 		cantidad:valuePriceProduct[2],
 	};
-	let objTransform=JSON.stringify(newObjeto);	
+	msjShop.innerHTML=`<div>${newObjeto.name.charAt(0).toUpperCase()+ newObjeto.name.slice(1)}<br>${newObjeto.size.charAt(0).toUpperCase()+ newObjeto.size.slice(1)}</div>
+												<div>Cantidad  ${newObjeto.cantidad}</div>
+												<div>Precio  ${newObjeto.price}</div>
+												<div>Total  ${newObjeto.total}</div>
+												<button><a href="carritoCompras.html">Ir al carrito</a></button>`;
+	let objTransform=JSON.stringify(newObjeto);
 	return objTransform;
 }
 function createListShop(){
@@ -179,6 +179,6 @@ function createListShop(){
 		let arrString=JSON.stringify(arr);
 		sessionStorage.setItem("listCompra",arrString);
 	}
-	window.location.href = "carritoCompras.html";
+	//window.location.href = "carritoCompras.html";
 }
 
