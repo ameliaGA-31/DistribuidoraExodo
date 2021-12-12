@@ -12,7 +12,6 @@ function initialiceProduct(){
 
 		if('sessionStorage' in window && window['sessionStorage'] !== null && sessionStorage.getItem('idProducto') !== null){
 			objetoProducto=dataReturn.filter(cadaObj=> cadaObj.id == objetoRegresado)[0];
-			console.log(objetoProducto,"dataReturn")
 			setImages(objetoProducto);	
 		}else{
 			objetoProducto=dataReturn.filter(objetoProduct=> objetoProduct.id)[0];
@@ -22,7 +21,6 @@ function initialiceProduct(){
 
 //traer imagenes pagina del producto
 function setImages(productInfo) {
-	console.log(productInfo.imagen,"productInfo")
     let visor = document.getElementById('visor');
     let img1;
     	if(typeof productInfo.imagen === 'string'){
@@ -36,10 +34,9 @@ function setImages(productInfo) {
     		document.getElementById('listImg').innerHTML = productInfo.imagen.map((url,idx) => `<img class="imgProduct" id="${idx}" src="${url}" />`).join('');
     	}; 
     	setEventImages();
-		setInfoProduct(productInfo, "information");
-
-    
+		setInfoProduct(productInfo, "information");    
 }
+
 //funcion de cada imagen en pag de producto las llamo y agrego evento
 function setEventImages() {
   let images =Array.from(document.getElementsByClassName('imgProduct'));
@@ -54,7 +51,6 @@ function changeImg(id) {
 
 //datos de cada producto en la pag de producto 
 function setInfoProduct(infoCadaUno,nameNodo){
-	console.log(nameNodo,"nameNodo")
 	let nameProducto=document.getElementById("nameP");
 	let contDatosProducto=document.getElementById(nameNodo);
 	let price=document.getElementById("price");
@@ -69,7 +65,7 @@ function setInfoProduct(infoCadaUno,nameNodo){
 
 	nameProducto.innerHTML=`<div class="datoIndividual"> ${infoCadaUno.name.charAt(0).toUpperCase()+ infoCadaUno.name.slice(1)}</div>`;
 	let optionSize;
-	//let tamaño;
+
     	if(typeof infoCadaUno.size === 'string' && typeof infoCadaUno.price === 'string'){
     		optionSize=infoCadaUno.size;
     		document.getElementById('information').innerText =optionSize;
@@ -83,10 +79,7 @@ function setInfoProduct(infoCadaUno,nameNodo){
 			selectSize.innerHTML=optionSize;
 			selectSize.addEventListener('change',(e)=> setEventMedidas(e.target.selectedIndex),false);
 	 };	 
-	setEventContador();
-
-	//return optionSize;
-	 
+	setEventContador();	 
 }
 function sizeProduct(){
 	let sizeOrigi;
@@ -118,14 +111,13 @@ function setEventContador(){
 	                                                            
 	var mas=document.getElementById('sum');
 	mas.addEventListener('click',()=>contadormas());
-
 }
+
 function contadormas(){
 	var contador = document.getElementById("valor");
 	contadorInicial = contadorInicial +1;
 	contador.value = contadorInicial;
 	setTotalProduct()
-
 }
 function contadormenos(){ 
 	var contador = document.getElementById("valor");
@@ -164,11 +156,11 @@ function sendNotification(newObjeto){
 												<button><a href="carritoCompras.html">Ir al carrito</a></button> </div>`;
 	setTimeout(()=>{
 		msjShop.innerHTML="";
-		console.log("time");
 	},2000);
 	
 }
 function createListShop(){
+	console.log("añadidoEvent");
 	let newObjeto=newObje();
 	if('sessionStorage' in window && window['sessionStorage'] !== null && sessionStorage.getItem('listCompra') !== null) {
     	let arrList=JSON.parse(sessionStorage.getItem("listCompra"));

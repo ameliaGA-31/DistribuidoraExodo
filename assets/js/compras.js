@@ -6,6 +6,7 @@ function initializeCompras(){
 	setDatosList();
 	setEventElilimarTodo();
 	getFullPrice();
+	
 }
 function setDatos(datos,id){
 	//console.log(datos,"datos");
