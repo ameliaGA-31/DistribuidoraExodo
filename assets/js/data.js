@@ -159,6 +159,7 @@ function getOptionCategory(arrObj){
 	let herreria=arrObj.filter(objeto => objeto.category == 'Herreria');
 	let cartones=arrObj.filter(objeto => objeto.category == 'Cartones');
 	let empaques=arrObj.filter(objeto => objeto.category == 'Empaques');
+	let tornilleria=arrObj.filter(objeto=>objeto.category == 'Tornilleria');
 	let categories={
 		tlapaleria:tlapaleria,
 		plomeria:plomeria,

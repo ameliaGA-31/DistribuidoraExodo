@@ -547,8 +547,6 @@ body{
   justify-content: center;
   color: aliceblue;
   align-items: center;
-  position: absolute;
-    bottom: 0px;
 }
 .abc{
   width: 35px;
