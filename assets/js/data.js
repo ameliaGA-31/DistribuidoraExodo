@@ -165,7 +165,8 @@ function getOptionCategory(arrObj){
 		plomeria:plomeria,
 		herreria:herreria,
 		cartones:cartones,
-		empaques:empaques
+		empaques:empaques,
+		tornilleria:tornilleria,
 	}
 	console.log(categories,"categorias");
 	setEventOptions(categories);
@@ -242,14 +243,14 @@ function setEventLi(){
 //TODO: next page catalogo.html --> LISTO YA ESTA ENLAZADA
 //opcion seleccionadapor el menu de hamburgesa enlsazsando a Session Strorage
 function categorySelect(opcion){
-	
+	console.log(opcion,"opcion")
 	let liCategory=dataValue.filter(obje=> obje.category == opcion);
 	console.log(opcion,"option",liCategory,"liCategory");
 	//let categoryFound=liCategory;
 
 	let lisCategory=JSON.stringify(liCategory);
 	sessionStorage.setItem("productsFound",lisCategory);
-	window.location.href="catalogo.html";
+	//window.location.href="catalogo.html";
 
 }
 

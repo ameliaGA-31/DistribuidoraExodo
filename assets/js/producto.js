@@ -67,7 +67,7 @@ function setInfoProduct(infoCadaUno,nameNodo){
 	divSize.appendChild(selectSize);
 	contDatosProducto.appendChild(selectSize);
 
-	nameProducto.innerHTML=`<div class="datoIndividual"> ${infoCadaUno.name}</div>`;
+	nameProducto.innerHTML=`<div class="datoIndividual"> ${infoCadaUno.name.charAt(0).toUpperCase()+ infoCadaUno.name.slice(1)}</div>`;
 	let optionSize;
 	//let tamaño;
     	if(typeof infoCadaUno.size === 'string' && typeof infoCadaUno.price === 'string'){
