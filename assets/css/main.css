@@ -743,13 +743,13 @@ position: absolute;
       flex-direction: column;
       align-items: center;
   }
-  #footer,#footerProduct{
+  #footer{
     flex-direction: column-reverse;
         position: fixed;
     bottom: 0px;
   }
   #footerProduct{
-    margin-top: 25px;
+    margin-top: 85px;
     text-align: center;
   }
   .msjFooter{

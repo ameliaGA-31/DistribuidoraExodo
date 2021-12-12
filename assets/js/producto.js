@@ -21,6 +21,7 @@ function initialiceProduct(){
 
 //traer imagenes pagina del producto
 function setImages(productInfo) {
+	
     let visor = document.getElementById('visor');
     let img1;
     	if(typeof productInfo.imagen === 'string'){
@@ -51,6 +52,7 @@ function changeImg(id) {
 
 //datos de cada producto en la pag de producto 
 function setInfoProduct(infoCadaUno,nameNodo){
+
 	let nameProducto=document.getElementById("nameP");
 	let contDatosProducto=document.getElementById(nameNodo);
 	let price=document.getElementById("price");

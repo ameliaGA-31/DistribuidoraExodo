@@ -19,6 +19,7 @@ function initialize(url){
 	fetch(url)
 	.then(response => response.json())
 	.then(data =>{
+		
 		dataValue=transformData(data);
 		let dataVal=JSON.stringify(dataValue);
 		sessionStorage.setItem("valorData",dataVal);
