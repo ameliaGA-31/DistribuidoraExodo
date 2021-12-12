@@ -19,7 +19,6 @@ function initialize(url){
 	fetch(url)
 	.then(response => response.json())
 	.then(data =>{
-		//console.log("data",data);
 		dataValue=transformData(data);
 		let dataVal=JSON.stringify(dataValue);
 		sessionStorage.setItem("valorData",dataVal);
@@ -37,7 +36,6 @@ function initialize(url){
 }
 //modifico mi data en proppiedad=valor
 function transformData(data){
-	////console.log(data);
 	let arrays=[];
 	if(data && data.values && data.values.length >1){
 		let propiedadesPrincipales=data.values[0];
@@ -46,11 +44,9 @@ function transformData(data){
 			propiedadesPrincipales.forEach((propiedad,index)=>{
 				objetoPersonal[propiedad]=valor(data.values[i][index],propiedad);
 			});
-			////console.log("price",objetoPersonal.category);
 			arrays.push(objetoPersonal);
 		}
 	}
-	//console.log("arrayDeObjetos",arrays)
 	return arrays;
 }
 
@@ -67,7 +63,6 @@ function valor(value,propiedad){
 	if(propiedad == 'name'){
 		return value.toLowerCase();
 	}
-	////console.log("valoresdePropiedades",value)
 	return value;
 }
 
@@ -92,7 +87,6 @@ function typing(dataMyList,input){
     //se muestra lista
     lista.removeAttribute('class','hide');
       let result = dataMyList.filter((elemento,indice,array)=>elemento.name.toLowerCase().indexOf(input.value.toLowerCase()) != -1);
-      console.log("result",result,"dataMyList",dataMyList)
     productsList= result.map((product,index) =>`<li id="${product.id}" class="item">${product.name.charAt(0).toUpperCase()+ product.name.slice(1)}</li>`).join("");
     
     lista.innerHTML =(productsList.length != 0) ? productsList:"No se encontro coincidencias";
@@ -111,7 +105,6 @@ function setEventList(){
 //opcion seleccionada por el INPUT enlsazsando a Session Strorage
 function selectItem(opcion){
 	let idProduct=opcion.id;
-	console.log("idProduct",idProduct)
 	//para guardarla mi variable ANTES DE QUE ME ENLACE A OTRA
 		let objetoConvertido=JSON.stringify(idProduct);
 		sessionStorage.setItem("idProducto",objetoConvertido);
@@ -143,7 +136,6 @@ function setEventAbecedario(){
 //funcion que encuentra coincidencias en el ABECEDARIO
 function getProductCoincidencia(letra){
 	let listProduct=dataValue.filter(productInfo=> productInfo.name[0].toLowerCase() == letra.toLowerCase());
-	console.log("letra",letra,"listProduct",listProduct);
 	let productFound=listProduct;
 	//para guardarla mi variable ANTES DE QUE ME ENLACE A OTRA
 	let listSearch=JSON.stringify(productFound);
@@ -168,7 +160,6 @@ function getOptionCategory(arrObj){
 		empaques:empaques,
 		tornilleria:tornilleria,
 	}
-	console.log(categories,"categorias");
 	setEventOptions(categories);
 	return "";
 }
@@ -218,10 +209,7 @@ function selectOption(event){
  $(document).ready(function(){
     $('.modal').modal();
   });
-/*function setEventMenu(){
-	let menu=document.getElementById('iconMenu');
-	menu.addEventListener('click',()=>mostrarListMenu(),false);
-}*/
+
 function mostrarListMenu(){
 	let ul=document.getElementById('ulMenu').classList;
 	if(ul.contains('show')){
@@ -231,7 +219,6 @@ function mostrarListMenu(){
 		ul.add('show');
 		ul.remove('hide');
 	}
-	console.log(ul,"funciono evento")
 	setEventLi()
 
 }
@@ -243,14 +230,12 @@ function setEventLi(){
 //TODO: next page catalogo.html --> LISTO YA ESTA ENLAZADA
 //opcion seleccionadapor el menu de hamburgesa enlsazsando a Session Strorage
 function categorySelect(opcion){
-	console.log(opcion,"opcion")
 	let liCategory=dataValue.filter(obje=> obje.category == opcion);
-	console.log(opcion,"option",liCategory,"liCategory");
 	//let categoryFound=liCategory;
 
 	let lisCategory=JSON.stringify(liCategory);
 	sessionStorage.setItem("productsFound",lisCategory);
-	//window.location.href="catalogo.html";
+	window.location.href="catalogo.html";
 
 }
 

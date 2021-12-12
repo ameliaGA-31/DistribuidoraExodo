@@ -157,11 +157,11 @@ function newObje(){
 function sendNotification(newObjeto){
 	//console.log("notificaion");
 	let msjShop=document.getElementById('msjShop');
-	msjShop.innerHTML=`<div class="msjShop">${newObjeto.name.charAt(0).toUpperCase()+ newObjeto.name.slice(1)}<br>${newObjeto.size.charAt(0).toUpperCase()+ newObjeto.size.slice(1)}</div>
+	msjShop.innerHTML=`<div class="msjShop"><div>${newObjeto.name.charAt(0).toUpperCase()+ newObjeto.name.slice(1)}<br>${newObjeto.size.charAt(0).toUpperCase()+ newObjeto.size.slice(1)}</div>
 												<div>Cantidad  ${newObjeto.cantidad}</div>
 												<div>Precio  ${newObjeto.price}</div>
 												<div>Total  ${newObjeto.total}</div>
-												<button><a href="carritoCompras.html">Ir al carrito</a></button>`;
+												<button><a href="carritoCompras.html">Ir al carrito</a></button> </div>`;
 	setTimeout(()=>{
 		msjShop.innerHTML="";
 		console.log("time");

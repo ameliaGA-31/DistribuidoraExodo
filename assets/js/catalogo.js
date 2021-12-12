@@ -22,9 +22,7 @@ function processData(dataReturn){
             elemento=initialLetter.map(elemento=> elemento);
             getcatalogoProductos(elemento);    
         }else{
-            console.log(dataReturn,"dataReturn")
             let carga=dataReturn.filter(obje=> obje.name.indexOf('la') != -1);
-            console.log(carga.length,"lengt")
             getcatalogoProductos(carga);
         } 
         
@@ -37,7 +35,6 @@ function processData(dataReturn){
 //en las col s3 cuando solo entre un producto no se logra acomodar y se tendria que desabilitar de materialize las cols3 para que creesca
 //pregunta para ver si asi lo dejo o entraria en condicional para que se acomode a uno o mas???
 function getcatalogoProductos(cadaProducto){
-	console.log("cadaProductoesArray",cadaProducto);
 	const contenedor=document.getElementById('contenedor');
 
     let nameProductoNodo='';
@@ -73,7 +70,6 @@ function getcatalogoProductos(cadaProducto){
 			</div>
 		</div>
         `;
-//console.log(porUnObj.name.charAt(0).toUpperCase()+ porUnObj.name.slice(1),"");
     });
     contenedor.innerHTML=`<div class="row contNodo">${nameProductoNodo}</div>`;
     //return nameProductoNodo;
@@ -82,9 +78,7 @@ function getcatalogoProductos(cadaProducto){
 //TODO:next page de producto.html
 //funcion para saber cual producto seleccione de la parte del catalogo
 function selectProduct(unProducto,id){
-	console.log("unProducto",unProducto,"idProducto",id);
     let idProduct=id;
-    console.log("idProduct",idProduct)
     //para guardarla mi variable ANTES DE QUE ME ENLACE A OTRA
         let objetoConvertido=JSON.stringify(idProduct);
         sessionStorage.setItem("idProducto",objetoConvertido);

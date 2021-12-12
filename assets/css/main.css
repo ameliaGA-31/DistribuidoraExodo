@@ -110,11 +110,8 @@ section1{
 #contenedor{
   position: absolute;
   width: 100%;
-  margin-top: 155px;
+  margin-top: 170px;
   display: flex;
-}
-#card-starcked{
-
 }
 body{
   background:#F2F2F2;
@@ -440,7 +437,7 @@ body{
   display: flex;
   flex-wrap: nowrap;
   max-height: 50px;
-  width: 30%;
+  width: 33%;
   border-radius: 20px;
   background: #E1E1E1;
   flex-direction: row;
@@ -612,13 +609,15 @@ position: absolute;
       max-width: 100%;
       cursor: pointer;
   }
-  #imgs:hover{
-    display: block;
+  #cols:hover{
+        display: block;
     outline: none;
     -moz-box-shadow: 3px 3px 5px #000;
     -webkit-box-shadow: 3px 3px 5px #000;
     box-shadow: 3px 3px 5px #000;
     background-color:goldenrod;
+  transition: background-color .5s;
+        background-color:goldenrod;
   transition: background-color .5s;
   }
   #imgs img{
@@ -752,8 +751,7 @@ position: absolute;
     bottom: 0px;
   }
   #footerProduct{
-    position: absolute;
-    margin: 10px 0px 20px;
+    margin-top: 15px;
     text-align: center;
   }
   .card{
@@ -782,7 +780,7 @@ position: absolute;
   }
   .contDatos{
    width: 80%;
-    height: 450px;
+    height: fit-content;
     /* left: 15%; */
     align-items: center;
     border: 0px;
@@ -791,10 +789,12 @@ position: absolute;
         width: 100%;
     margin-bottom: 260px;
     text-align: center;
-
+  }
+  #contenedor{
+    margin-top: 155px;
   }
   #cajaProucto{
-    margin-top: 130px;
+    margin-top: 140px;
     height: 500px;
     display: flex;
     flex-direction: row;  
