@@ -602,6 +602,11 @@ position: absolute;
     text-align: center;
     justify-content: space-around;
     top: 0px;
+    opacity: 0.9;
+    height: 60px;
+  }
+  .msjShop p{
+    margin: 2px auto;
   }
   #imgs{
       max-width: 100%;
@@ -749,11 +754,11 @@ position: absolute;
     bottom: 0px;
   }
   #footerProduct{
-    margin-top: 85px;
+    margin-top: 80px;
     text-align: center;
   }
   .msjFooter{
-
+    margin:5px auto 10px;
   }
   .card{
     display: flex;
@@ -784,11 +789,19 @@ position: absolute;
     margin-top: 155px;
   }
   #cajaProucto{
-    margin-top: 140px;
+    margin-top: 135px;
     height: 500px;
     display: flex;
     flex-direction: row;
     justify-content: center;  
+  }
+  .msjShop{
+    position: fixed;
+    top: 0px;
+    margin-top: 138px;
+  }
+  .msjShop p{
+    display: none;
   }
   #modalTrabajo{
     display: none;
