@@ -36,7 +36,7 @@ function processData(dataReturn){
 //pregunta para ver si asi lo dejo o entraria en condicional para que se acomode a uno o mas???
 function getcatalogoProductos(cadaProducto){
 	const contenedor=document.getElementById('contenedor');
-
+    let prices;
     let nameProductoNodo='';
     let urlxImg;
     cadaProducto.filter(porUnObj => {
@@ -71,6 +71,7 @@ function getcatalogoProductos(cadaProducto){
 		</div>
         `;
     });
+    console.log(nameProductoNodo)
     contenedor.innerHTML=`<div class="row contNodo">${nameProductoNodo}</div>`;
     //return nameProductoNodo;
 

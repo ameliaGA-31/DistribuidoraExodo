@@ -492,7 +492,7 @@ width: 50%;
     box-sizing: border-box;
     padding: 0px;
     margin: 30px 0px 0px 30px;
-    width: 94%;
+    width: 88%;
     z-index: 99;      
 }
 #list.hide{
@@ -503,24 +503,9 @@ width: 50%;
   padding: 5px;
   float: none;
   width: 100%;
-  /*text-transform: capitalize;*/
+  max-height: 45px;
 }
 
-/*#searchIcon{
-  width: 40px;
-    height: 41px;
-    background: transparent;
-    
-    font-size: 1em;
-    cursor: pointer;
-    
-    position: absolute;
-    padding: 0px;
-    box-shadow: 1px transparent;
-    box-sizing: border-box;
-    background: white;
-    border-radius: 1em 0px 0px 1em;
-} */
 #searchInput{
   width: 100%;
     /* position: absolute; */
@@ -571,6 +556,7 @@ width: 50%;
 #Bienvenida span,#times span{
   color: goldenrod;
   font-size: 1.2em;
+  margin-right: 4px;
 }
 #iconMenu{
   display: none;
@@ -584,6 +570,10 @@ width: 50%;
     height: 350px;
     margin: 0px auto;
     border-radius: 1.5em;
+}
+#cajTotal{
+  position: absolute;
+    margin-top: 25px;
 }
 #totales{
       margin-left: 5px;
@@ -638,6 +628,14 @@ position: absolute;
   #contMayor,header,#carouzel,.contUbicacion,footer,#cajaList,#Bienvenida{
     width: 100%;
   }
+  #cardH{
+    display: grid;
+    max-height: 300px;
+  }
+  #cardH .card-stacked .card-content{
+    padding: 3px;
+    height: 85px;
+  }
   .iconFooter{
     display: none;
   }
@@ -657,6 +655,9 @@ position: absolute;
     display: flex;
     align-items: center;
     min-height: 40px;
+  }
+  #list{
+    width: 85%;
   }
   .liBotton{
     display: flex;
@@ -688,7 +689,11 @@ position: absolute;
         width: 60%;
   }
   #calProduct{
-    width: 130px;
+    width:60%;
+    margin: 5px auto;
+  }
+  #calProduct p{
+    display: none;
   }
   #Bienvenida{
     font-size: 1rem;
@@ -811,23 +816,30 @@ position: absolute;
     min-width: 70px;
     margin-left: 0px;
   }
-  #info,#cajaImg {
+  #cajaImg {
     width: 30%;
     text-align: center;
   }
-  .calcCompra{
+  #info{
     width: 40%;
+    text-align: center;
+    width: 40%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+    font-size: 14px;
+  }
+  .calcCompra{
+    width: 30%;
     font-size: 1rem;
-    margin: 0px 5px;
+
   }
   #cajaList .row {
     text-align: center;
     
     margin: 10px auto;
     padding: 5px 5px;
-  }
-  #cajaImg{
-    width: 35%;
   }
   .sumRest{
     width: 100%;

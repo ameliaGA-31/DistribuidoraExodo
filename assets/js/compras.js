@@ -85,7 +85,7 @@ function getFullPrice(){
 	});
 	if(listaCompras.length > 0){
 		sumTotal=totales.reduce((x,y)=> x + y);
-		document.getElementById('totales').innerText=`$${sumTotal}`;
+		document.getElementById('totales').innerText=`$${sumTotal.toFixed(2)}`;
 	}
 }
 function contadormas(id){
@@ -110,7 +110,7 @@ function removeTodo(){
 
 	let cajaList=document.getElementById('cajaList');
 
-	cajaList.innerHTML=`<p>Aun no hay producto a tu carrito</p> <img id="catCom" src="images/catCompras.jpg"> `;
+	cajaList.innerHTML=`<p>Aún no hay producto en tu carrito</p> <img id="catCom" src="images/catCompras.jpg"> `;
 	document.getElementById('totales').innerText=`$${0}`;
 	listaCompras=[];
 	let listaenCero=JSON.stringify(listaCompras);

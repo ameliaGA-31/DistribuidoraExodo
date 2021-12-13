@@ -60,6 +60,9 @@ function valor(value,propiedad){
 		if(value.indexOf(',') !== -1){
 			return value.split(',').filter(element => element != "").map(val => val.trim());
 		}
+		/*if(value.indexOf('$') !== -1){
+			return value.split('$').filter(element => element != "").map(val => val.trim());
+		}*/
 	}
 	if(propiedad == 'name'){
 		return value.toLowerCase();
