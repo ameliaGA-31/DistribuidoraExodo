@@ -227,12 +227,14 @@ width: 50%;
     width: 100%;
     height: calc(100% / 3);
 }
-
+#cardH .card-stacked .card-content {
+    padding: 3px;
+    height: 50px;
+    text-align: center;
+  }
 #mainImg img {
-    /*width: 60%;
-    height: 100%;
-    margin-left: 15px;*/
-    width: 100%;
+
+  width: 100%;
   justify-content: center;
   display: flex;
   margin-left: 15px;
@@ -487,13 +489,13 @@ width: 50%;
     color: goldenrod;
 }
 #list{
-      position: absolute;
-    background: white;
-    box-sizing: border-box;
-    padding: 0px;
-    margin: 30px 0px 0px 30px;
-    width: 88%;
-    z-index: 99;      
+  position: absolute;
+  background: white;
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 36px 0px 0px 28px;
+  width: 92%;
+  z-index: 99;      
 }
 #list.hide{
   display:none;
@@ -658,6 +660,7 @@ position: absolute;
   }
   #list{
     width: 85%;
+    overflow: scroll;
   }
   .liBotton{
     display: flex;
@@ -686,7 +689,7 @@ position: absolute;
     text-transform: none;
   }
   .rest,.sum{
-        width: 60%;
+    width: 60%;
   }
   #calProduct{
     width:60%;

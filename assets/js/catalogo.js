@@ -71,7 +71,6 @@ function getcatalogoProductos(cadaProducto){
 		</div>
         `;
     });
-    console.log(nameProductoNodo)
     contenedor.innerHTML=`<div class="row contNodo">${nameProductoNodo}</div>`;
     //return nameProductoNodo;
 
