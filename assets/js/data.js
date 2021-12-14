@@ -242,8 +242,11 @@ function categorySelect(opcion){
 	window.location.href="catalogo.html";
 
 }
-
-function busquedaImg(){
-console.log("evento chek")
-
+//busqueda de imagenes de index
+function setEventImg(index){
+	let busquedaImg=index;
+	//para guardarla mi variable ANTES DE QUE ME ENLACE A OTRA
+	let objetoConvert=JSON.stringify(busquedaImg);
+	sessionStorage.setItem("idProducto",objetoConvert);
+	window.location.href = "producto.html";
 }

@@ -317,7 +317,7 @@ width: 50%;
       margin-top: 15px;
       color: black;
 }
-#imgCarou{
+.imgCarou{
   width: 250px;
   height: 250px;
 }
@@ -740,7 +740,7 @@ position: absolute;
       color: brown;
       align-self: center;
   }
-  #imgCarou {
+  .imgCarou {
       width: 90%;
       height: 90%;
   }
