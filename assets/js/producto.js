@@ -75,7 +75,7 @@ function setInfoProduct(infoCadaUno,nameNodo){
     		setTotalProduct();
     	}else{
 	    	optionSize=infoCadaUno.size.map(medida=> `<option value="${medida}" class="optionSize">${medida}</option>`);
-			price.innerText=`${infoCadaUno.price[0]}`;
+			price.innerText=`$${infoCadaUno.price[0]}`;
 			setTotalProduct();
 			//tamaño=optionSize;
 			selectSize.innerHTML=optionSize;
@@ -102,7 +102,7 @@ function setTotalProduct(){
 //funcion que optiene precio deacuerdo a las medidas que tuvieron evento (select) 
 function setEventMedidas(index){
 	let cambioPrecio=objetoProducto;
-  	let price=document.getElementById("price").innerHTML =`${cambioPrecio.price[index]}`;
+  	let price=document.getElementById("price").innerHTML =`$${cambioPrecio.price[index]}`;
   	setTotalProduct();
 }
 
@@ -162,7 +162,6 @@ function sendNotification(newObjeto){
 	
 }
 function createListShop(){
-	console.log("añadidoEvent");
 	let newObjeto=newObje();
 	if('sessionStorage' in window && window['sessionStorage'] !== null && sessionStorage.getItem('listCompra') !== null) {
     	let arrList=JSON.parse(sessionStorage.getItem("listCompra"));
@@ -175,6 +174,6 @@ function createListShop(){
 		let arrString=JSON.stringify(arr);
 		sessionStorage.setItem("listCompra",arrString);
 	}
-	//window.location.href = "carritoCompras.html";
+	
 }
 

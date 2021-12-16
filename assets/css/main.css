@@ -495,7 +495,9 @@ width: 50%;
   padding: 0px;
   margin: 36px 0px 0px 28px;
   width: 92%;
-  z-index: 99;      
+  z-index: 99;
+  overflow-y:scroll;
+  max-height: 400px;      
 }
 #list.hide{
   display:none;
@@ -660,7 +662,8 @@ position: absolute;
   }
   #list{
     width: 85%;
-    overflow: scroll;
+    margin:36px 0px 0px 0px;
+    width: 95%;
   }
   .liBotton{
     display: flex;

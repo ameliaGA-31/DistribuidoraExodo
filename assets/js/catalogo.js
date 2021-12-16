@@ -63,14 +63,16 @@ function getcatalogoProductos(cadaProducto){
 					<div  class="card-stacked">
 						<div class="card-content">
 							<p>${porUnObj.name.charAt(0).toUpperCase()+ porUnObj.name.slice(1)}</p>
-							<p>${precioxProduct}</p>
+							<p>$${precioxProduct}</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
         `;
+        //console.log(precioxProduct,"precioxProduct")
     });
+
     contenedor.innerHTML=`<div class="row contNodo">${nameProductoNodo}</div>`;
     //return nameProductoNodo;
 

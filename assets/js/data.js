@@ -1,7 +1,7 @@
 const spreadsheetsId='1WfxVETEfl-fmU4QGfOG1wk-93ClARjK5wkgUbAg3BXg';
 //1WfxVETEfl-fmU4QGfOG1wk-93ClARjK5wkgUbAg3BXg
 //const range='Respuestas de formulario 1!A1:F5';
-const range='Data!A1:I226';
+const range='Data!A1:I225';
 const apiKey='AIzaSyBb1-sH8j-c6qSKNT4UK7CqP65w7v-ugq8';
 const urlOriginal=`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetsId}/values/${range}?key=${apiKey}`;
 let dataValue;
@@ -55,19 +55,44 @@ function transformData(data){
 function valor(value,propiedad){
 	if(value){ 
 		if(value.indexOf('*') !== -1){
-			return value.split('*').filter(element => element != "").map(val => val.trim());
+			return value.split('*').filter(element => element != "").map(val =>{
+				val.trim();
+
+				if(propiedad == 'price'){
+					return stringToFormatePrice(val);
+				}
+				return val;
+			});
 		}
 		if(value.indexOf(',') !== -1){
-			return value.split(',').filter(element => element != "").map(val => val.trim());
+			return value.split(',').filter(element => element != "").map(val =>{
+				val.trim()
+				if(propiedad == 'price'){
+					return stringToFormatePrice(val);
+				}
+
+				return val;
+			});
 		}
-		
+	}	
 	if(propiedad == 'name'){
 		return value.toLowerCase();
 	}
-	return value;
+	if(propiedad == 'price'){
+		return stringToFormatePrice(value);
 	}
+	return value;
 
 } 
+
+function stringToFormatePrice(value){
+	let indxEli=value.indexOf('$');
+		if(indxEli != -1){
+			let arrPrice=value.split('');
+			arrPrice.splice(indxEli,1,"");
+			return parseFloat(arrPrice.join('')).toFixed(2);
+		}
+}
 //continuacion de mi codigo html
 //PARTES QUE COMPARTEN ENTRE SI LAS PAGS
 
@@ -89,7 +114,7 @@ function typing(dataMyList,input){
     lista.removeAttribute('class','hide');
       let result = dataMyList.filter((elemento,indice,array)=>elemento.name.toLowerCase().indexOf(input.value.toLowerCase()) != -1);
     productsList= result.map((product,index) =>`<li id="${product.id}" class="item">${product.name.charAt(0).toUpperCase()+ product.name.slice(1)}</li>`).join("");
-    
+   	
     lista.innerHTML =(productsList.length != 0) ? productsList:"No se encontro coincidencias";
     setEventList();
     return productsList;
@@ -100,12 +125,14 @@ function typing(dataMyList,input){
 function setEventList(){
 	let getLi=Array.from(document.getElementsByClassName("item"));
 	getLi.forEach((elemento) => elemento.addEventListener("click",()=>selectItem(elemento),false));
+	console.log(getLi.length)
 }
 
 //TODO: next page producto.html --> LISTO YA ESTA ENLAZADA
 //opcion seleccionada por el INPUT enlsazsando a Session Strorage
 function selectItem(opcion){
 	let idProduct=opcion.id;
+	console.log(idProduct,"lista")
 	//para guardarla mi variable ANTES DE QUE ME ENLACE A OTRA
 		let objetoConvertido=JSON.stringify(idProduct);
 		sessionStorage.setItem("idProducto",objetoConvertido);

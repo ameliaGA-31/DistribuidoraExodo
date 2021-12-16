@@ -60,7 +60,7 @@ function setTotalProduct(id){
 	var contador = document.getElementById(`valor${id}`);
 	let price=document.getElementById(`price${id}`).textContent;
 	let operacion=price.replace('$','')*contador.value;
-	total.innerHTML=`<div>$${operacion.toFixed(2)}</div>`;
+	total.innerHTML=`<div>${operacion.toFixed(2)}</div>`;
 	let calculo=operacion.toFixed(2);
 	upDateListaCompras(id,total.textContent,contador.value);
 }
