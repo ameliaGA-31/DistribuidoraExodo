@@ -776,6 +776,7 @@ position: absolute;
       font-size: 1.2em;
       color: brown;
       align-self: center;
+      margin-bottom: 50px;
   }
   .imgCarou {
       width: 90%;
