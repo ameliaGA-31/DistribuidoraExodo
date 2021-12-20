@@ -791,9 +791,9 @@ position: absolute;
       align-items: center;
   }
   #footer{
-    flex-direction: column-reverse;
-        position: fixed;
     bottom: 0px;
+    position: absolute;
+    margin: 15px auto;
   }
   #footerProduct{
     margin-top: 80px;
