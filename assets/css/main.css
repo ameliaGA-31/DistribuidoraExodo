@@ -340,9 +340,11 @@ width: 50%;
   width: 100%;
 }
 #footer,#footer404{
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 20px;
 }
 #footer404{
   position: fixed;
@@ -367,9 +369,7 @@ width: 50%;
 #sec404 div{
   width: 30%;
 }
-#footer span{
-  margin: 3px 0px 25px;
-}
+
 .is-preload{
   display: flex;
   flex-direction: column;
@@ -509,7 +509,26 @@ width: 50%;
   width: 100%;
   max-height: 45px;
 }
-
+#list .item:hover{
+  color: goldenrod;
+    font-weight: 700;
+    cursor: pointer;
+}
+#footer button{
+  width: 170px;
+  height: 36px;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 3px;
+  border-radius: 1em;
+  border: 2px solid brown;
+}
+#comunicacionFooter{
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 #searchInput{
   width: 100%;
     /* position: absolute; */
@@ -547,6 +566,9 @@ width: 50%;
   padding: 10px;
   cursor: pointer;
 
+}
+.abc:hover{
+  color: gold;
 }
 .selectContainer{
   display: block;
@@ -624,6 +646,9 @@ position: absolute;
   #cardH{
     display: grid;
     }
+  #buscamosEm{
+    width: 100%;
+  }
   button:hover{
    background: goldenrod;
    cursor: pointer;
