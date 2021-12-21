@@ -314,6 +314,9 @@ width: 50%;
   padding: 5px;
   margin: 0px;
 }
+#map:hover{
+  color: brown;
+}
 #listDom{
   list-style: circle;
       margin-top: 15px;
@@ -525,6 +528,8 @@ width: 50%;
 }
 #cardAction{
   padding: 5px;
+  position: absolute;
+  bottom: 20%;
 }
 #cardCont{
   padding: 10px;
@@ -807,7 +812,10 @@ position: absolute;
     display: flex;
     flex-direction: column;
   }
-
+  #cardAction {
+    padding: 5px;
+    position: relative;
+  }
   .visor{
  width: 60%;
     margin-top: 35px;
