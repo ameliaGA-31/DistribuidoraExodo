@@ -41,6 +41,7 @@
   min-width: 220px;
   height: 200px;
   margin-left: 15px;
+  max-width: 220px;
 }
 #cajaImg{
   width: 25%;
@@ -590,10 +591,17 @@ width: 50%;
   cursor: pointer;
       color: goldenrod;
 }
+.icons span:hover, .iconFooter span:hover{
+  color: brown;
+}
 #Bienvenida span,#times span{
   color: goldenrod;
   font-size: 1.2em;
   margin-right: 4px;
+}
+#times span:hover, #Bienvenida span:hover, #cajElim:hover{
+  color: brown;
+  font-weight: 500;
 }
 #iconMenu{
   display: none;
@@ -858,9 +866,10 @@ position: absolute;
     display: none;
   }
   #cajaImg img {
-    height: 70px;
-    min-width: 70px;
-    margin-left: 0px;
+  height: 70px;
+  max-width: 70px;
+  min-width: 70px;
+  margin-left: 0px;
   }
   #cajaImg {
     width: 30%;

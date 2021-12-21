@@ -71,7 +71,7 @@ function setInfoProduct(infoCadaUno,nameNodo){
     	if(typeof infoCadaUno.size === 'string' && typeof infoCadaUno.price === 'string'){
     		optionSize=infoCadaUno.size;
     		document.getElementById('information').innerText =optionSize;
-    		price.innerHTML=`<div>${infoCadaUno.price}</div>`
+    		price.innerHTML=`<div>$${infoCadaUno.price}</div>`
     		setTotalProduct();
     	}else{
 	    	optionSize=infoCadaUno.size.map(medida=> `<option value="${medida}" class="optionSize">${medida}</option>`);
