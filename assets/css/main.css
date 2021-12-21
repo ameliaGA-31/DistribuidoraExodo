@@ -589,7 +589,7 @@ width: 50%;
   font-size: 1.5em;
   padding: 6px;
   cursor: pointer;
-      color: goldenrod;
+  color: goldenrod;
 }
 .icons span:hover, .iconFooter span:hover{
   color: brown;
@@ -666,11 +666,54 @@ position: absolute;
     display: grid;
     }
   #buscamosEm{
-    width: 100%;
+    display: flex;
+    width: 70%;
+    height: 200px;
+    margin: 2px auto;
+  }
+  #modalCont{
+   text-align: center;
+    background: brown;
+    color: white;
+  }
+  #modalCont p{
+  margin: 5px;
+  color: goldenrod;
+  font-weight: 500;
+  }
+  #modalCont br{
+    display: none;
   }
   button:hover{
    background: goldenrod;
    cursor: pointer;
+  }
+  .spanTel{
+    margin-right: 10px;
+  }
+  .ulContactos span:hover{
+    color: white;
+  }
+  .ulContactos span{
+    font-size: 1.5em;
+    padding: 6px;
+    cursor: pointer;
+    color: goldenrod;
+  }
+  #ulModal{
+   list-style: circle;
+    display: block;
+    text-align: initial;
+    margin-left: 20%;
+  }
+  #modalFot{
+    background: goldenrod;
+  }
+  #modalFot a{
+    color: white;
+  }
+  #modalFot a:hover{
+    color: brown;
   }
 @media (min-width: 320px) and (max-width: 900px){
   #contMayor,header,#carouzel,.contUbicacion,footer,#cajaList,#Bienvenida{
