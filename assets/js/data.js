@@ -1,7 +1,7 @@
 const spreadsheetsId='1WfxVETEfl-fmU4QGfOG1wk-93ClARjK5wkgUbAg3BXg';
 //1WfxVETEfl-fmU4QGfOG1wk-93ClARjK5wkgUbAg3BXg
 //const range='Respuestas de formulario 1!A1:F5';
-const range='Data!A1:I225';
+const range='Data!A1:I300';
 const apiKey='AIzaSyBb1-sH8j-c6qSKNT4UK7CqP65w7v-ugq8';
 const urlOriginal=`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetsId}/values/${range}?key=${apiKey}`;
 let dataValue;
